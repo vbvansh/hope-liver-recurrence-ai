@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.hope/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment / secrets
+.env
+.env.*
+*.pem
+*.key
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Large model files
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+
+# Large archives
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# Medical / patient data
+*.dcm
+*.nii
+*.nii.gz
+
+# Local datasets
+data/raw/
+data/private/
+data/patient_data/
+
+# Experiment outputs
+outputs/
+runs/
+wandb/
+mlruns/
+
+# Temporary files
+tmp/
+temp/
