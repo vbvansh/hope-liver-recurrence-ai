@@ -22,7 +22,6 @@ HOPE_Liver_Recurrence_AI/
 │   └── sota_benchmarks/                    state-of-the-art result tables
 ├── experiments/
 │   └── registration/
-│       ├── team_pipeline/                  experiments with processing/ (planned)
 │       └── simpleitk_baseline/             lightweight CPU pipeline for the 1 GB hub
 ├── processing/                             CT preprocessing + longitudinal registration pipelines
 └── README.md

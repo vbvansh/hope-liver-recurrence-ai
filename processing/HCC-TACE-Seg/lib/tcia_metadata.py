@@ -67,7 +67,9 @@ def main():
                 return df[n]
         return pd.Series([""] * len(df))
 
-    file_loc = col("File Location")
+    # manifests downloaded on Windows store ".\Coll\pid\..."; use "/" so the paths
+    # resolve on Linux too
+    file_loc = col("File Location").str.replace("\\", "/", regex=False)
     series_dir = file_loc.map(
         lambda p: os.path.normpath(os.path.join(args.manifest, p)) if p else "")
 
