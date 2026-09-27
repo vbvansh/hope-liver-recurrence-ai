@@ -1,0 +1,30 @@
+# Core — needed for measurements, imaging, ledger, export (always)
+numpy
+nibabel
+Pillow
+
+# GUI (report_viewer.py)
+streamlit
+pandas
+
+# ---- model backends -------------------------------------------------------
+# Two passes, two models:
+#   S2 (2D image read)  = Qwen2.5-VL (default)
+#   S3 (fusion reasoner) = MedGemma (license-gated) — or Qwen2.5-VL for both
+#
+# backend=endpoint (RECOMMENDED, most portable): nothing below is needed — the
+#   client hits an OpenAI-compatible server (vLLM) over HTTP. Serve each model:
+#     vllm serve Qwen/Qwen2.5-VL-7B-Instruct --port 8001
+#     vllm serve google/medgemma-4b-it       --port 8002
+#
+# backend=hf (run the models in-process via transformers): install these.
+transformers>=4.49          # Qwen2.5-VL needs >=4.49
+torch
+torchvision
+accelerate
+qwen-vl-utils              # Qwen2.5-VL image preprocessing
+
+# NOTE: the tumor masks (SegVol) and organ masks (TotalSegmentator) are produced
+# UPSTREAM by the Abdomen pipeline (segvol_batch.py / segment.py) and read here as
+# cached NIfTI — they are NOT dependencies of this reporting package.
+# export_training.py needs only the core (it reads the JSON ledgers).

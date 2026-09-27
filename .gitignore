@@ -62,3 +62,5 @@ mlruns/
 # Temporary files
 tmp/
 temp/
+# Downloaded datasets (patient imaging + metadata)
+/Datasets/

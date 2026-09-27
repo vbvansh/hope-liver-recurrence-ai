@@ -1,0 +1,74 @@
+patient,reason,time
+HCC_001,ValueError: no comparable contrast series after TACE for 'C-A-P',2026-09-24 10:16
+HCC_007,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.146103304273906855574595828011,2026-09-24 10:25
+HCC_007,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.146103304273906855574595828011,2026-09-24 10:25
+HCC_009,ValueError: no comparable contrast series after TACE for 'LIVER 3 PHASE CAP',2026-09-24 10:28
+HCC_009,ValueError: no comparable contrast series after TACE for 'LIVER 3 PHASE CAP',2026-09-24 10:29
+HCC_009,ValueError: no comparable contrast series after TACE for 'LIVER 3 PHASE CAP',2026-09-24 10:30
+HCC_020,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_020/before/00000001.dcm',2026-09-24 10:45
+HCC_021,KeyError: -223.91,2026-09-24 10:45
+HCC_021,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_021/before/00000001.dcm',2026-09-24 10:46
+HCC_021,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.104290748697100005420912116573,2026-09-24 10:46
+HCC_022,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_022/before/00000001.dcm',2026-09-24 10:46
+HCC_022,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_022/seg/00000001.dcm',2026-09-24 10:49
+HCC_029,ValueError: no comparable contrast series after TACE for 'Recon 3 LIVER 3 PHASE CAP',2026-09-24 10:55
+HCC_029,ValueError: no comparable contrast series after TACE for 'Recon 3 LIVER 3 PHASE CAP',2026-09-24 10:56
+HCC_029,ValueError: no comparable contrast series after TACE for 'Recon 3 LIVER 3 PHASE CAP',2026-09-24 10:57
+HCC_032,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_032/before/00000001.dcm',2026-09-24 11:01
+HCC_032,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_032/seg/00000001.dcm',2026-09-24 11:04
+HCC_035,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_035/before/00000001.dcm',2026-09-24 11:10
+HCC_036,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_036/before/00000001.dcm',2026-09-24 11:10
+HCC_036,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.336005218259978985736646945152,2026-09-24 11:12
+HCC_036,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.336005218259978985736646945152,2026-09-24 11:12
+HCC_037,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_037/before/00000001.dcm',2026-09-24 11:13
+HCC_037,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.127855973635818232365939385060,2026-09-24 11:14
+HCC_039,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_039/seg/00000001.dcm',2026-09-24 11:16
+HCC_039,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_039/before/00000001.dcm',2026-09-24 11:16
+HCC_040,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_040/before/00000001.dcm',2026-09-24 11:17
+HCC_040,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_040/seg/00000001.dcm',2026-09-24 11:18
+HCC_041,FileExistsError: [Errno 17] File exists: '/home/jovyan/Vansh_HA26001/work/HCC_041',2026-09-24 11:18
+HCC_040,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.136107204035054365392640033610,2026-09-24 11:18
+HCC_043,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_043/before/00000001.dcm',2026-09-24 11:24
+HCC_048,ValueError: segmentation does not say which CT series it was drawn on,2026-09-24 11:28
+HCC_048,ValueError: segmentation does not say which CT series it was drawn on,2026-09-24 11:31
+HCC_048,ValueError: segmentation does not say which CT series it was drawn on,2026-09-24 11:32
+HCC_051,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_051/seg/00000001.dcm',2026-09-24 11:36
+HCC_054,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_054/seg/00000001.dcm',2026-09-24 11:40
+HCC_061,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_061/seg/00000001.dcm',2026-09-24 11:53
+HCC_063,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_063/after/00000002.dcm',2026-09-24 11:55
+HCC_065,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_065/before/00000001.dcm',2026-09-24 12:00
+HCC_066,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_066/before/00000001.dcm',2026-09-24 12:01
+HCC_068,ValueError: no comparable contrast series after TACE for '2.5 SOFT',2026-09-24 12:03
+HCC_068,ValueError: no comparable contrast series after TACE for '2.5 SOFT',2026-09-24 12:03
+HCC_065,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_065/seg/00000001.dcm',2026-09-24 12:03
+HCC_068,ValueError: no comparable contrast series after TACE for '2.5 SOFT',2026-09-24 12:06
+HCC_073,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.248128077663297154202444477856,2026-09-24 12:10
+HCC_076,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_076/before/00000001.dcm',2026-09-24 12:18
+HCC_085,ValueError: no comparable contrast series after TACE for 'Recon 3 LIVER 2PHASE CAP',2026-09-24 12:30
+HCC_083,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_083/before/00000001.dcm',2026-09-24 12:31
+HCC_085,ValueError: no comparable contrast series after TACE for 'Recon 3 LIVER 2PHASE CAP',2026-09-24 12:32
+HCC_085,ValueError: no comparable contrast series after TACE for 'Recon 3 LIVER 2PHASE CAP',2026-09-24 12:32
+HCC_089,ValueError: no comparable contrast series after TACE for 'Recon 3 LIVER 2PHASE CAP',2026-09-24 12:36
+HCC_089,ValueError: no comparable contrast series after TACE for 'Recon 3 LIVER 2PHASE CAP',2026-09-24 12:37
+HCC_090,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_090/before/00000001.dcm',2026-09-24 12:38
+HCC_089,ValueError: no comparable contrast series after TACE for 'Recon 3 LIVER 2PHASE CAP',2026-09-24 12:38
+HCC_092,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_092/seg/00000001.dcm',2026-09-24 12:46
+HCC_093,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.407713635068455927228285104709,2026-09-24 12:47
+HCC_093,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.407713635068455927228285104709,2026-09-24 12:47
+HCC_093,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.407713635068455927228285104709,2026-09-24 12:48
+HCC_094,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.303118220070907261717258125733,2026-09-24 12:50
+HCC_095,ValueError: no comparable contrast series after TACE for '2.5 SOFT',2026-09-24 12:50
+HCC_094,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.303118220070907261717258125733,2026-09-24 12:50
+HCC_095,ValueError: no comparable contrast series after TACE for '2.5 SOFT',2026-09-24 12:50
+HCC_095,ValueError: no comparable contrast series after TACE for '2.5 SOFT',2026-09-24 12:51
+HCC_096,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.285148415629932506365664022608,2026-09-24 12:54
+HCC_098,ValueError: no comparable contrast series after TACE for 'Recon 3 LIVER 2PHASE CAP',2026-09-24 12:55
+HCC_099,ValueError: no comparable contrast series after TACE for '2.5 STANDARD',2026-09-24 12:55
+HCC_098,ValueError: no comparable contrast series after TACE for 'Recon 3 LIVER 2PHASE CAP',2026-09-24 12:55
+HCC_099,ValueError: no comparable contrast series after TACE for '2.5 STANDARD',2026-09-24 12:55
+HCC_098,ValueError: no comparable contrast series after TACE for 'Recon 3 LIVER 2PHASE CAP',2026-09-24 12:56
+HCC_099,ValueError: no comparable contrast series after TACE for '2.5 STANDARD',2026-09-24 12:56
+HCC_100,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.159125101693806936710380243661,2026-09-24 12:58
+HCC_103,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.233757334731578411187290391706,2026-09-24 13:06
+HCC_103,RuntimeError: could not download series 1.3.6.1.4.1.14519.5.2.1.1706.8374.188946677007198610887125279288,2026-09-24 13:10
+HCC_105,FileNotFoundError: [Errno 2] No such file or directory: '/home/jovyan/Vansh_HA26001/work/HCC_105/before/00000001.dcm',2026-09-24 13:11

@@ -1,0 +1,22 @@
+{
+  "_about": "MR-RATE-style structured finding taxonomy for the 2D CT image-read pass (S2). A VLM derives these from the IMAGE (no source text). Tumor-progression-focused subset spanning the abdominal/thoracic oncology datasets (liver/kidney/pancreas/lung). SNOMED/RadLex codes left null on purpose — map them from a controlled vocabulary rather than fabricating. All findings are read on CT (primary_seq = 'ct').",
+  "change_vocab": ["new", "increased", "stable", "decreased", "resolved", "absent"],
+  "labels": [
+    {"id": "target_tumor",        "name": "Target tumor (measurable lesion)", "snomed": null, "primary_seq": "ct", "desc": "The dominant solid organ tumor being followed (liver/kidney/pancreas/lung mass)."},
+    {"id": "new_lesion",          "name": "New lesion",                       "snomed": null, "primary_seq": "ct", "desc": "Lesion not present on the prior scan (same organ or adjacent)."},
+    {"id": "distant_metastasis",  "name": "New distant metastasis",           "snomed": null, "primary_seq": "ct", "desc": "New lesion remote from the primary site (liver/lung/peritoneal/bone)."},
+    {"id": "lymphadenopathy",     "name": "Lymphadenopathy",                  "snomed": null, "primary_seq": "ct", "desc": "Enlarged regional or distant lymph nodes (short axis > 1 cm)."},
+    {"id": "necrosis",            "name": "Intratumoral necrosis",            "snomed": null, "primary_seq": "ct", "desc": "Central low-attenuation non-enhancing necrotic core (incl. post-TACE)."},
+    {"id": "hemorrhage",          "name": "Intratumoral / peritumoral hemorrhage", "snomed": null, "primary_seq": "ct", "desc": "High-attenuation blood products in or around the lesion."},
+    {"id": "vascular_invasion",   "name": "Vascular invasion / tumor thrombus", "snomed": null, "primary_seq": "ct", "desc": "Tumor extension into a vessel (e.g. portal/renal vein tumor thrombus)."},
+    {"id": "organ_invasion",      "name": "Local organ invasion",             "snomed": null, "primary_seq": "ct", "desc": "Direct extension of the tumor into an adjacent organ/structure."},
+    {"id": "biliary_dilatation",  "name": "Biliary / ductal dilatation",      "snomed": null, "primary_seq": "ct", "desc": "Dilated bile ducts or pancreatic duct from obstructing tumor."},
+    {"id": "ascites",             "name": "Ascites",                          "snomed": null, "primary_seq": "ct", "desc": "Free intraperitoneal fluid (possible peritoneal spread)."},
+    {"id": "pleural_effusion",    "name": "Pleural effusion",                 "snomed": null, "primary_seq": "ct", "desc": "Fluid in the pleural space (lung/abdominal malignancy)."},
+    {"id": "satellite_nodule",    "name": "Satellite / pulmonary nodule",     "snomed": null, "primary_seq": "ct", "desc": "Additional small nodule near the primary (esp. lung datasets)."},
+    {"id": "atelectasis",         "name": "Atelectasis / post-obstructive collapse", "snomed": null, "primary_seq": "ct", "desc": "Lung volume loss adjacent to a mass."},
+    {"id": "treatment_effect",    "name": "Treatment-effect pattern",         "snomed": null, "primary_seq": "ct", "desc": "Post-therapy change (lipiodol/necrosis after TACE, devascularization) favoring treatment effect over viable tumor."},
+    {"id": "calcification",       "name": "Calcification",                    "snomed": null, "primary_seq": "ct", "desc": "Calcified component within or at the lesion margin."},
+    {"id": "mass_effect",         "name": "Mass effect",                      "snomed": null, "primary_seq": "ct", "desc": "Displacement/compression of adjacent organs or vessels by the tumor."}
+  ]
+}

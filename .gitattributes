@@ -1,0 +1,3 @@
+# scripts run on Linux (Lightning AI, lab server): always store with LF line endings
+*.sh text eol=lf
+*.py text eol=lf
