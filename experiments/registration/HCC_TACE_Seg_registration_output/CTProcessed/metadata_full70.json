@@ -1,0 +1,2629 @@
+{
+  "dataset": "HCC-TACE-Seg",
+  "standard": {
+    "orientation": "RAS+",
+    "spacing_mm": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "dtype": "float32",
+    "values": "raw Hounsfield Units",
+    "recommended_window": {
+      "level": 40,
+      "width": 400,
+      "clip": [
+        -160.0,
+        240.0
+      ],
+      "scale_to": [
+        0,
+        1
+      ]
+    },
+    "timepoint_order": "by study date: 000_baseline, 001_followup_N",
+    "series_selection": "primary axial CT (max slices, excl scout/localizer/recon/MIP/cor/sag)",
+    "stacked_passes": "series holding several contrast passes (duplicate slice positions) are split by AcquisitionNumber; per patient the passes with the closest aorta + portal-vein HU (CADS-551) across timepoints are kept",
+    "region_filter": "auto",
+    "region_per_patient": "auto = the region (abdomen/chest) giving the most timepoints, abdomen on tie; see each patient's 'region' field",
+    "registration": "rigid Euler3D (Mattes MI) of each follow-up to 000_baseline, resampled onto baseline grid. QC = body-silhouette Dice over shared z-range (trust this, not MI which swings with contrast phase); overlap_ok=False \u21d2 timepoints don't share anatomy"
+  },
+  "patients": {
+    "HCC_001": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1999-11-30 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.139683127466268036038326476970",
+          "series_desc": "PRE LIVER",
+          "shape": [
+            400,
+            400,
+            215
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2000-04-21 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.117363016170149032700478546705",
+          "series_desc": NaN,
+          "shape": [
+            400,
+            400,
+            215
+          ],
+          "registered": true,
+          "metric": -0.7532,
+          "body_dice": 0.8107,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.991,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_003": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1997-09-12 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.281650679207816520863173918688",
+          "series_desc": "Recon 2 LIVER 3 PHASE AP",
+          "shape": [
+            360,
+            360,
+            238
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null,
+          "n_passes": 2,
+          "acquisition": 2,
+          "aorta_hu": 158.0,
+          "portal_vein_hu": 157.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1997-10-31 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.231380369736946473150898294194",
+          "series_desc": "Recon 2 3 PHASE LIVER ABD",
+          "shape": [
+            360,
+            360,
+            238
+          ],
+          "registered": true,
+          "metric": -0.6918,
+          "body_dice": 0.9185,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.836,
+          "overlap_ok": true,
+          "n_passes": 2,
+          "acquisition": 2,
+          "aorta_hu": 159.0,
+          "portal_vein_hu": 159.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        }
+      ]
+    },
+    "HCC_004": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1997-10-06 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.285388762605622963541285440661",
+          "series_desc": "Recon 3 LIVER 3 PHASE AP",
+          "shape": [
+            320,
+            320,
+            198
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null,
+          "n_passes": 1,
+          "acquisition": null,
+          "aorta_hu": 186.0,
+          "portal_vein_hu": 188.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1997-11-28 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.933229621958600898029221260035",
+          "series_desc": "Recon 2 LIVER 3 PHASE AP",
+          "shape": [
+            320,
+            320,
+            198
+          ],
+          "registered": true,
+          "metric": -0.4957,
+          "body_dice": 0.8756,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.966,
+          "overlap_ok": true,
+          "n_passes": 2,
+          "acquisition": 3,
+          "aorta_hu": 181.0,
+          "portal_vein_hu": 220.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        }
+      ]
+    },
+    "HCC_006": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1999-08-06 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.169644075146766664505907245033",
+          "series_desc": "LIVER 3 PHASE AP",
+          "shape": [
+            400,
+            400,
+            272
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2000-01-22 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.908670668499030554148605049062",
+          "series_desc": "Recon 3 LIVER 3 PHASE AP",
+          "shape": [
+            400,
+            400,
+            272
+          ],
+          "registered": true,
+          "metric": -0.8215,
+          "body_dice": 0.8756,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.98,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_007": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1997-12-27 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.146103304273906855574595828011",
+          "series_desc": "Recon 2 LIVER 3 PHASE AP",
+          "shape": [
+            360,
+            360,
+            188
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null,
+          "n_passes": 2,
+          "acquisition": 3,
+          "aorta_hu": 149.0,
+          "portal_vein_hu": 159.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1998-03-14 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.201257050106336588378824687008",
+          "series_desc": "Recon 2 3 PHASE LIVER ABD",
+          "shape": [
+            360,
+            360,
+            188
+          ],
+          "registered": true,
+          "metric": -0.7272,
+          "body_dice": 0.9459,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.981,
+          "overlap_ok": true,
+          "n_passes": 2,
+          "acquisition": 3,
+          "aorta_hu": 168.0,
+          "portal_vein_hu": 169.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        }
+      ]
+    },
+    "HCC_008": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1998-02-02 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.225337061327095208867574560972",
+          "series_desc": "3 PHASE LIVER ABD",
+          "shape": [
+            360,
+            360,
+            200
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null,
+          "n_passes": 3,
+          "acquisition": 2,
+          "aorta_hu": 192.0,
+          "portal_vein_hu": 191.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1998-03-13 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.119159921683918088365524358437",
+          "series_desc": "Recon 2 3 PHASE LIVER ABD",
+          "shape": [
+            360,
+            360,
+            200
+          ],
+          "registered": true,
+          "metric": -0.5485,
+          "body_dice": 0.921,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.963,
+          "overlap_ok": true,
+          "n_passes": 2,
+          "acquisition": 3,
+          "aorta_hu": 163.0,
+          "portal_vein_hu": 185.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        }
+      ]
+    },
+    "HCC_009": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1998-02-15 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.279766790046336306059885985275",
+          "series_desc": "Recon 2 LIVER 3 PHASE CAP",
+          "shape": [
+            380,
+            380,
+            172
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1998-03-20 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.250123888781393558123201868694",
+          "series_desc": "PRE LIVER",
+          "shape": [
+            380,
+            380,
+            172
+          ],
+          "registered": true,
+          "metric": -0.869,
+          "body_dice": 0.9467,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.998,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_010": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1998-02-21 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.144967540901815428834541637279",
+          "series_desc": "Recon 2 LIVER 3 PHASE AP",
+          "shape": [
+            360,
+            360,
+            238
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null,
+          "n_passes": 2,
+          "acquisition": 3,
+          "aorta_hu": 143.0,
+          "portal_vein_hu": 168.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1998-05-03 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.215132201941315406449308742437",
+          "series_desc": "Recon 3 LIVER 3 PHASE AP",
+          "shape": [
+            360,
+            360,
+            238
+          ],
+          "registered": true,
+          "metric": -0.831,
+          "body_dice": 0.95,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.998,
+          "overlap_ok": true,
+          "n_passes": 1,
+          "acquisition": null,
+          "aorta_hu": 167.0,
+          "portal_vein_hu": 202.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        }
+      ]
+    },
+    "HCC_011": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1998-05-23 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.213776214865122688712708174786",
+          "series_desc": "Recon 2 LIVER 3 PHASE AP",
+          "shape": [
+            400,
+            400,
+            198
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null,
+          "n_passes": 3,
+          "acquisition": 2,
+          "aorta_hu": 202.0,
+          "portal_vein_hu": 163.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1998-10-09 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.438778664374752683692976216619",
+          "series_desc": "Recon 3 3 PHASE LIVER ABD",
+          "shape": [
+            400,
+            400,
+            198
+          ],
+          "registered": true,
+          "metric": -0.817,
+          "body_dice": 0.9495,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.983,
+          "overlap_ok": true,
+          "n_passes": 1,
+          "acquisition": null,
+          "aorta_hu": 222.0,
+          "portal_vein_hu": 168.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        }
+      ]
+    },
+    "HCC_012": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2001-01-05 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.134374587881470558298883872032",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            440,
+            440,
+            228
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2001-04-06 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.185132672585421053304404321574",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            440,
+            440,
+            228
+          ],
+          "registered": true,
+          "metric": -0.8035,
+          "body_dice": 0.8174,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.942,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_013": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1998-08-16 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.221388990138540291934761239634",
+          "series_desc": "Recon 2 LIVER 3 PHASE AP",
+          "shape": [
+            380,
+            380,
+            202
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1998-11-14 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.167138112764841090867868111164",
+          "series_desc": "Recon 3 LIVER 3 PHASE AP",
+          "shape": [
+            380,
+            380,
+            202
+          ],
+          "registered": true,
+          "metric": -0.9862,
+          "body_dice": 0.9547,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.987,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_014": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1998-09-22 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.276287113926887340104314003334",
+          "series_desc": "Recon 2 LIVER 3 PHASE AP",
+          "shape": [
+            340,
+            340,
+            158
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1999-01-01 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.162214115651934355573183414686",
+          "series_desc": "3 PHASE LIVER ABD",
+          "shape": [
+            340,
+            340,
+            158
+          ],
+          "registered": true,
+          "metric": -0.729,
+          "body_dice": 0.9144,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.969,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_015": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1998-11-01 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.233008122906404934405393444492",
+          "series_desc": "LIVER 3 PHASE AP",
+          "shape": [
+            340,
+            340,
+            155
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1999-03-21 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.177300665692506717524584470315",
+          "series_desc": "Recon 2 LIVER 3 PHASE AP",
+          "shape": [
+            340,
+            340,
+            155
+          ],
+          "registered": true,
+          "metric": -0.8046,
+          "body_dice": 0.9544,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.991,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_016": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1998-10-12 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.318739454056625943716212501955",
+          "series_desc": "LIVER 3 PHASE AP",
+          "shape": [
+            400,
+            400,
+            245
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1998-12-18 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.149229216602099292805366200596",
+          "series_desc": "3 PHASE LIVER ABD",
+          "shape": [
+            400,
+            400,
+            245
+          ],
+          "registered": true,
+          "metric": -0.8807,
+          "body_dice": 0.9531,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.996,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_017": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1998-10-23 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.172517341095680731665822868712",
+          "series_desc": "Recon 3 3 PHASE LIVER ABD",
+          "shape": [
+            360,
+            360,
+            158
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1998-12-30 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.248405399117823077706630759662",
+          "series_desc": "Recon 3 LIVER 3 PHASE AP",
+          "shape": [
+            360,
+            360,
+            158
+          ],
+          "registered": true,
+          "metric": -0.8917,
+          "body_dice": 0.8708,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.832,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_018": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1998-12-29 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.118000366957942305399625207879",
+          "series_desc": "Recon 2 LIVER 3 PHASE CAP",
+          "shape": [
+            380,
+            380,
+            198
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1999-02-20 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.209879613437143272624400169811",
+          "series_desc": "Recon 2 3 PHASE LIVER ABD",
+          "shape": [
+            380,
+            380,
+            198
+          ],
+          "registered": true,
+          "metric": -0.6946,
+          "body_dice": 0.9213,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.958,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_019": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1999-01-31 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.991595515813772991981994577552",
+          "series_desc": "LIVER 3 PHASE AP",
+          "shape": [
+            360,
+            360,
+            168
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1999-04-04 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.284613047876190665796195422210",
+          "series_desc": "Recon 2 LIVER 3 PHASE AP",
+          "shape": [
+            360,
+            360,
+            168
+          ],
+          "registered": true,
+          "metric": -0.6783,
+          "body_dice": 0.9498,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.993,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_020": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1999-02-02 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.261476875371253742881314106735",
+          "series_desc": "Recon 2 LIVER 3 PHASE CAP",
+          "shape": [
+            420,
+            420,
+            208
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1999-03-23 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.190214214037021187958505681612",
+          "series_desc": "Recon 3 LIVER 3 PHASE CAP",
+          "shape": [
+            420,
+            420,
+            208
+          ],
+          "registered": true,
+          "metric": -0.8355,
+          "body_dice": 0.9246,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.981,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_021": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1999-03-09 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.144578916972880946591843596104",
+          "series_desc": "LIVER 3 PHASE AP",
+          "shape": [
+            320,
+            320,
+            197
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1999-04-24 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.104290748697100005420912116573",
+          "series_desc": "Recon 3 LIVER 3 PHASE CA",
+          "shape": [
+            320,
+            320,
+            197
+          ],
+          "registered": true,
+          "metric": -0.5988,
+          "body_dice": 0.8756,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.79,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_022": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1999-04-30 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.515274530467182181818020825460",
+          "series_desc": "Recon 2 LIVER 3 PHASE CAP",
+          "shape": [
+            360,
+            360,
+            178
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1999-06-12 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.455514837684957399796675269968",
+          "series_desc": "Recon 2 LIVER 3 PHASE AP",
+          "shape": [
+            360,
+            360,
+            178
+          ],
+          "registered": true,
+          "metric": -0.8191,
+          "body_dice": 0.9154,
+          "aligned_by": "silhouette_z",
+          "silhouette_corr": 0.59,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_023": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1999-10-24 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.263911895862738908758655260349",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            360,
+            360,
+            192
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1999-12-24 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.101433434108001107216833551855",
+          "series_desc": "Recon 3 LIVER 3 PHASE CAP",
+          "shape": [
+            360,
+            360,
+            192
+          ],
+          "registered": true,
+          "metric": -0.9647,
+          "body_dice": 0.9115,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.962,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_024": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1999-05-23 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.154761684977175148684368350466",
+          "series_desc": "Recon 2 LIVER 3 PHASE AP",
+          "shape": [
+            380,
+            380,
+            162
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1999-10-22 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.211396062136205490473551721446",
+          "series_desc": "3 PHASE LIVER ABD",
+          "shape": [
+            380,
+            380,
+            162
+          ],
+          "registered": true,
+          "metric": -0.8534,
+          "body_dice": 0.907,
+          "aligned_by": "silhouette_z",
+          "silhouette_corr": 0.979,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_025": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1999-07-04 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.663753513037670993657925664464",
+          "series_desc": "Recon 3 LIVER 3 PHASE AP",
+          "shape": [
+            360,
+            360,
+            188
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1999-08-13 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.322920532018382347558730376285",
+          "series_desc": "Recon 3 LIVER 3 PHASE CAP",
+          "shape": [
+            360,
+            360,
+            188
+          ],
+          "registered": true,
+          "metric": -0.7926,
+          "body_dice": 0.8559,
+          "aligned_by": "centred",
+          "silhouette_corr": 0.967,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_026": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2000-02-29 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.186671061594786850108728305867",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            360,
+            360,
+            207
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2000-05-02 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.130708486933934680315041435150",
+          "series_desc": "3 PHASE LIVER ABD",
+          "shape": [
+            360,
+            360,
+            207
+          ],
+          "registered": true,
+          "metric": -1.0531,
+          "body_dice": 0.917,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.99,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_027": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1999-09-03 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.203195937357017832500975199162",
+          "series_desc": NaN,
+          "shape": [
+            380,
+            380,
+            198
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1999-10-30 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.119068915455347163846506542410",
+          "series_desc": "Recon 3 LIVER 3 PHASE CAP",
+          "shape": [
+            380,
+            380,
+            198
+          ],
+          "registered": true,
+          "metric": -0.7405,
+          "body_dice": 0.7622,
+          "aligned_by": "centred",
+          "silhouette_corr": 0.98,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_028": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1999-10-30 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.469670928282774977392602838475",
+          "series_desc": "Recon 3 LIVER 3 PHASE AP",
+          "shape": [
+            400,
+            400,
+            282
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1999-12-31 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.725083088094173523606654353097",
+          "series_desc": "Recon 2 3 PHASE LIVER ABD",
+          "shape": [
+            400,
+            400,
+            282
+          ],
+          "registered": true,
+          "metric": -0.7396,
+          "body_dice": 0.856,
+          "aligned_by": "silhouette_z",
+          "silhouette_corr": 0.998,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_029": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1999-10-29 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.874855670505554886590797381965",
+          "series_desc": "Recon 3 LIVER 3 PHASE CAP",
+          "shape": [
+            340,
+            340,
+            198
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2000-01-08 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.266614683672385011635507824994",
+          "series_desc": "ABD",
+          "shape": [
+            340,
+            340,
+            198
+          ],
+          "registered": true,
+          "metric": -0.9628,
+          "body_dice": 0.9099,
+          "aligned_by": "silhouette_z",
+          "silhouette_corr": 0.919,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_030": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1999-10-03 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.252519330659724928966516416186",
+          "series_desc": "Recon 2 LIVER 3 PHASE AP",
+          "shape": [
+            480,
+            480,
+            222
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null,
+          "n_passes": 2,
+          "acquisition": 3,
+          "aorta_hu": 103.0,
+          "portal_vein_hu": 119.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "1999-11-19 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.226840645739856379941376572146",
+          "series_desc": "Recon 3 LIVER 3 PHASE AP",
+          "shape": [
+            480,
+            480,
+            222
+          ],
+          "registered": true,
+          "metric": -0.7688,
+          "body_dice": 0.8193,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.998,
+          "overlap_ok": true,
+          "n_passes": 1,
+          "acquisition": null,
+          "aorta_hu": 196.0,
+          "portal_vein_hu": 164.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        }
+      ]
+    },
+    "HCC_031": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "1999-11-14 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.204942665233155537002525937578",
+          "series_desc": "LIVER 3 PHASE AP",
+          "shape": [
+            400,
+            400,
+            220
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2000-02-25 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.428651867864617661394798949521",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            400,
+            400,
+            220
+          ],
+          "registered": true,
+          "metric": -0.768,
+          "body_dice": 0.8551,
+          "aligned_by": "centred",
+          "silhouette_corr": 0.984,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_032": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2000-01-15 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.115558995063414845036761741321",
+          "series_desc": "Recon 3 LIVER 3 PHASE CAP",
+          "shape": [
+            380,
+            380,
+            148
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2000-05-16 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.157970015363744109369905284182",
+          "series_desc": "Recon 3 LIVER 3 PHASE CAP",
+          "shape": [
+            380,
+            380,
+            148
+          ],
+          "registered": true,
+          "metric": -0.8472,
+          "body_dice": 0.8144,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.892,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_033": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2000-02-14 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.225124157367301774933066405879",
+          "series_desc": "Recon 2 LIVER 3 PHASE CAP",
+          "shape": [
+            380,
+            380,
+            182
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2000-04-18 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.105120440514927275264813320889",
+          "series_desc": "Recon 2 LIVER 3 PHASE CAP",
+          "shape": [
+            380,
+            380,
+            182
+          ],
+          "registered": true,
+          "metric": -0.8636,
+          "body_dice": 0.87,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.998,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_034": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2000-02-14 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.158798556021120706786120139349",
+          "series_desc": "Recon 3 LIVER 3 PHASE AP",
+          "shape": [
+            400,
+            400,
+            178
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2000-04-16 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.339873541150734715460721254446",
+          "series_desc": "Recon 3 LIVER 3 PHASE CAP",
+          "shape": [
+            400,
+            400,
+            178
+          ],
+          "registered": true,
+          "metric": -0.7717,
+          "body_dice": 0.8983,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.917,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_035": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2004-03-16 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.295105627785835030227044974756",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            400,
+            400,
+            238
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2004-04-10 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.241913026857534190223688407606",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            400,
+            400,
+            238
+          ],
+          "registered": true,
+          "metric": -0.9384,
+          "body_dice": 0.9418,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.942,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_036": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2000-06-23 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.336005218259978985736646945152",
+          "series_desc": "Recon 3 LIVER 3 PHASE CAP",
+          "shape": [
+            340,
+            340,
+            162
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2000-09-24 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.275766712836771642430086901822",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            340,
+            340,
+            162
+          ],
+          "registered": true,
+          "metric": -0.8242,
+          "body_dice": 0.8816,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.911,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_037": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2000-06-02 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.127855973635818232365939385060",
+          "series_desc": "Recon 3 LIVER 3 PHASE CAP",
+          "shape": [
+            440,
+            440,
+            258
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2000-08-12 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.436424832259154451106959331947",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            440,
+            440,
+            258
+          ],
+          "registered": true,
+          "metric": -0.8404,
+          "body_dice": 0.861,
+          "aligned_by": "silhouette_z",
+          "silhouette_corr": 0.937,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_038": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2000-06-11 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.258252781966524048981427937658",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            420,
+            420,
+            248
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2000-08-11 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.251879409538959359642788740035",
+          "series_desc": "3 PHASE LIVER ABD",
+          "shape": [
+            420,
+            420,
+            248
+          ],
+          "registered": true,
+          "metric": -0.8716,
+          "body_dice": 0.9014,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.992,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_039": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2000-08-26 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.329731450121435598766896036022",
+          "series_desc": "Recon 2 3 PHASE LIVER ABD",
+          "shape": [
+            340,
+            340,
+            192
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2000-10-27 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.185921347175213526461487698087",
+          "series_desc": "Recon 2 3 PHASE LIVER ABD",
+          "shape": [
+            340,
+            340,
+            192
+          ],
+          "registered": true,
+          "metric": -0.9103,
+          "body_dice": 0.8919,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.966,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_040": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2000-07-09 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.130018590907419512589722706634",
+          "series_desc": "Recon 2 LIVER 3 PHASE CAP",
+          "shape": [
+            360,
+            360,
+            198
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2000-08-18 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.111102441982054685170297264435",
+          "series_desc": "Recon 2 LIVER 3 PHASE CAP",
+          "shape": [
+            360,
+            360,
+            198
+          ],
+          "registered": true,
+          "metric": -0.7495,
+          "body_dice": 0.8038,
+          "aligned_by": "silhouette_z",
+          "silhouette_corr": 0.9,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_041": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2000-10-20 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.229818627197009138933299040074",
+          "series_desc": "Recon 3 LIVER 3 PHASE CAP",
+          "shape": [
+            380,
+            380,
+            262
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2000-12-16 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.205895741151662024835290111190",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            380,
+            380,
+            262
+          ],
+          "registered": true,
+          "metric": -1.0061,
+          "body_dice": 0.9256,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.988,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_042": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2001-02-26 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.193724253479774279975792368468",
+          "series_desc": "LIVER 3 PHASE AP",
+          "shape": [
+            440,
+            440,
+            262
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2001-04-13 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.335168259580929285600018547575",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            440,
+            440,
+            262
+          ],
+          "registered": true,
+          "metric": -0.756,
+          "body_dice": 0.9125,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.986,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_043": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2000-12-19 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.287928376698644252313687463586",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            360,
+            360,
+            212
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2001-01-26 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.397394038804183012526103394838",
+          "series_desc": "3 PHASE LIVER ABD",
+          "shape": [
+            360,
+            360,
+            212
+          ],
+          "registered": true,
+          "metric": -0.8821,
+          "body_dice": 0.8162,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.846,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_044": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2001-01-21 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.851597260647194286085426531843",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            360,
+            360,
+            252
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2001-04-07 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.263849801555598764028487376499",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            360,
+            360,
+            252
+          ],
+          "registered": true,
+          "metric": -1.0516,
+          "body_dice": 0.9404,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.998,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_045": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2001-03-25 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.266472177765640382906292616703",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            360,
+            360,
+            233
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2001-06-24 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.125837937157035471610863960798",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            360,
+            360,
+            233
+          ],
+          "registered": true,
+          "metric": -0.8822,
+          "body_dice": 0.9159,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.984,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_046": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2001-05-26 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.187132770917834545324007391601",
+          "series_desc": "Recon 2 LIVER 2 PHASE CAP",
+          "shape": [
+            380,
+            380,
+            222
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2001-06-30 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.265046426766976641283781437325",
+          "series_desc": "Recon 3 2 PHASE LIVER ABD",
+          "shape": [
+            380,
+            380,
+            222
+          ],
+          "registered": true,
+          "metric": -0.9852,
+          "body_dice": 0.9435,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.991,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_047": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2001-06-24 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.116451085904950186258093963163",
+          "series_desc": "Recon 3 LIVER 2PHASE CAP",
+          "shape": [
+            460,
+            460,
+            248
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2001-09-02 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.205785371691452221491896488464",
+          "series_desc": "Recon 3 LIVER 3 PHASE AP",
+          "shape": [
+            460,
+            460,
+            248
+          ],
+          "registered": true,
+          "metric": -0.6298,
+          "body_dice": 0.876,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.977,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_048": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2001-08-12 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.212512542241432476118639218381",
+          "series_desc": "Recon 3 LIVER 2 PHASE CAP",
+          "shape": [
+            360,
+            360,
+            222
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2001-11-09 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.296615970947764407923935193844",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            360,
+            360,
+            222
+          ],
+          "registered": true,
+          "metric": -0.9058,
+          "body_dice": 0.8808,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.957,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_049": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2001-10-05 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.118985684332260630762130215359",
+          "series_desc": "Recon 2 LIVER 2 PHASE CAP",
+          "shape": [
+            400,
+            400,
+            248
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2001-12-07 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.899342957725497376522487215329",
+          "series_desc": "Recon 3 LIVER 2 PHASE AP",
+          "shape": [
+            400,
+            400,
+            248
+          ],
+          "registered": true,
+          "metric": -0.8503,
+          "body_dice": 0.8238,
+          "aligned_by": "centred",
+          "silhouette_corr": 0.966,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_050": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2001-11-03 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.111222919129839286979978615829",
+          "series_desc": "Recon 3 LIVER 2PHASE CAP",
+          "shape": [
+            440,
+            440,
+            228
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2001-12-29 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.153633940295718241160242077528",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            440,
+            440,
+            228
+          ],
+          "registered": true,
+          "metric": -0.8698,
+          "body_dice": 0.8847,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.972,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_051": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2001-12-30 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.168467877926914067122086638555",
+          "series_desc": "Recon 3 LIVER  2PHASE WITH CON",
+          "shape": [
+            360,
+            360,
+            222
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2002-03-11 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.761262394591336498579380130188",
+          "series_desc": "Recon 3 2 PHASE LIVER ABD",
+          "shape": [
+            360,
+            360,
+            222
+          ],
+          "registered": true,
+          "metric": -1.0156,
+          "body_dice": 0.9211,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.995,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_052": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2001-12-14 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.212665247771039281214268872539",
+          "series_desc": "Recon 3 LIVER 3 PHASE AP",
+          "shape": [
+            420,
+            420,
+            302
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2002-02-01 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.248193536546248316191315739668",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            420,
+            420,
+            302
+          ],
+          "registered": true,
+          "metric": -0.9016,
+          "body_dice": 0.9305,
+          "aligned_by": "silhouette_z",
+          "silhouette_corr": 0.998,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_053": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2001-12-22 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.312168899986463262547572918755",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            400,
+            400,
+            252
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2002-02-15 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.818654326926087052695875916662",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            400,
+            400,
+            252
+          ],
+          "registered": true,
+          "metric": -1.0156,
+          "body_dice": 0.9199,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.99,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_054": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2002-12-21 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.101044341562952734015090320776",
+          "series_desc": "Recon 3 LIVER 2 PHASE CAP",
+          "shape": [
+            400,
+            400,
+            242
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        }
+      ]
+    },
+    "HCC_055": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2002-02-01 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.117084327512004634344138812448",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            400,
+            400,
+            208
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2002-03-22 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.116980437357958481595306727625",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            400,
+            400,
+            208
+          ],
+          "registered": true,
+          "metric": -0.9729,
+          "body_dice": 0.8685,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.949,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_056": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2002-02-02 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.174397141164329187255058256464",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            420,
+            420,
+            282
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2002-02-11 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.217847085769650728352787378373",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            420,
+            420,
+            282
+          ],
+          "registered": true,
+          "metric": -0.9623,
+          "body_dice": 0.904,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.99,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_057": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2002-03-02 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.107375835509109027382191506684",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            440,
+            440,
+            278
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2002-04-13 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.281794707607472372257121510727",
+          "series_desc": "Recon 2 LIVER 2PHASE CAP",
+          "shape": [
+            440,
+            440,
+            278
+          ],
+          "registered": true,
+          "metric": -1.1168,
+          "body_dice": 0.9537,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.985,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_058": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2002-05-03 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.260560624859840360886259355963",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            460,
+            460,
+            228
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2002-06-23 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.290062330829423574724461670850",
+          "series_desc": "Recon 3 LIVER 3 PHASE AP",
+          "shape": [
+            460,
+            460,
+            228
+          ],
+          "registered": true,
+          "metric": -0.8768,
+          "body_dice": 0.8811,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.771,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_059": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2002-05-10 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.217246477731609919540600644613",
+          "series_desc": "Recon 3 LIVER 2PHASE CAP",
+          "shape": [
+            450,
+            450,
+            242
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2002-06-01 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.114138271111443013205893279872",
+          "series_desc": "Recon 2 LIVER 3 PHASE AP",
+          "shape": [
+            450,
+            450,
+            242
+          ],
+          "registered": true,
+          "metric": -0.87,
+          "body_dice": 0.8697,
+          "aligned_by": "silhouette_z",
+          "silhouette_corr": 0.972,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_060": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2005-03-01 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.230777187192698050299144764680",
+          "series_desc": "Recon 2 LIVER 2PHASE CAP",
+          "shape": [
+            420,
+            420,
+            228
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2005-06-28 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.295050302093468460412024426928",
+          "series_desc": "Recon 3 LIVER 2PHASE CAP",
+          "shape": [
+            420,
+            420,
+            228
+          ],
+          "registered": true,
+          "metric": -0.8932,
+          "body_dice": 0.8877,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.939,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_061": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2002-11-29 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.233387940356635369043720734940",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            440,
+            440,
+            242
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2003-01-20 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.336530189157622385858309235369",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            440,
+            440,
+            242
+          ],
+          "registered": true,
+          "metric": -1.027,
+          "body_dice": 0.9284,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.994,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_062": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2002-12-30 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.274165941848035780233307590250",
+          "series_desc": "Recon 2 LIVER 2 PHASE CAP",
+          "shape": [
+            360,
+            360,
+            278
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2003-03-15 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.263778540840903276604786378345",
+          "series_desc": "Recon 2 2 PHASE LIVER ABD",
+          "shape": [
+            360,
+            360,
+            278
+          ],
+          "registered": true,
+          "metric": -0.8553,
+          "body_dice": 0.878,
+          "aligned_by": "centred",
+          "silhouette_corr": 0.981,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_063": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2003-01-12 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.125226904930109418407714368092",
+          "series_desc": "Recon 3 LIVER 2 PHASE CAP",
+          "shape": [
+            440,
+            440,
+            248
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2003-03-30 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.234941366319382576413328803692",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            440,
+            440,
+            248
+          ],
+          "registered": true,
+          "metric": -0.9282,
+          "body_dice": 0.8862,
+          "aligned_by": "silhouette_z",
+          "silhouette_corr": 0.964,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_064": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2003-06-15 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.290751000748704335669604888140",
+          "series_desc": "Recon 3 LIVER 2 PHASE CAP",
+          "shape": [
+            420,
+            420,
+            272
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2003-11-29 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.262076938362655584206861716260",
+          "series_desc": "Recon 2 LIVER 2 PHASE CAP",
+          "shape": [
+            420,
+            420,
+            272
+          ],
+          "registered": true,
+          "metric": -0.9425,
+          "body_dice": 0.8418,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.981,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_065": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2003-04-26 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.442591155369734729751111676106",
+          "series_desc": "VENOUS",
+          "shape": [
+            380,
+            380,
+            354
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2003-06-20 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.168205621894942938772301928429",
+          "series_desc": "Recon 3 LIVER 2 PHASE CAP",
+          "shape": [
+            380,
+            380,
+            354
+          ],
+          "registered": true,
+          "metric": -0.7854,
+          "body_dice": 0.9395,
+          "aligned_by": "silhouette_z",
+          "silhouette_corr": 0.984,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_066": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2003-06-21 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.966780595515480619745036264295",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            340,
+            340,
+            268
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2003-07-14 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.201974983336852911194536908291",
+          "series_desc": "Recon 3 LIVER 2 PHASE AP",
+          "shape": [
+            340,
+            340,
+            268
+          ],
+          "registered": true,
+          "metric": -0.9902,
+          "body_dice": 0.9189,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.995,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_067": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2003-07-18 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.682863831267428353683842544857",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            360,
+            360,
+            198
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2003-08-02 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.158548731752568028493746628980",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            360,
+            360,
+            198
+          ],
+          "registered": true,
+          "metric": -0.8452,
+          "body_dice": 0.8721,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.994,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_068": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2006-03-03 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.158651187063052610425674708552",
+          "series_desc": "2.5 SOFT",
+          "shape": [
+            400,
+            400,
+            302
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null,
+          "n_passes": 1,
+          "acquisition": null,
+          "aorta_hu": 275.0,
+          "portal_vein_hu": 186.0,
+          "phase": "arterial",
+          "pass_selection": "blood-pool HU match (CADS)"
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2006-04-18 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.205180616857077421834017805477",
+          "series_desc": "2.5 STANDARD",
+          "shape": [
+            400,
+            400,
+            302
+          ],
+          "registered": true,
+          "metric": -1.0228,
+          "body_dice": 0.9448,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.964,
+          "overlap_ok": true,
+          "n_passes": 2,
+          "acquisition": 2,
+          "aorta_hu": 214.0,
+          "portal_vein_hu": 261.0,
+          "phase": "portal-venous/delayed",
+          "pass_selection": "blood-pool HU match (CADS)"
+        }
+      ]
+    },
+    "HCC_069": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2003-08-05 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.217862728643251517959471395200",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            440,
+            440,
+            282
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2003-10-07 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.381924499481928600006169830522",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            440,
+            440,
+            282
+          ],
+          "registered": true,
+          "metric": -0.843,
+          "body_dice": 0.9064,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.961,
+          "overlap_ok": true
+        }
+      ]
+    },
+    "HCC_070": {
+      "region": "abdomen",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "study_date": "2003-10-20 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.136142978609094228680670121332",
+          "series_desc": "Recon 3 LIVER 2 PHASE CAP",
+          "shape": [
+            400,
+            400,
+            192
+          ],
+          "registered": false,
+          "metric": null,
+          "body_dice": null,
+          "overlap_ok": null
+        },
+        {
+          "stage": "001_followup_1",
+          "study_date": "2003-11-30 00:00:00.0",
+          "series_uid": "1.3.6.1.4.1.14519.5.2.1.1706.8374.222185203897937232181170220850",
+          "series_desc": "Recon 2 PRE LIVER",
+          "shape": [
+            400,
+            400,
+            192
+          ],
+          "registered": true,
+          "metric": -0.9609,
+          "body_dice": 0.8764,
+          "aligned_by": "mi",
+          "silhouette_corr": 0.989,
+          "overlap_ok": true
+        }
+      ]
+    }
+  },
+  "generated": "2026-09-27T15:52:02"
+}

@@ -1,0 +1,5135 @@
+{
+  "dataset": "HCC-TACE-Seg",
+  "anchor_organ": [
+    5
+  ],
+  "processed_in": "/teamspace/studios/this_studio/hope_data/CTProcessed",
+  "registration": "ANTs SyNRA on 2mm signed-distance maps of the SHARED organ set (union channel + per-organ channels for the largest shared organs); mean-per-organ-Dice gated; transform persisted under xfm/ and applied to full-res CT and masks",
+  "intensity_matching": "organ-anchored monotone HU remap on non-lesion tissue (follow-up -> baseline)",
+  "standard": {
+    "orientation": "RAS+",
+    "spacing_mm": [
+      1,
+      1,
+      1
+    ],
+    "dtype": "float32",
+    "values": "HU"
+  },
+  "patients": {
+    "HCC_001": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 11,
+          "wdice_rigid": 0.3764,
+          "wdice_deformed": 0.6476,
+          "gradncc_rigid": 0.0736,
+          "gradncc_deformed": 0.1824,
+          "psnr_before_db": 10.3649,
+          "psnr_after_db": 12.8037,
+          "per_organ_dice": {
+            "liver": [
+              0.5987,
+              0.8835
+            ],
+            "spleen": [
+              0.521,
+              0.7909
+            ],
+            "lung_ll_l": [
+              0.631,
+              0.6164
+            ],
+            "lung_ml_r": [
+              0.4215,
+              0.7343
+            ],
+            "kidney_l": [
+              0.4262,
+              0.5611
+            ],
+            "kidney_r": [
+              0.2916,
+              0.7407
+            ],
+            "aorta": [
+              0.0386,
+              0.568
+            ],
+            "lung_ul_l": [
+              0.4178,
+              0.7127
+            ],
+            "pancreas": [
+              0.0073,
+              0.2672
+            ],
+            "adrenal_l": [
+              0.0,
+              0.0477
+            ],
+            "adrenal_r": [
+              0.0012,
+              0.0647
+            ]
+          },
+          "centroid_shift_mm": 22.9355,
+          "healthy_resid_med_hu": 33.3457,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_003": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.6732,
+          "wdice_deformed": 0.7306,
+          "gradncc_rigid": 0.1852,
+          "gradncc_deformed": 0.304,
+          "psnr_before_db": 12.1736,
+          "psnr_after_db": 13.0617,
+          "per_organ_dice": {
+            "liver": [
+              0.8505,
+              0.9253
+            ],
+            "spleen": [
+              0.7359,
+              0.8815
+            ],
+            "lung_ll_l": [
+              0.8341,
+              0.8221
+            ],
+            "lung_ll_r": [
+              0.8095,
+              0.8777
+            ],
+            "kidney_r": [
+              0.624,
+              0.7108
+            ],
+            "kidney_l": [
+              0.5405,
+              0.8
+            ],
+            "lung_ml_r": [
+              0.7643,
+              0.8336
+            ],
+            "pancreas": [
+              0.2859,
+              0.4859
+            ],
+            "lung_ul_l": [
+              0.7951,
+              0.8302
+            ],
+            "aorta": [
+              0.6199,
+              0.5276
+            ],
+            "ivc": [
+              0.5843,
+              0.3992
+            ],
+            "portal_splenic_vein": [
+              0.0692,
+              0.2054
+            ],
+            "adrenal_l": [
+              0.1161,
+              0.3581
+            ]
+          },
+          "centroid_shift_mm": 8.0934,
+          "healthy_resid_med_hu": 25.4119,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_004": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 11,
+          "wdice_rigid": 0.4687,
+          "wdice_deformed": 0.635,
+          "gradncc_rigid": 0.1128,
+          "gradncc_deformed": 0.2235,
+          "psnr_before_db": 10.4343,
+          "psnr_after_db": 11.5381,
+          "per_organ_dice": {
+            "liver": [
+              0.6011,
+              0.9159
+            ],
+            "spleen": [
+              0.7888,
+              0.8415
+            ],
+            "stomach": [
+              0.2898,
+              0.7486
+            ],
+            "kidney_r": [
+              0.5121,
+              0.7043
+            ],
+            "kidney_l": [
+              0.7632,
+              0.8103
+            ],
+            "aorta": [
+              0.3948,
+              0.4213
+            ],
+            "pancreas": [
+              0.117,
+              0.3508
+            ],
+            "ivc": [
+              0.2377,
+              0.4501
+            ],
+            "portal_splenic_vein": [
+              0.1272,
+              0.3326
+            ],
+            "adrenal_l": [
+              0.0877,
+              0.2813
+            ],
+            "adrenal_r": [
+              0.0,
+              0.109
+            ]
+          },
+          "centroid_shift_mm": 16.4642,
+          "healthy_resid_med_hu": 42.1316,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_006": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 15,
+          "wdice_rigid": 0.5924,
+          "wdice_deformed": 0.7094,
+          "gradncc_rigid": 0.1847,
+          "gradncc_deformed": 0.251,
+          "psnr_before_db": 11.1988,
+          "psnr_after_db": 12.4497,
+          "per_organ_dice": {
+            "liver": [
+              0.727,
+              0.8582
+            ],
+            "lung_ll_r": [
+              0.8424,
+              0.8735
+            ],
+            "lung_ll_l": [
+              0.7383,
+              0.847
+            ],
+            "lung_ml_r": [
+              0.8869,
+              0.7954
+            ],
+            "kidney_r": [
+              0.3879,
+              0.7931
+            ],
+            "stomach": [
+              0.5337,
+              0.6912
+            ],
+            "lung_ul_l": [
+              0.6996,
+              0.8108
+            ],
+            "kidney_l": [
+              0.5322,
+              0.7946
+            ],
+            "aorta": [
+              0.3894,
+              0.8003
+            ],
+            "ivc": [
+              0.3691,
+              0.7857
+            ],
+            "pancreas": [
+              0.2421,
+              0.5528
+            ],
+            "portal_splenic_vein": [
+              0.3542,
+              0.5683
+            ],
+            "adrenal_l": [
+              0.0069,
+              0.3757
+            ],
+            "adrenal_r": [
+              0.0109,
+              0.2891
+            ],
+            "lung_ul_r": [
+              0.8308,
+              0.0
+            ]
+          },
+          "centroid_shift_mm": 15.8491,
+          "healthy_resid_med_hu": 36.9264,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_007": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.6589,
+          "wdice_deformed": 0.6999,
+          "gradncc_rigid": 0.1928,
+          "gradncc_deformed": 0.2936,
+          "psnr_before_db": 12.5163,
+          "psnr_after_db": 13.4437,
+          "per_organ_dice": {
+            "liver": [
+              0.8602,
+              0.884
+            ],
+            "lung_ll_r": [
+              0.7574,
+              0.3731
+            ],
+            "spleen": [
+              0.8176,
+              0.9143
+            ],
+            "lung_ml_r": [
+              0.8917,
+              0.4837
+            ],
+            "aorta": [
+              0.6193,
+              0.908
+            ],
+            "lung_ll_l": [
+              0.7665,
+              0.7743
+            ],
+            "kidney_l": [
+              0.6451,
+              0.811
+            ],
+            "pancreas": [
+              0.3896,
+              0.7378
+            ],
+            "kidney_r": [
+              0.6397,
+              0.6494
+            ],
+            "ivc": [
+              0.4774,
+              0.6559
+            ],
+            "portal_splenic_vein": [
+              0.2347,
+              0.4893
+            ],
+            "gallbladder": [
+              0.0269,
+              0.3724
+            ],
+            "adrenal_l": [
+              0.0256,
+              0.5337
+            ],
+            "adrenal_r": [
+              0.2981,
+              0.5343
+            ]
+          },
+          "centroid_shift_mm": 5.4449,
+          "healthy_resid_med_hu": 26.2302,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_008": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 11,
+          "wdice_rigid": 0.4069,
+          "wdice_deformed": 0.7813,
+          "gradncc_rigid": 0.1223,
+          "gradncc_deformed": 0.2531,
+          "psnr_before_db": 11.7524,
+          "psnr_after_db": 12.7782,
+          "per_organ_dice": {
+            "liver": [
+              0.6836,
+              0.8798
+            ],
+            "spleen": [
+              0.6691,
+              0.9404
+            ],
+            "stomach": [
+              0.5359,
+              0.7898
+            ],
+            "lung_ll_l": [
+              0.4849,
+              0.7048
+            ],
+            "kidney_r": [
+              0.3376,
+              0.8202
+            ],
+            "aorta": [
+              0.5225,
+              0.8743
+            ],
+            "kidney_l": [
+              0.2219,
+              0.6957
+            ],
+            "portal_splenic_vein": [
+              0.0355,
+              0.6569
+            ],
+            "ivc": [
+              0.0916,
+              0.6766
+            ],
+            "adrenal_r": [
+              0.0674,
+              0.6302
+            ],
+            "adrenal_l": [
+              0.0468,
+              0.4271
+            ]
+          },
+          "centroid_shift_mm": 20.3546,
+          "healthy_resid_med_hu": 26.0,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_009": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.8187,
+          "wdice_deformed": 0.8746,
+          "gradncc_rigid": 0.2975,
+          "gradncc_deformed": 0.4436,
+          "psnr_before_db": 12.2723,
+          "psnr_after_db": 13.506,
+          "per_organ_dice": {
+            "liver": [
+              0.8789,
+              0.9561
+            ],
+            "lung_ll_l": [
+              0.896,
+              0.9235
+            ],
+            "lung_ll_r": [
+              0.925,
+              0.9404
+            ],
+            "spleen": [
+              0.8621,
+              0.9429
+            ],
+            "stomach": [
+              0.7327,
+              0.8739
+            ],
+            "lung_ml_r": [
+              0.7704,
+              0.8342
+            ],
+            "pancreas": [
+              0.7169,
+              0.815
+            ],
+            "kidney_l": [
+              0.8131,
+              0.9277
+            ],
+            "aorta": [
+              0.8303,
+              0.8694
+            ],
+            "kidney_r": [
+              0.8107,
+              0.9118
+            ],
+            "ivc": [
+              0.7555,
+              0.8402
+            ],
+            "lung_ul_l": [
+              0.8389,
+              0.734
+            ],
+            "adrenal_l": [
+              0.625,
+              0.6541
+            ],
+            "adrenal_r": [
+              0.4686,
+              0.5752
+            ]
+          },
+          "centroid_shift_mm": 6.1077,
+          "healthy_resid_med_hu": 38.5119,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_010": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.6778,
+          "wdice_deformed": 0.8486,
+          "gradncc_rigid": 0.2771,
+          "gradncc_deformed": 0.43,
+          "psnr_before_db": 13.2018,
+          "psnr_after_db": 15.0646,
+          "per_organ_dice": {
+            "liver": [
+              0.9204,
+              0.9394
+            ],
+            "stomach": [
+              0.7587,
+              0.9196
+            ],
+            "spleen": [
+              0.8361,
+              0.9299
+            ],
+            "lung_ll_r": [
+              0.8161,
+              0.9332
+            ],
+            "lung_ll_l": [
+              0.7692,
+              0.9256
+            ],
+            "kidney_l": [
+              0.6789,
+              0.8992
+            ],
+            "kidney_r": [
+              0.5773,
+              0.8217
+            ],
+            "ivc": [
+              0.6439,
+              0.8671
+            ],
+            "aorta": [
+              0.5176,
+              0.8646
+            ],
+            "pancreas": [
+              0.4111,
+              0.741
+            ],
+            "lung_ul_l": [
+              0.6683,
+              0.6245
+            ],
+            "portal_splenic_vein": [
+              0.5479,
+              0.7485
+            ],
+            "adrenal_r": [
+              0.348,
+              0.7873
+            ],
+            "adrenal_l": [
+              0.0026,
+              0.2955
+            ]
+          },
+          "centroid_shift_mm": 4.616,
+          "healthy_resid_med_hu": 28.1591,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_011": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.8026,
+          "wdice_deformed": 0.8142,
+          "gradncc_rigid": 0.3693,
+          "gradncc_deformed": 0.4699,
+          "psnr_before_db": 13.0833,
+          "psnr_after_db": 13.0833,
+          "per_organ_dice": {
+            "liver": 0.9223,
+            "spleen": 0.8752,
+            "lung_ll_r": 0.8379,
+            "kidney_r": 0.8139,
+            "kidney_l": 0.9083,
+            "lung_ml_r": 0.8104,
+            "aorta": 0.9261,
+            "ivc": 0.7498,
+            "pancreas": 0.5004,
+            "lung_ll_l": 0.762,
+            "portal_splenic_vein": 0.5322,
+            "lung_ul_l": 0.6771,
+            "adrenal_l": 0.8019,
+            "adrenal_r": 0.5449
+          },
+          "centroid_shift_mm": 1.7493,
+          "healthy_resid_med_hu": 26.5708,
+          "flags": [
+            "KEPT_RIGID",
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_012": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 12,
+          "wdice_rigid": 0.1907,
+          "wdice_deformed": 0.5146,
+          "gradncc_rigid": 0.0848,
+          "gradncc_deformed": 0.1707,
+          "psnr_before_db": 12.7562,
+          "psnr_after_db": 13.445,
+          "per_organ_dice": {
+            "liver": [
+              0.4445,
+              0.659
+            ],
+            "spleen": [
+              0.4244,
+              0.8411
+            ],
+            "lung_ul_l": [
+              0.4082,
+              0.6051
+            ],
+            "kidney_l": [
+              0.0898,
+              0.6
+            ],
+            "lung_ml_r": [
+              0.2625,
+              0.1982
+            ],
+            "kidney_r": [
+              0.0811,
+              0.6001
+            ],
+            "aorta": [
+              0.0,
+              0.5806
+            ],
+            "pancreas": [
+              0.0494,
+              0.3885
+            ],
+            "ivc": [
+              0.0,
+              0.31
+            ],
+            "portal_splenic_vein": [
+              0.0,
+              0.1748
+            ],
+            "adrenal_l": [
+              0.0,
+              0.1661
+            ],
+            "adrenal_r": [
+              0.0,
+              0.134
+            ]
+          },
+          "centroid_shift_mm": 31.4546,
+          "healthy_resid_med_hu": 29.5271,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_013": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.8012,
+          "wdice_deformed": 0.8602,
+          "gradncc_rigid": 0.483,
+          "gradncc_deformed": 0.258,
+          "psnr_before_db": 15.1651,
+          "psnr_after_db": 15.1651,
+          "per_organ_dice": {
+            "liver": 0.9201,
+            "spleen": 0.9377,
+            "lung_ll_l": 0.8268,
+            "lung_ll_r": 0.7695,
+            "lung_ml_r": 0.7359,
+            "kidney_r": 0.8337,
+            "aorta": 0.802,
+            "kidney_l": 0.7991,
+            "ivc": 0.8379,
+            "pancreas": 0.5335,
+            "portal_splenic_vein": 0.4383,
+            "adrenal_l": 0.7521,
+            "adrenal_r": 0.6203
+          },
+          "centroid_shift_mm": 7.7632,
+          "healthy_resid_med_hu": 26.255,
+          "flags": [
+            "NCC_REJECT",
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_014": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.8082,
+          "wdice_deformed": 0.8585,
+          "gradncc_rigid": 0.346,
+          "gradncc_deformed": 0.4645,
+          "psnr_before_db": 13.2244,
+          "psnr_after_db": 14.4827,
+          "per_organ_dice": {
+            "liver": [
+              0.919,
+              0.9502
+            ],
+            "stomach": [
+              0.822,
+              0.9068
+            ],
+            "lung_ll_r": [
+              0.8442,
+              0.827
+            ],
+            "lung_ll_l": [
+              0.8564,
+              0.8699
+            ],
+            "kidney_r": [
+              0.8775,
+              0.9424
+            ],
+            "spleen": [
+              0.8019,
+              0.8841
+            ],
+            "kidney_l": [
+              0.8008,
+              0.8881
+            ],
+            "lung_ml_r": [
+              0.8925,
+              0.8449
+            ],
+            "pancreas": [
+              0.6976,
+              0.8259
+            ],
+            "aorta": [
+              0.8599,
+              0.9065
+            ],
+            "ivc": [
+              0.7715,
+              0.8634
+            ],
+            "lung_ul_l": [
+              0.6429,
+              0.7024
+            ],
+            "portal_splenic_vein": [
+              0.4873,
+              0.6251
+            ],
+            "adrenal_l": [
+              0.4527,
+              0.6088
+            ]
+          },
+          "centroid_shift_mm": 2.3922,
+          "healthy_resid_med_hu": 46.0,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_015": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.7384,
+          "wdice_deformed": 0.822,
+          "gradncc_rigid": 0.3294,
+          "gradncc_deformed": 0.4181,
+          "psnr_before_db": 13.1049,
+          "psnr_after_db": 13.4947,
+          "per_organ_dice": {
+            "liver": [
+              0.8888,
+              0.928
+            ],
+            "lung_ll_r": [
+              0.7287,
+              0.8121
+            ],
+            "stomach": [
+              0.5377,
+              0.7756
+            ],
+            "spleen": [
+              0.6212,
+              0.8809
+            ],
+            "kidney_r": [
+              0.8739,
+              0.9111
+            ],
+            "lung_ll_l": [
+              0.7328,
+              0.9135
+            ],
+            "kidney_l": [
+              0.8698,
+              0.9159
+            ],
+            "pancreas": [
+              0.6339,
+              0.7901
+            ],
+            "ivc": [
+              0.7955,
+              0.8136
+            ],
+            "aorta": [
+              0.88,
+              0.905
+            ],
+            "lung_ml_r": [
+              0.4005,
+              0.4592
+            ],
+            "adrenal_r": [
+              0.6899,
+              0.613
+            ],
+            "adrenal_l": [
+              0.7212,
+              0.4949
+            ]
+          },
+          "centroid_shift_mm": 4.6445,
+          "healthy_resid_med_hu": 100.0268,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_016": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 16,
+          "wdice_rigid": 0.8272,
+          "wdice_deformed": 0.8399,
+          "gradncc_rigid": 0.3856,
+          "gradncc_deformed": 0.379,
+          "psnr_before_db": 15.6263,
+          "psnr_after_db": 15.6263,
+          "per_organ_dice": {
+            "liver": 0.9378,
+            "spleen": 0.91,
+            "stomach": 0.7779,
+            "kidney_r": 0.8938,
+            "lung_ll_r": 0.8838,
+            "kidney_l": 0.86,
+            "lung_ll_l": 0.9365,
+            "lung_ml_r": 0.8639,
+            "aorta": 0.8462,
+            "pancreas": 0.442,
+            "ivc": 0.7152,
+            "portal_splenic_vein": 0.628,
+            "gallbladder": 0.6116,
+            "lung_ul_l": 0.8144,
+            "adrenal_r": 0.635,
+            "adrenal_l": 0.5451
+          },
+          "centroid_shift_mm": 2.3085,
+          "healthy_resid_med_hu": 27.8927,
+          "flags": [
+            "KEPT_RIGID",
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_017": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 10,
+          "wdice_rigid": 0.4333,
+          "wdice_deformed": 0.734,
+          "gradncc_rigid": 0.1149,
+          "gradncc_deformed": 0.286,
+          "psnr_before_db": 10.5377,
+          "psnr_after_db": 12.3385,
+          "per_organ_dice": {
+            "liver": [
+              0.5916,
+              0.9198
+            ],
+            "spleen": [
+              0.5674,
+              0.8254
+            ],
+            "kidney_l": [
+              0.6818,
+              0.7713
+            ],
+            "aorta": [
+              0.6295,
+              0.8264
+            ],
+            "pancreas": [
+              0.1908,
+              0.5175
+            ],
+            "ivc": [
+              0.0929,
+              0.679
+            ],
+            "portal_splenic_vein": [
+              0.0123,
+              0.4856
+            ],
+            "gallbladder": [
+              0.0,
+              0.5941
+            ],
+            "adrenal_r": [
+              0.1131,
+              0.3256
+            ],
+            "adrenal_l": [
+              0.2296,
+              0.3137
+            ]
+          },
+          "centroid_shift_mm": 26.1537,
+          "healthy_resid_med_hu": 28.6054,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_018": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.6639,
+          "wdice_deformed": 0.7046,
+          "gradncc_rigid": 0.1881,
+          "gradncc_deformed": 0.2612,
+          "psnr_before_db": 11.8526,
+          "psnr_after_db": 12.1109,
+          "per_organ_dice": {
+            "liver": [
+              0.8191,
+              0.9079
+            ],
+            "stomach": [
+              0.6562,
+              0.7883
+            ],
+            "spleen": [
+              0.7041,
+              0.8036
+            ],
+            "kidney_r": [
+              0.75,
+              0.8206
+            ],
+            "kidney_l": [
+              0.7126,
+              0.7599
+            ],
+            "lung_ml_r": [
+              0.7119,
+              0.6198
+            ],
+            "lung_ul_l": [
+              0.7236,
+              0.7418
+            ],
+            "pancreas": [
+              0.7083,
+              0.673
+            ],
+            "aorta": [
+              0.6738,
+              0.6784
+            ],
+            "gallbladder": [
+              0.5129,
+              0.6956
+            ],
+            "ivc": [
+              0.4269,
+              0.516
+            ],
+            "portal_splenic_vein": [
+              0.3022,
+              0.202
+            ],
+            "adrenal_l": [
+              0.4089,
+              0.2575
+            ],
+            "adrenal_r": [
+              0.2808,
+              0.5206
+            ]
+          },
+          "centroid_shift_mm": 5.529,
+          "healthy_resid_med_hu": 23.5524,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_019": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 12,
+          "wdice_rigid": 0.7712,
+          "wdice_deformed": 0.876,
+          "gradncc_rigid": 0.2548,
+          "gradncc_deformed": 0.398,
+          "psnr_before_db": 12.1969,
+          "psnr_after_db": 13.8365,
+          "per_organ_dice": {
+            "liver": [
+              0.9126,
+              0.9473
+            ],
+            "spleen": [
+              0.8594,
+              0.9433
+            ],
+            "lung_ll_r": [
+              0.8547,
+              0.8815
+            ],
+            "kidney_r": [
+              0.5845,
+              0.8867
+            ],
+            "lung_ll_l": [
+              0.8068,
+              0.7938
+            ],
+            "kidney_l": [
+              0.7639,
+              0.9195
+            ],
+            "aorta": [
+              0.7653,
+              0.9071
+            ],
+            "ivc": [
+              0.8423,
+              0.8743
+            ],
+            "pancreas": [
+              0.4904,
+              0.7646
+            ],
+            "lung_ml_r": [
+              0.8586,
+              0.8561
+            ],
+            "adrenal_l": [
+              0.3412,
+              0.7419
+            ],
+            "adrenal_r": [
+              0.3696,
+              0.6597
+            ]
+          },
+          "centroid_shift_mm": 4.9978,
+          "healthy_resid_med_hu": 23.4678,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_020": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.8028,
+          "wdice_deformed": 0.8747,
+          "gradncc_rigid": 0.4164,
+          "gradncc_deformed": 0.4164,
+          "psnr_before_db": 14.378,
+          "psnr_after_db": 14.2436,
+          "per_organ_dice": {
+            "liver": [
+              0.8495,
+              0.9224
+            ],
+            "lung_ll_r": [
+              0.9024,
+              0.9532
+            ],
+            "lung_ll_l": [
+              0.93,
+              0.9386
+            ],
+            "stomach": [
+              0.7389,
+              0.8165
+            ],
+            "spleen": [
+              0.8209,
+              0.945
+            ],
+            "lung_ml_r": [
+              0.8702,
+              0.9249
+            ],
+            "aorta": [
+              0.8185,
+              0.9056
+            ],
+            "lung_ul_l": [
+              0.7976,
+              0.8183
+            ],
+            "pancreas": [
+              0.5877,
+              0.833
+            ],
+            "ivc": [
+              0.6877,
+              0.7471
+            ],
+            "portal_splenic_vein": [
+              0.3541,
+              0.6252
+            ],
+            "adrenal_l": [
+              0.7593,
+              0.7073
+            ],
+            "adrenal_r": [
+              0.6876,
+              0.7245
+            ]
+          },
+          "centroid_shift_mm": 8.7232,
+          "healthy_resid_med_hu": 53.742,
+          "flags": [
+            "REVERT_RAW"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_021": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.5498,
+          "wdice_deformed": 0.7514,
+          "gradncc_rigid": 0.2005,
+          "gradncc_deformed": 0.4242,
+          "psnr_before_db": 11.5966,
+          "psnr_after_db": 13.1875,
+          "per_organ_dice": {
+            "liver": [
+              0.7488,
+              0.9403
+            ],
+            "lung_ll_l": [
+              0.7142,
+              0.86
+            ],
+            "lung_ll_r": [
+              0.6087,
+              0.7864
+            ],
+            "kidney_l": [
+              0.783,
+              0.9216
+            ],
+            "spleen": [
+              0.8173,
+              0.9021
+            ],
+            "kidney_r": [
+              0.725,
+              0.9096
+            ],
+            "lung_ml_r": [
+              0.3467,
+              0.6898
+            ],
+            "pancreas": [
+              0.4766,
+              0.7047
+            ],
+            "aorta": [
+              0.4061,
+              0.5859
+            ],
+            "lung_ul_l": [
+              0.3604,
+              0.6124
+            ],
+            "ivc": [
+              0.2527,
+              0.4705
+            ],
+            "portal_splenic_vein": [
+              0.137,
+              0.543
+            ],
+            "adrenal_l": [
+              0.2698,
+              0.4126
+            ],
+            "adrenal_r": [
+              0.1011,
+              0.5948
+            ]
+          },
+          "centroid_shift_mm": 8.7645,
+          "healthy_resid_med_hu": 26.7327,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_022": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 11,
+          "wdice_rigid": 0.3189,
+          "wdice_deformed": 0.6391,
+          "gradncc_rigid": 0.0628,
+          "gradncc_deformed": 0.1666,
+          "psnr_before_db": 10.1242,
+          "psnr_after_db": 11.1192,
+          "per_organ_dice": {
+            "liver": [
+              0.6786,
+              0.8426
+            ],
+            "stomach": [
+              0.4758,
+              0.8437
+            ],
+            "kidney_l": [
+              0.2065,
+              0.7238
+            ],
+            "kidney_r": [
+              0.3997,
+              0.6008
+            ],
+            "spleen": [
+              0.3473,
+              0.7564
+            ],
+            "pancreas": [
+              0.3603,
+              0.7148
+            ],
+            "aorta": [
+              0.1823,
+              0.5133
+            ],
+            "ivc": [
+              0.2072,
+              0.4737
+            ],
+            "portal_splenic_vein": [
+              0.0,
+              0.3241
+            ],
+            "adrenal_l": [
+              0.0,
+              0.4301
+            ],
+            "adrenal_r": [
+              0.0,
+              0.1839
+            ]
+          },
+          "centroid_shift_mm": 18.9012,
+          "healthy_resid_med_hu": 37.8366,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_023": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.6492,
+          "wdice_deformed": 0.7566,
+          "gradncc_rigid": 0.1874,
+          "gradncc_deformed": 0.2914,
+          "psnr_before_db": 11.2068,
+          "psnr_after_db": 14.6542,
+          "per_organ_dice": {
+            "liver": [
+              0.7695,
+              0.9002
+            ],
+            "lung_ll_r": [
+              0.7784,
+              0.8006
+            ],
+            "spleen": [
+              0.7559,
+              0.83
+            ],
+            "lung_ll_l": [
+              0.8174,
+              0.8687
+            ],
+            "stomach": [
+              0.5178,
+              0.6953
+            ],
+            "kidney_l": [
+              0.7733,
+              0.8555
+            ],
+            "kidney_r": [
+              0.4461,
+              0.8032
+            ],
+            "lung_ml_r": [
+              0.4783,
+              0.4743
+            ],
+            "aorta": [
+              0.5539,
+              0.7582
+            ],
+            "pancreas": [
+              0.4025,
+              0.6333
+            ],
+            "lung_ul_l": [
+              0.7127,
+              0.708
+            ],
+            "gallbladder": [
+              0.6919,
+              0.7778
+            ],
+            "adrenal_l": [
+              0.6462,
+              0.6389
+            ],
+            "adrenal_r": [
+              0.2734,
+              0.3371
+            ]
+          },
+          "centroid_shift_mm": 4.2177,
+          "healthy_resid_med_hu": 30.1848,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_024": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 15,
+          "wdice_rigid": 0.5712,
+          "wdice_deformed": 0.748,
+          "gradncc_rigid": 0.1171,
+          "gradncc_deformed": 0.2581,
+          "psnr_before_db": 10.7743,
+          "psnr_after_db": 11.9095,
+          "per_organ_dice": {
+            "liver": [
+              0.7782,
+              0.8562
+            ],
+            "spleen": [
+              0.6845,
+              0.8967
+            ],
+            "stomach": [
+              0.5381,
+              0.824
+            ],
+            "lung_ll_r": [
+              0.6964,
+              0.6776
+            ],
+            "lung_ll_l": [
+              0.7141,
+              0.851
+            ],
+            "lung_ml_r": [
+              0.735,
+              0.7717
+            ],
+            "kidney_r": [
+              0.4288,
+              0.663
+            ],
+            "kidney_l": [
+              0.6537,
+              0.745
+            ],
+            "aorta": [
+              0.392,
+              0.8276
+            ],
+            "ivc": [
+              0.4333,
+              0.7499
+            ],
+            "pancreas": [
+              0.3038,
+              0.4506
+            ],
+            "lung_ul_l": [
+              0.6074,
+              0.739
+            ],
+            "portal_splenic_vein": [
+              0.3002,
+              0.3895
+            ],
+            "adrenal_l": [
+              0.0075,
+              0.3157
+            ],
+            "adrenal_r": [
+              0.0815,
+              0.639
+            ]
+          },
+          "centroid_shift_mm": 14.3163,
+          "healthy_resid_med_hu": 51.0,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_025": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.313,
+          "wdice_deformed": 0.7508,
+          "gradncc_rigid": 0.0383,
+          "gradncc_deformed": 0.2963,
+          "psnr_before_db": 9.529,
+          "psnr_after_db": 12.4098,
+          "per_organ_dice": {
+            "liver": [
+              0.6403,
+              0.9454
+            ],
+            "stomach": [
+              0.3377,
+              0.8572
+            ],
+            "lung_ll_r": [
+              0.6044,
+              0.7987
+            ],
+            "lung_ll_l": [
+              0.5327,
+              0.6248
+            ],
+            "spleen": [
+              0.4022,
+              0.9146
+            ],
+            "kidney_l": [
+              0.3547,
+              0.8637
+            ],
+            "pancreas": [
+              0.0867,
+              0.6516
+            ],
+            "aorta": [
+              0.0012,
+              0.7044
+            ],
+            "ivc": [
+              0.0,
+              0.6923
+            ],
+            "portal_splenic_vein": [
+              0.0464,
+              0.4726
+            ],
+            "adrenal_l": [
+              0.0,
+              0.6553
+            ],
+            "adrenal_r": [
+              0.0,
+              0.4336
+            ],
+            "gallbladder": [
+              0.0,
+              0.0348
+            ]
+          },
+          "centroid_shift_mm": 28.1698,
+          "healthy_resid_med_hu": 30.1267,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_026": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.7624,
+          "wdice_deformed": 0.7747,
+          "gradncc_rigid": 0.2531,
+          "gradncc_deformed": 0.2949,
+          "psnr_before_db": 12.3127,
+          "psnr_after_db": 12.1643,
+          "per_organ_dice": {
+            "liver": 0.8406,
+            "spleen": 0.8275,
+            "lung_ll_r": 0.7811,
+            "stomach": 0.7648,
+            "lung_ll_l": 0.907,
+            "kidney_l": 0.7683,
+            "lung_ml_r": 0.7794,
+            "kidney_r": 0.74,
+            "aorta": 0.7506,
+            "pancreas": 0.7177,
+            "lung_ul_l": 0.6111,
+            "adrenal_l": 0.5357,
+            "adrenal_r": 0.3768
+          },
+          "centroid_shift_mm": 8.2725,
+          "healthy_resid_med_hu": 27.3492,
+          "flags": [
+            "KEPT_RIGID"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_027": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.2063,
+          "wdice_deformed": 0.6764,
+          "gradncc_rigid": 0.0727,
+          "gradncc_deformed": 0.2112,
+          "psnr_before_db": 8.9539,
+          "psnr_after_db": 11.3029,
+          "per_organ_dice": {
+            "liver": [
+              0.565,
+              0.842
+            ],
+            "lung_ll_r": [
+              0.5491,
+              0.7574
+            ],
+            "spleen": [
+              0.1468,
+              0.7581
+            ],
+            "kidney_r": [
+              0.3785,
+              0.7778
+            ],
+            "kidney_l": [
+              0.2195,
+              0.8646
+            ],
+            "lung_ml_r": [
+              0.0504,
+              0.8082
+            ],
+            "aorta": [
+              0.0007,
+              0.6019
+            ],
+            "pancreas": [
+              0.0025,
+              0.4371
+            ],
+            "ivc": [
+              0.0,
+              0.5439
+            ],
+            "gallbladder": [
+              0.0,
+              0.0003
+            ],
+            "portal_splenic_vein": [
+              0.0361,
+              0.1958
+            ],
+            "adrenal_r": [
+              0.0,
+              0.1503
+            ],
+            "adrenal_l": [
+              0.0,
+              0.243
+            ]
+          },
+          "centroid_shift_mm": 21.9641,
+          "healthy_resid_med_hu": 36.8123,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_028": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.3282,
+          "wdice_deformed": 0.8106,
+          "gradncc_rigid": 0.0612,
+          "gradncc_deformed": 0.3986,
+          "psnr_before_db": 10.0783,
+          "psnr_after_db": 14.2179,
+          "per_organ_dice": {
+            "liver": [
+              0.714,
+              0.9172
+            ],
+            "spleen": [
+              0.5822,
+              0.9379
+            ],
+            "stomach": [
+              0.6152,
+              0.9371
+            ],
+            "lung_ll_l": [
+              0.5154,
+              0.9248
+            ],
+            "lung_ll_r": [
+              0.4379,
+              0.5441
+            ],
+            "kidney_r": [
+              0.3995,
+              0.9284
+            ],
+            "kidney_l": [
+              0.2665,
+              0.8749
+            ],
+            "lung_ml_r": [
+              0.2619,
+              0.5403
+            ],
+            "pancreas": [
+              0.0561,
+              0.7752
+            ],
+            "aorta": [
+              0.0,
+              0.8795
+            ],
+            "ivc": [
+              0.0029,
+              0.7594
+            ],
+            "lung_ul_l": [
+              0.2537,
+              0.8484
+            ],
+            "adrenal_l": [
+              0.0,
+              0.6131
+            ],
+            "adrenal_r": [
+              0.0,
+              0.5992
+            ]
+          },
+          "centroid_shift_mm": 29.2589,
+          "healthy_resid_med_hu": 33.9799,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_029": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 12,
+          "wdice_rigid": 0.6149,
+          "wdice_deformed": 0.8296,
+          "gradncc_rigid": 0.184,
+          "gradncc_deformed": 0.369,
+          "psnr_before_db": 11.6453,
+          "psnr_after_db": 14.3325,
+          "per_organ_dice": {
+            "liver": [
+              0.8428,
+              0.9281
+            ],
+            "lung_ll_r": [
+              0.7361,
+              0.8654
+            ],
+            "lung_ll_l": [
+              0.7516,
+              0.8821
+            ],
+            "spleen": [
+              0.7606,
+              0.8867
+            ],
+            "kidney_l": [
+              0.6783,
+              0.8985
+            ],
+            "lung_ml_r": [
+              0.6378,
+              0.8737
+            ],
+            "kidney_r": [
+              0.5282,
+              0.6571
+            ],
+            "lung_ul_l": [
+              0.7809,
+              0.8196
+            ],
+            "pancreas": [
+              0.4173,
+              0.7433
+            ],
+            "aorta": [
+              0.3494,
+              0.8622
+            ],
+            "ivc": [
+              0.3051,
+              0.7549
+            ],
+            "adrenal_r": [
+              0.0,
+              0.3855
+            ]
+          },
+          "centroid_shift_mm": 9.608,
+          "healthy_resid_med_hu": 25.7113,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_030": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 16,
+          "wdice_rigid": 0.7254,
+          "wdice_deformed": 0.8908,
+          "gradncc_rigid": 0.2177,
+          "gradncc_deformed": 0.5395,
+          "psnr_before_db": 9.7802,
+          "psnr_after_db": 15.7081,
+          "per_organ_dice": {
+            "liver": [
+              0.9213,
+              0.9774
+            ],
+            "spleen": [
+              0.8618,
+              0.9713
+            ],
+            "lung_ll_l": [
+              0.7601,
+              0.9307
+            ],
+            "lung_ll_r": [
+              0.7065,
+              0.8722
+            ],
+            "stomach": [
+              0.6688,
+              0.8478
+            ],
+            "aorta": [
+              0.6985,
+              0.9333
+            ],
+            "kidney_r": [
+              0.7084,
+              0.918
+            ],
+            "kidney_l": [
+              0.8002,
+              0.8691
+            ],
+            "pancreas": [
+              0.82,
+              0.8866
+            ],
+            "lung_ul_l": [
+              0.5251,
+              0.8451
+            ],
+            "ivc": [
+              0.8251,
+              0.874
+            ],
+            "lung_ml_r": [
+              0.5251,
+              0.7688
+            ],
+            "gallbladder": [
+              0.6941,
+              0.8765
+            ],
+            "portal_splenic_vein": [
+              0.7062,
+              0.8678
+            ],
+            "adrenal_l": [
+              0.5163,
+              0.8481
+            ],
+            "adrenal_r": [
+              0.4702,
+              0.8113
+            ]
+          },
+          "centroid_shift_mm": 42.3876,
+          "healthy_resid_med_hu": 17.6596,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_031": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.3545,
+          "wdice_deformed": 0.7652,
+          "gradncc_rigid": 0.0704,
+          "gradncc_deformed": 0.2249,
+          "psnr_before_db": 9.6289,
+          "psnr_after_db": 12.1078,
+          "per_organ_dice": {
+            "liver": [
+              0.6924,
+              0.9173
+            ],
+            "spleen": [
+              0.5642,
+              0.942
+            ],
+            "lung_ll_r": [
+              0.4225,
+              0.6796
+            ],
+            "lung_ll_l": [
+              0.4699,
+              0.7014
+            ],
+            "stomach": [
+              0.3245,
+              0.7851
+            ],
+            "kidney_r": [
+              0.3454,
+              0.8731
+            ],
+            "kidney_l": [
+              0.4174,
+              0.8823
+            ],
+            "aorta": [
+              0.2043,
+              0.7133
+            ],
+            "gallbladder": [
+              0.39,
+              0.8711
+            ],
+            "pancreas": [
+              0.0017,
+              0.6748
+            ],
+            "ivc": [
+              0.0304,
+              0.653
+            ],
+            "adrenal_l": [
+              0.0003,
+              0.4042
+            ],
+            "adrenal_r": [
+              0.0621,
+              0.0049
+            ]
+          },
+          "centroid_shift_mm": 20.7909,
+          "healthy_resid_med_hu": 71.5371,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_032": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 9,
+          "wdice_rigid": 0.1526,
+          "wdice_deformed": 0.6731,
+          "gradncc_rigid": 0.0324,
+          "gradncc_deformed": 0.3023,
+          "psnr_before_db": 9.8968,
+          "psnr_after_db": 13.0692,
+          "per_organ_dice": {
+            "liver": [
+              0.3703,
+              0.8877
+            ],
+            "stomach": [
+              0.269,
+              0.8713
+            ],
+            "kidney_l": [
+              0.2142,
+              0.832
+            ],
+            "kidney_r": [
+              0.2488,
+              0.6846
+            ],
+            "aorta": [
+              0.0,
+              0.6119
+            ],
+            "ivc": [
+              0.0,
+              0.496
+            ],
+            "pancreas": [
+              0.0298,
+              0.4353
+            ],
+            "portal_splenic_vein": [
+              0.0273,
+              0.3233
+            ],
+            "adrenal_l": [
+              0.0,
+              0.487
+            ]
+          },
+          "centroid_shift_mm": 36.0635,
+          "healthy_resid_med_hu": 30.499,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_033": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 15,
+          "wdice_rigid": 0.3945,
+          "wdice_deformed": 0.8377,
+          "gradncc_rigid": 0.0988,
+          "gradncc_deformed": 0.4617,
+          "psnr_before_db": 10.8293,
+          "psnr_after_db": 14.1681,
+          "per_organ_dice": {
+            "liver": [
+              0.6948,
+              0.9501
+            ],
+            "lung_ll_r": [
+              0.6381,
+              0.8901
+            ],
+            "lung_ll_l": [
+              0.6158,
+              0.93
+            ],
+            "stomach": [
+              0.5,
+              0.8985
+            ],
+            "lung_ml_r": [
+              0.5755,
+              0.8825
+            ],
+            "spleen": [
+              0.3254,
+              0.9215
+            ],
+            "kidney_l": [
+              0.4362,
+              0.88
+            ],
+            "kidney_r": [
+              0.486,
+              0.8537
+            ],
+            "lung_ul_l": [
+              0.4004,
+              0.8962
+            ],
+            "aorta": [
+              0.0001,
+              0.7711
+            ],
+            "pancreas": [
+              0.084,
+              0.5244
+            ],
+            "ivc": [
+              0.1066,
+              0.649
+            ],
+            "portal_splenic_vein": [
+              0.078,
+              0.4551
+            ],
+            "adrenal_l": [
+              0.0,
+              0.7249
+            ],
+            "adrenal_r": [
+              0.0,
+              0.757
+            ]
+          },
+          "centroid_shift_mm": 20.9885,
+          "healthy_resid_med_hu": 28.5372,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_034": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.6499,
+          "wdice_deformed": 0.804,
+          "gradncc_rigid": 0.1794,
+          "gradncc_deformed": 0.4037,
+          "psnr_before_db": 12.2988,
+          "psnr_after_db": 13.9375,
+          "per_organ_dice": {
+            "liver": [
+              0.8475,
+              0.9572
+            ],
+            "spleen": [
+              0.7485,
+              0.9273
+            ],
+            "stomach": [
+              0.7151,
+              0.8715
+            ],
+            "lung_ll_l": [
+              0.6828,
+              0.8361
+            ],
+            "lung_ll_r": [
+              0.7169,
+              0.8885
+            ],
+            "kidney_r": [
+              0.8096,
+              0.7943
+            ],
+            "lung_ml_r": [
+              0.502,
+              0.7896
+            ],
+            "ivc": [
+              0.5818,
+              0.7948
+            ],
+            "aorta": [
+              0.5743,
+              0.7558
+            ],
+            "kidney_l": [
+              0.5658,
+              0.8065
+            ],
+            "portal_splenic_vein": [
+              0.4394,
+              0.6911
+            ],
+            "pancreas": [
+              0.6112,
+              0.5224
+            ],
+            "adrenal_r": [
+              0.2291,
+              0.2679
+            ],
+            "adrenal_l": [
+              0.3489,
+              0.45
+            ]
+          },
+          "centroid_shift_mm": 5.3669,
+          "healthy_resid_med_hu": 26.4823,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_035": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 16,
+          "wdice_rigid": 0.7808,
+          "wdice_deformed": 0.8481,
+          "gradncc_rigid": 0.4188,
+          "gradncc_deformed": 0.4484,
+          "psnr_before_db": 14.4586,
+          "psnr_after_db": 14.5054,
+          "per_organ_dice": {
+            "liver": [
+              0.8947,
+              0.9492
+            ],
+            "stomach": [
+              0.7429,
+              0.8808
+            ],
+            "lung_ll_r": [
+              0.8738,
+              0.9182
+            ],
+            "lung_ll_l": [
+              0.8965,
+              0.8798
+            ],
+            "lung_ml_r": [
+              0.904,
+              0.9097
+            ],
+            "kidney_r": [
+              0.901,
+              0.909
+            ],
+            "spleen": [
+              0.561,
+              0.8226
+            ],
+            "lung_ul_l": [
+              0.9269,
+              0.7631
+            ],
+            "kidney_l": [
+              0.6572,
+              0.9022
+            ],
+            "aorta": [
+              0.857,
+              0.905
+            ],
+            "ivc": [
+              0.6574,
+              0.7971
+            ],
+            "pancreas": [
+              0.7392,
+              0.7754
+            ],
+            "portal_splenic_vein": [
+              0.5469,
+              0.5809
+            ],
+            "adrenal_r": [
+              0.5913,
+              0.6119
+            ],
+            "adrenal_l": [
+              0.5371,
+              0.5634
+            ],
+            "gallbladder": [
+              0.0196,
+              0.3783
+            ]
+          },
+          "centroid_shift_mm": 6.3091,
+          "healthy_resid_med_hu": 19.3543,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_036": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 11,
+          "wdice_rigid": 0.4991,
+          "wdice_deformed": 0.6425,
+          "gradncc_rigid": 0.1352,
+          "gradncc_deformed": 0.2352,
+          "psnr_before_db": 10.6024,
+          "psnr_after_db": 11.0931,
+          "per_organ_dice": {
+            "liver": [
+              0.7246,
+              0.8687
+            ],
+            "lung_ll_l": [
+              0.7496,
+              0.8213
+            ],
+            "spleen": [
+              0.5553,
+              0.6423
+            ],
+            "kidney_r": [
+              0.652,
+              0.7732
+            ],
+            "kidney_l": [
+              0.396,
+              0.7072
+            ],
+            "pancreas": [
+              0.6265,
+              0.7145
+            ],
+            "aorta": [
+              0.3769,
+              0.619
+            ],
+            "lung_ml_r": [
+              0.2319,
+              0.3163
+            ],
+            "ivc": [
+              0.4203,
+              0.4401
+            ],
+            "adrenal_l": [
+              0.0,
+              0.2529
+            ],
+            "adrenal_r": [
+              0.1115,
+              0.6119
+            ]
+          },
+          "centroid_shift_mm": 17.3893,
+          "healthy_resid_med_hu": 99.8696,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_037": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 10,
+          "wdice_rigid": 0.2651,
+          "wdice_deformed": 0.655,
+          "gradncc_rigid": 0.0716,
+          "gradncc_deformed": 0.173,
+          "psnr_before_db": 10.588,
+          "psnr_after_db": 12.6051,
+          "per_organ_dice": {
+            "liver": [
+              0.7958,
+              0.9266
+            ],
+            "spleen": [
+              0.5856,
+              0.8995
+            ],
+            "kidney_l": [
+              0.2568,
+              0.8158
+            ],
+            "kidney_r": [
+              0.3756,
+              0.8116
+            ],
+            "aorta": [
+              0.0,
+              0.4666
+            ],
+            "lung_ml_r": [
+              0.0294,
+              0.5084
+            ],
+            "ivc": [
+              0.044,
+              0.4301
+            ],
+            "pancreas": [
+              0.0141,
+              0.5412
+            ],
+            "adrenal_l": [
+              0.0,
+              0.0286
+            ],
+            "adrenal_r": [
+              0.0,
+              0.198
+            ]
+          },
+          "centroid_shift_mm": 26.659,
+          "healthy_resid_med_hu": 64.4332,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_038": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 11,
+          "wdice_rigid": 0.3861,
+          "wdice_deformed": 0.7042,
+          "gradncc_rigid": 0.0964,
+          "gradncc_deformed": 0.1737,
+          "psnr_before_db": 12.0685,
+          "psnr_after_db": 13.4817,
+          "per_organ_dice": {
+            "liver": [
+              0.5683,
+              0.8964
+            ],
+            "spleen": [
+              0.3187,
+              0.8019
+            ],
+            "kidney_l": [
+              0.4352,
+              0.8357
+            ],
+            "kidney_r": [
+              0.2146,
+              0.836
+            ],
+            "aorta": [
+              0.687,
+              0.5261
+            ],
+            "ivc": [
+              0.4953,
+              0.6307
+            ],
+            "pancreas": [
+              0.182,
+              0.5621
+            ],
+            "gallbladder": [
+              0.041,
+              0.5318
+            ],
+            "portal_splenic_vein": [
+              0.0,
+              0.3815
+            ],
+            "adrenal_l": [
+              0.0,
+              0.2972
+            ],
+            "adrenal_r": [
+              0.0,
+              0.4543
+            ]
+          },
+          "centroid_shift_mm": 34.691,
+          "healthy_resid_med_hu": 22.1162,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_039": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 10,
+          "wdice_rigid": 0.4102,
+          "wdice_deformed": 0.7222,
+          "gradncc_rigid": 0.0846,
+          "gradncc_deformed": 0.2421,
+          "psnr_before_db": 10.5582,
+          "psnr_after_db": 12.482,
+          "per_organ_dice": {
+            "liver": [
+              0.6584,
+              0.8761
+            ],
+            "kidney_l": [
+              0.4979,
+              0.8034
+            ],
+            "kidney_r": [
+              0.4464,
+              0.8246
+            ],
+            "lung_ml_r": [
+              0.7284,
+              0.7422
+            ],
+            "lung_ll_l": [
+              0.4465,
+              0.6665
+            ],
+            "pancreas": [
+              0.1322,
+              0.5622
+            ],
+            "aorta": [
+              0.2478,
+              0.6962
+            ],
+            "ivc": [
+              0.1451,
+              0.6628
+            ],
+            "gallbladder": [
+              0.0,
+              0.439
+            ],
+            "adrenal_l": [
+              0.0206,
+              0.324
+            ]
+          },
+          "centroid_shift_mm": 15.5879,
+          "healthy_resid_med_hu": 25.3032,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_040": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 12,
+          "wdice_rigid": 0.3094,
+          "wdice_deformed": 0.7028,
+          "gradncc_rigid": 0.095,
+          "gradncc_deformed": 0.2591,
+          "psnr_before_db": 9.7706,
+          "psnr_after_db": 11.0001,
+          "per_organ_dice": {
+            "liver": [
+              0.6693,
+              0.8408
+            ],
+            "lung_ll_l": [
+              0.5731,
+              0.7319
+            ],
+            "lung_ll_r": [
+              0.4591,
+              0.719
+            ],
+            "spleen": [
+              0.6143,
+              0.8029
+            ],
+            "kidney_r": [
+              0.2063,
+              0.8025
+            ],
+            "kidney_l": [
+              0.2507,
+              0.808
+            ],
+            "aorta": [
+              0.0383,
+              0.6738
+            ],
+            "pancreas": [
+              0.002,
+              0.65
+            ],
+            "ivc": [
+              0.0,
+              0.5313
+            ],
+            "portal_splenic_vein": [
+              0.0003,
+              0.1895
+            ],
+            "adrenal_l": [
+              0.0,
+              0.1324
+            ],
+            "adrenal_r": [
+              0.0166,
+              0.481
+            ]
+          },
+          "centroid_shift_mm": 23.0634,
+          "healthy_resid_med_hu": 34.2721,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_041": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 12,
+          "wdice_rigid": 0.6514,
+          "wdice_deformed": 0.7844,
+          "gradncc_rigid": 0.3069,
+          "gradncc_deformed": 0.3069,
+          "psnr_before_db": 12.1327,
+          "psnr_after_db": 12.2241,
+          "per_organ_dice": {
+            "liver": [
+              0.8697,
+              0.9097
+            ],
+            "spleen": [
+              0.8062,
+              0.904
+            ],
+            "lung_ll_r": [
+              0.9098,
+              0.9231
+            ],
+            "lung_ll_l": [
+              0.8096,
+              0.8213
+            ],
+            "kidney_l": [
+              0.7074,
+              0.8815
+            ],
+            "lung_ml_r": [
+              0.827,
+              0.8492
+            ],
+            "kidney_r": [
+              0.3974,
+              0.7331
+            ],
+            "aorta": [
+              0.5848,
+              0.7009
+            ],
+            "pancreas": [
+              0.3429,
+              0.7403
+            ],
+            "ivc": [
+              0.3486,
+              0.4453
+            ],
+            "gallbladder": [
+              0.0026,
+              0.6262
+            ],
+            "adrenal_l": [
+              0.0793,
+              0.5121
+            ]
+          },
+          "centroid_shift_mm": 8.2294,
+          "healthy_resid_med_hu": 37.3506,
+          "flags": [
+            "NO_COLOR",
+            "REVERT_RAW"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_042": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 11,
+          "wdice_rigid": 0.4204,
+          "wdice_deformed": 0.7672,
+          "gradncc_rigid": 0.1255,
+          "gradncc_deformed": 0.3454,
+          "psnr_before_db": 12.211,
+          "psnr_after_db": 14.0229,
+          "per_organ_dice": {
+            "liver": [
+              0.7295,
+              0.9377
+            ],
+            "spleen": [
+              0.5374,
+              0.9511
+            ],
+            "lung_ll_r": [
+              0.7066,
+              0.763
+            ],
+            "kidney_l": [
+              0.1291,
+              0.765
+            ],
+            "kidney_r": [
+              0.4678,
+              0.8833
+            ],
+            "pancreas": [
+              0.1291,
+              0.7027
+            ],
+            "lung_ml_r": [
+              0.4541,
+              0.6764
+            ],
+            "aorta": [
+              0.3007,
+              0.664
+            ],
+            "ivc": [
+              0.3517,
+              0.6913
+            ],
+            "adrenal_l": [
+              0.0,
+              0.3582
+            ],
+            "adrenal_r": [
+              0.0,
+              0.3672
+            ]
+          },
+          "centroid_shift_mm": 24.0992,
+          "healthy_resid_med_hu": 35.7672,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_043": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 7,
+          "wdice_rigid": 0.4386,
+          "wdice_deformed": 0.686,
+          "gradncc_rigid": -0.0214,
+          "gradncc_deformed": 0.1325,
+          "psnr_before_db": 9.8907,
+          "psnr_after_db": 11.1246,
+          "per_organ_dice": {
+            "liver": [
+              0.3274,
+              0.7879
+            ],
+            "spleen": [
+              0.5367,
+              0.8692
+            ],
+            "stomach": [
+              0.3758,
+              0.7767
+            ],
+            "kidney_l": [
+              0.7519,
+              0.672
+            ],
+            "pancreas": [
+              0.2224,
+              0.5627
+            ],
+            "aorta": [
+              0.3532,
+              0.5492
+            ],
+            "adrenal_l": [
+              0.0318,
+              0.1404
+            ]
+          },
+          "centroid_shift_mm": 23.1653,
+          "healthy_resid_med_hu": 41.5577,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_044": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 15,
+          "wdice_rigid": 0.7664,
+          "wdice_deformed": 0.819,
+          "gradncc_rigid": 0.4348,
+          "gradncc_deformed": 0.4243,
+          "psnr_before_db": 14.2538,
+          "psnr_after_db": 14.7202,
+          "per_organ_dice": {
+            "liver": [
+              0.8871,
+              0.9515
+            ],
+            "lung_ll_l": [
+              0.8896,
+              0.883
+            ],
+            "lung_ll_r": [
+              0.9461,
+              0.9265
+            ],
+            "spleen": [
+              0.7322,
+              0.8741
+            ],
+            "lung_ul_l": [
+              0.8019,
+              0.793
+            ],
+            "kidney_l": [
+              0.7058,
+              0.8204
+            ],
+            "kidney_r": [
+              0.7377,
+              0.8317
+            ],
+            "lung_ml_r": [
+              0.7817,
+              0.8347
+            ],
+            "aorta": [
+              0.9394,
+              0.8955
+            ],
+            "pancreas": [
+              0.6154,
+              0.6752
+            ],
+            "ivc": [
+              0.6796,
+              0.7117
+            ],
+            "gallbladder": [
+              0.3935,
+              0.7445
+            ],
+            "portal_splenic_vein": [
+              0.4751,
+              0.6159
+            ],
+            "adrenal_l": [
+              0.2158,
+              0.3529
+            ],
+            "adrenal_r": [
+              0.1732,
+              0.2612
+            ]
+          },
+          "centroid_shift_mm": 3.3707,
+          "healthy_resid_med_hu": 14.3389,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_045": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.5555,
+          "wdice_deformed": 0.735,
+          "gradncc_rigid": 0.1937,
+          "gradncc_deformed": 0.2336,
+          "psnr_before_db": 11.8672,
+          "psnr_after_db": 12.409,
+          "per_organ_dice": {
+            "liver": [
+              0.8193,
+              0.8887
+            ],
+            "lung_ll_r": [
+              0.8371,
+              0.7203
+            ],
+            "lung_ll_l": [
+              0.6662,
+              0.7121
+            ],
+            "spleen": [
+              0.4657,
+              0.7874
+            ],
+            "kidney_r": [
+              0.4308,
+              0.8587
+            ],
+            "kidney_l": [
+              0.4344,
+              0.8936
+            ],
+            "lung_ml_r": [
+              0.6906,
+              0.8638
+            ],
+            "aorta": [
+              0.4813,
+              0.655
+            ],
+            "pancreas": [
+              0.373,
+              0.5514
+            ],
+            "ivc": [
+              0.5227,
+              0.6552
+            ],
+            "lung_ul_l": [
+              0.47,
+              0.621
+            ],
+            "adrenal_l": [
+              0.0,
+              0.1962
+            ],
+            "adrenal_r": [
+              0.251,
+              0.2047
+            ]
+          },
+          "centroid_shift_mm": 6.3395,
+          "healthy_resid_med_hu": 17.8501,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_046": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.7328,
+          "wdice_deformed": 0.7639,
+          "gradncc_rigid": 0.4427,
+          "gradncc_deformed": 0.3847,
+          "psnr_before_db": 12.5122,
+          "psnr_after_db": 12.2442,
+          "per_organ_dice": {
+            "liver": 0.8846,
+            "spleen": 0.8956,
+            "lung_ll_l": 0.873,
+            "lung_ll_r": 0.8271,
+            "kidney_r": 0.6965,
+            "kidney_l": 0.7555,
+            "lung_ml_r": 0.8312,
+            "lung_ul_l": 0.7066,
+            "aorta": 0.7628,
+            "pancreas": 0.4762,
+            "ivc": 0.5442,
+            "portal_splenic_vein": 0.2083,
+            "gallbladder": 0.0222,
+            "adrenal_l": 0.3652
+          },
+          "centroid_shift_mm": 5.9852,
+          "healthy_resid_med_hu": 26.8733,
+          "flags": [
+            "NCC_REJECT"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_047": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.668,
+          "wdice_deformed": 0.7861,
+          "gradncc_rigid": 0.1813,
+          "gradncc_deformed": 0.432,
+          "psnr_before_db": 11.7132,
+          "psnr_after_db": 13.2158,
+          "per_organ_dice": {
+            "liver": [
+              0.8355,
+              0.9297
+            ],
+            "stomach": [
+              0.6036,
+              0.7311
+            ],
+            "lung_ll_r": [
+              0.7592,
+              0.937
+            ],
+            "lung_ll_l": [
+              0.7587,
+              0.4993
+            ],
+            "spleen": [
+              0.6756,
+              0.7315
+            ],
+            "kidney_r": [
+              0.6543,
+              0.8837
+            ],
+            "lung_ml_r": [
+              0.7225,
+              0.9068
+            ],
+            "kidney_l": [
+              0.6158,
+              0.9139
+            ],
+            "aorta": [
+              0.6389,
+              0.8725
+            ],
+            "pancreas": [
+              0.3762,
+              0.6119
+            ],
+            "lung_ul_l": [
+              0.7682,
+              0.6398
+            ],
+            "portal_splenic_vein": [
+              0.1936,
+              0.4037
+            ],
+            "adrenal_l": [
+              0.2632,
+              0.5468
+            ],
+            "adrenal_r": [
+              0.3217,
+              0.7565
+            ]
+          },
+          "centroid_shift_mm": 11.2015,
+          "healthy_resid_med_hu": 24.2235,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_048": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 11,
+          "wdice_rigid": 0.4661,
+          "wdice_deformed": 0.8197,
+          "gradncc_rigid": 0.0969,
+          "gradncc_deformed": 0.394,
+          "psnr_before_db": 10.2535,
+          "psnr_after_db": 13.1614,
+          "per_organ_dice": {
+            "liver": [
+              0.7385,
+              0.9092
+            ],
+            "lung_ll_r": [
+              0.8226,
+              0.9482
+            ],
+            "stomach": [
+              0.4346,
+              0.8482
+            ],
+            "spleen": [
+              0.5012,
+              0.9198
+            ],
+            "kidney_l": [
+              0.196,
+              0.8376
+            ],
+            "kidney_r": [
+              0.3619,
+              0.8632
+            ],
+            "lung_ll_l": [
+              0.5064,
+              0.8555
+            ],
+            "lung_ml_r": [
+              0.6526,
+              0.6897
+            ],
+            "aorta": [
+              0.164,
+              0.7789
+            ],
+            "pancreas": [
+              0.2643,
+              0.5148
+            ],
+            "ivc": [
+              0.3656,
+              0.7165
+            ]
+          },
+          "centroid_shift_mm": 17.272,
+          "healthy_resid_med_hu": 66.0324,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_049": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 12,
+          "wdice_rigid": 0.1853,
+          "wdice_deformed": 0.6971,
+          "gradncc_rigid": 0.0609,
+          "gradncc_deformed": 0.2389,
+          "psnr_before_db": 10.2547,
+          "psnr_after_db": 13.6145,
+          "per_organ_dice": {
+            "liver": [
+              0.6068,
+              0.913
+            ],
+            "lung_ll_r": [
+              0.3123,
+              0.774
+            ],
+            "spleen": [
+              0.1641,
+              0.7404
+            ],
+            "kidney_l": [
+              0.0534,
+              0.8376
+            ],
+            "kidney_r": [
+              0.3437,
+              0.7482
+            ],
+            "lung_ml_r": [
+              0.1863,
+              0.7517
+            ],
+            "ivc": [
+              0.0,
+              0.6351
+            ],
+            "aorta": [
+              0.0,
+              0.5559
+            ],
+            "pancreas": [
+              0.0385,
+              0.3898
+            ],
+            "portal_splenic_vein": [
+              0.0004,
+              0.3762
+            ],
+            "adrenal_l": [
+              0.0,
+              0.5673
+            ],
+            "adrenal_r": [
+              0.0,
+              0.0197
+            ]
+          },
+          "centroid_shift_mm": 31.3691,
+          "healthy_resid_med_hu": 51.1745,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_050": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.4901,
+          "wdice_deformed": 0.639,
+          "gradncc_rigid": 0.1073,
+          "gradncc_deformed": 0.1671,
+          "psnr_before_db": 11.9852,
+          "psnr_after_db": 12.5497,
+          "per_organ_dice": {
+            "liver": [
+              0.7541,
+              0.8633
+            ],
+            "stomach": [
+              0.2816,
+              0.6312
+            ],
+            "spleen": [
+              0.6958,
+              0.7701
+            ],
+            "kidney_r": [
+              0.6002,
+              0.7467
+            ],
+            "kidney_l": [
+              0.5505,
+              0.7618
+            ],
+            "lung_ml_r": [
+              0.7035,
+              0.7679
+            ],
+            "lung_ul_l": [
+              0.5256,
+              0.4246
+            ],
+            "pancreas": [
+              0.1445,
+              0.578
+            ],
+            "aorta": [
+              0.2164,
+              0.5181
+            ],
+            "ivc": [
+              0.319,
+              0.4788
+            ],
+            "portal_splenic_vein": [
+              0.1493,
+              0.4467
+            ],
+            "adrenal_l": [
+              0.0786,
+              0.17
+            ],
+            "adrenal_r": [
+              0.3012,
+              0.3724
+            ]
+          },
+          "centroid_shift_mm": 10.219,
+          "healthy_resid_med_hu": 52.6033,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_051": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.6605,
+          "wdice_deformed": 0.8149,
+          "gradncc_rigid": 0.1744,
+          "gradncc_deformed": 0.2887,
+          "psnr_before_db": 12.2863,
+          "psnr_after_db": 13.3438,
+          "per_organ_dice": {
+            "liver": [
+              0.8827,
+              0.9257
+            ],
+            "lung_ll_l": [
+              0.6779,
+              0.8825
+            ],
+            "lung_ll_r": [
+              0.6555,
+              0.7601
+            ],
+            "spleen": [
+              0.7655,
+              0.8527
+            ],
+            "stomach": [
+              0.7867,
+              0.7667
+            ],
+            "kidney_l": [
+              0.8064,
+              0.8579
+            ],
+            "kidney_r": [
+              0.7319,
+              0.8453
+            ],
+            "aorta": [
+              0.5498,
+              0.8435
+            ],
+            "ivc": [
+              0.5496,
+              0.8182
+            ],
+            "lung_ul_l": [
+              0.3683,
+              0.8473
+            ],
+            "pancreas": [
+              0.7244,
+              0.6686
+            ],
+            "portal_splenic_vein": [
+              0.5711,
+              0.3697
+            ],
+            "adrenal_l": [
+              0.5395,
+              0.6207
+            ],
+            "adrenal_r": [
+              0.2454,
+              0.4212
+            ]
+          },
+          "centroid_shift_mm": 6.341,
+          "healthy_resid_med_hu": 32.2258,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_052": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 11,
+          "wdice_rigid": 0.6193,
+          "wdice_deformed": 0.8755,
+          "gradncc_rigid": 0.2002,
+          "gradncc_deformed": 0.352,
+          "psnr_before_db": 13.4739,
+          "psnr_after_db": 15.527,
+          "per_organ_dice": {
+            "liver": [
+              0.821,
+              0.9581
+            ],
+            "spleen": [
+              0.7421,
+              0.9475
+            ],
+            "lung_ll_l": [
+              0.7642,
+              0.8643
+            ],
+            "lung_ll_r": [
+              0.801,
+              0.8997
+            ],
+            "lung_ml_r": [
+              0.6519,
+              0.8749
+            ],
+            "kidney_r": [
+              0.5154,
+              0.9259
+            ],
+            "kidney_l": [
+              0.5642,
+              0.8943
+            ],
+            "aorta": [
+              0.4401,
+              0.8061
+            ],
+            "pancreas": [
+              0.3657,
+              0.7999
+            ],
+            "lung_ul_l": [
+              0.5186,
+              0.7959
+            ],
+            "adrenal_l": [
+              0.0269,
+              0.627
+            ]
+          },
+          "centroid_shift_mm": 14.0685,
+          "healthy_resid_med_hu": 39.6788,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_053": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 15,
+          "wdice_rigid": 0.5684,
+          "wdice_deformed": 0.8305,
+          "gradncc_rigid": 0.2325,
+          "gradncc_deformed": 0.3673,
+          "psnr_before_db": 12.8605,
+          "psnr_after_db": 14.8677,
+          "per_organ_dice": {
+            "liver": [
+              0.8121,
+              0.9196
+            ],
+            "spleen": [
+              0.7323,
+              0.9412
+            ],
+            "lung_ll_l": [
+              0.7812,
+              0.9287
+            ],
+            "lung_ll_r": [
+              0.8054,
+              0.8725
+            ],
+            "stomach": [
+              0.5135,
+              0.7874
+            ],
+            "lung_ml_r": [
+              0.6029,
+              0.8441
+            ],
+            "lung_ul_l": [
+              0.4528,
+              0.8867
+            ],
+            "kidney_l": [
+              0.266,
+              0.7719
+            ],
+            "kidney_r": [
+              0.6089,
+              0.876
+            ],
+            "aorta": [
+              0.5268,
+              0.8067
+            ],
+            "pancreas": [
+              0.5206,
+              0.793
+            ],
+            "ivc": [
+              0.3923,
+              0.6699
+            ],
+            "portal_splenic_vein": [
+              0.3178,
+              0.6015
+            ],
+            "adrenal_r": [
+              0.101,
+              0.3715
+            ],
+            "adrenal_l": [
+              0.0344,
+              0.6365
+            ]
+          },
+          "centroid_shift_mm": 9.973,
+          "healthy_resid_med_hu": 11.9976,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_055": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.4709,
+          "wdice_deformed": 0.6664,
+          "gradncc_rigid": 0.1058,
+          "gradncc_deformed": 0.2067,
+          "psnr_before_db": 12.2211,
+          "psnr_after_db": 13.6575,
+          "per_organ_dice": {
+            "liver": [
+              0.5451,
+              0.8593
+            ],
+            "spleen": [
+              0.7575,
+              0.8429
+            ],
+            "stomach": [
+              0.5225,
+              0.7868
+            ],
+            "kidney_r": [
+              0.5052,
+              0.6631
+            ],
+            "kidney_l": [
+              0.6483,
+              0.7078
+            ],
+            "aorta": [
+              0.4451,
+              0.5908
+            ],
+            "lung_ml_r": [
+              0.4978,
+              0.7333
+            ],
+            "pancreas": [
+              0.5129,
+              0.6489
+            ],
+            "ivc": [
+              0.268,
+              0.4971
+            ],
+            "lung_ul_l": [
+              0.4049,
+              0.7021
+            ],
+            "portal_splenic_vein": [
+              0.0364,
+              0.3689
+            ],
+            "gallbladder": [
+              0.0,
+              0.087
+            ],
+            "adrenal_l": [
+              0.1159,
+              0.3777
+            ],
+            "adrenal_r": [
+              0.0,
+              0.3099
+            ]
+          },
+          "centroid_shift_mm": 13.0159,
+          "healthy_resid_med_hu": 19.8804,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_056": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 16,
+          "wdice_rigid": 0.4677,
+          "wdice_deformed": 0.7464,
+          "gradncc_rigid": 0.16,
+          "gradncc_deformed": 0.2502,
+          "psnr_before_db": 12.1241,
+          "psnr_after_db": 14.1695,
+          "per_organ_dice": {
+            "liver": [
+              0.7781,
+              0.9229
+            ],
+            "stomach": [
+              0.6651,
+              0.7971
+            ],
+            "lung_ll_l": [
+              0.6744,
+              0.7749
+            ],
+            "lung_ll_r": [
+              0.7106,
+              0.7462
+            ],
+            "spleen": [
+              0.3793,
+              0.7575
+            ],
+            "lung_ul_l": [
+              0.5553,
+              0.8554
+            ],
+            "aorta": [
+              0.4404,
+              0.7737
+            ],
+            "kidney_r": [
+              0.4034,
+              0.7209
+            ],
+            "lung_ml_r": [
+              0.3823,
+              0.6718
+            ],
+            "kidney_l": [
+              0.3219,
+              0.6567
+            ],
+            "pancreas": [
+              0.2331,
+              0.7516
+            ],
+            "ivc": [
+              0.3933,
+              0.7023
+            ],
+            "portal_splenic_vein": [
+              0.02,
+              0.5837
+            ],
+            "gallbladder": [
+              0.1029,
+              0.7372
+            ],
+            "adrenal_l": [
+              0.0682,
+              0.5108
+            ],
+            "adrenal_r": [
+              0.0626,
+              0.4506
+            ]
+          },
+          "centroid_shift_mm": 13.8368,
+          "healthy_resid_med_hu": 18.8888,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_057": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 14,
+          "wdice_rigid": 0.6866,
+          "wdice_deformed": 0.7222,
+          "gradncc_rigid": 0.1863,
+          "gradncc_deformed": 0.2308,
+          "psnr_before_db": 13.3356,
+          "psnr_after_db": 13.6447,
+          "per_organ_dice": {
+            "liver": [
+              0.7766,
+              0.8415
+            ],
+            "stomach": [
+              0.6691,
+              0.6465
+            ],
+            "spleen": [
+              0.8739,
+              0.8896
+            ],
+            "lung_ll_l": [
+              0.7885,
+              0.8329
+            ],
+            "lung_ll_r": [
+              0.7144,
+              0.8612
+            ],
+            "kidney_r": [
+              0.5848,
+              0.7542
+            ],
+            "kidney_l": [
+              0.7592,
+              0.7951
+            ],
+            "lung_ml_r": [
+              0.6771,
+              0.8169
+            ],
+            "lung_ul_l": [
+              0.7045,
+              0.8106
+            ],
+            "aorta": [
+              0.6384,
+              0.7597
+            ],
+            "pancreas": [
+              0.4641,
+              0.4916
+            ],
+            "adrenal_r": [
+              0.265,
+              0.6166
+            ],
+            "adrenal_l": [
+              0.4152,
+              0.1633
+            ],
+            "lung_ul_r": [
+              0.6049,
+              0.1382
+            ]
+          },
+          "centroid_shift_mm": 10.8923,
+          "healthy_resid_med_hu": 47.7557,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_058": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.2998,
+          "wdice_deformed": 0.8191,
+          "gradncc_rigid": 0.0575,
+          "gradncc_deformed": 0.2991,
+          "psnr_before_db": 10.9712,
+          "psnr_after_db": 14.0534,
+          "per_organ_dice": {
+            "liver": [
+              0.7911,
+              0.9508
+            ],
+            "spleen": [
+              0.2827,
+              0.8736
+            ],
+            "lung_ll_l": [
+              0.5332,
+              0.7727
+            ],
+            "lung_ll_r": [
+              0.4233,
+              0.8226
+            ],
+            "kidney_r": [
+              0.3437,
+              0.8853
+            ],
+            "kidney_l": [
+              0.2848,
+              0.8887
+            ],
+            "aorta": [
+              0.0478,
+              0.8252
+            ],
+            "pancreas": [
+              0.1334,
+              0.82
+            ],
+            "ivc": [
+              0.0088,
+              0.6613
+            ],
+            "gallbladder": [
+              0.0047,
+              0.7085
+            ],
+            "portal_splenic_vein": [
+              0.0025,
+              0.6166
+            ],
+            "adrenal_r": [
+              0.0212,
+              0.5836
+            ],
+            "adrenal_l": [
+              0.0,
+              0.7312
+            ]
+          },
+          "centroid_shift_mm": 24.3004,
+          "healthy_resid_med_hu": 18.5939,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_059": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 12,
+          "wdice_rigid": 0.4574,
+          "wdice_deformed": 0.8425,
+          "gradncc_rigid": 0.1134,
+          "gradncc_deformed": 0.3117,
+          "psnr_before_db": 10.0421,
+          "psnr_after_db": 12.2876,
+          "per_organ_dice": {
+            "liver": [
+              0.7858,
+              0.9112
+            ],
+            "lung_ll_r": [
+              0.7509,
+              0.8693
+            ],
+            "lung_ll_l": [
+              0.6303,
+              0.8989
+            ],
+            "lung_ml_r": [
+              0.6192,
+              0.8276
+            ],
+            "kidney_l": [
+              0.2675,
+              0.8669
+            ],
+            "kidney_r": [
+              0.7074,
+              0.8724
+            ],
+            "spleen": [
+              0.2123,
+              0.7741
+            ],
+            "aorta": [
+              0.2275,
+              0.8128
+            ],
+            "lung_ul_l": [
+              0.222,
+              0.8882
+            ],
+            "pancreas": [
+              0.1257,
+              0.7551
+            ],
+            "adrenal_l": [
+              0.0,
+              0.5325
+            ],
+            "adrenal_r": [
+              0.2124,
+              0.6767
+            ]
+          },
+          "centroid_shift_mm": 10.8563,
+          "healthy_resid_med_hu": 61.0,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_060": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.3367,
+          "wdice_deformed": 0.7757,
+          "gradncc_rigid": 0.0878,
+          "gradncc_deformed": 0.3563,
+          "psnr_before_db": 11.6164,
+          "psnr_after_db": 14.891,
+          "per_organ_dice": {
+            "liver": [
+              0.507,
+              0.9204
+            ],
+            "stomach": [
+              0.0608,
+              0.8018
+            ],
+            "lung_ll_l": [
+              0.5505,
+              0.8544
+            ],
+            "spleen": [
+              0.4145,
+              0.9047
+            ],
+            "kidney_r": [
+              0.6119,
+              0.9165
+            ],
+            "kidney_l": [
+              0.2205,
+              0.8576
+            ],
+            "lung_ml_r": [
+              0.2615,
+              0.4656
+            ],
+            "aorta": [
+              0.2021,
+              0.7126
+            ],
+            "pancreas": [
+              0.1744,
+              0.7749
+            ],
+            "ivc": [
+              0.3166,
+              0.6391
+            ],
+            "portal_splenic_vein": [
+              0.0113,
+              0.623
+            ],
+            "adrenal_l": [
+              0.0,
+              0.7378
+            ],
+            "adrenal_r": [
+              0.0004,
+              0.5893
+            ]
+          },
+          "centroid_shift_mm": 24.7268,
+          "healthy_resid_med_hu": 46.1389,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_061": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 15,
+          "wdice_rigid": 0.5413,
+          "wdice_deformed": 0.7114,
+          "gradncc_rigid": 0.1735,
+          "gradncc_deformed": 0.2839,
+          "psnr_before_db": 12.9966,
+          "psnr_after_db": 13.8661,
+          "per_organ_dice": {
+            "liver": [
+              0.664,
+              0.8313
+            ],
+            "lung_ll_l": [
+              0.8545,
+              0.8604
+            ],
+            "stomach": [
+              0.3257,
+              0.6832
+            ],
+            "spleen": [
+              0.5612,
+              0.8248
+            ],
+            "kidney_r": [
+              0.6308,
+              0.6736
+            ],
+            "kidney_l": [
+              0.4915,
+              0.8358
+            ],
+            "lung_ml_r": [
+              0.7543,
+              0.6576
+            ],
+            "pancreas": [
+              0.4414,
+              0.6978
+            ],
+            "lung_ul_l": [
+              0.8418,
+              0.7168
+            ],
+            "aorta": [
+              0.3879,
+              0.7225
+            ],
+            "ivc": [
+              0.2155,
+              0.6011
+            ],
+            "gallbladder": [
+              0.0681,
+              0.2386
+            ],
+            "portal_splenic_vein": [
+              0.1109,
+              0.2138
+            ],
+            "adrenal_r": [
+              0.0,
+              0.152
+            ],
+            "adrenal_l": [
+              0.019,
+              0.7267
+            ]
+          },
+          "centroid_shift_mm": 9.6969,
+          "healthy_resid_med_hu": 19.2422,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_062": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 12,
+          "wdice_rigid": 0.2824,
+          "wdice_deformed": 0.6817,
+          "gradncc_rigid": 0.106,
+          "gradncc_deformed": 0.2729,
+          "psnr_before_db": 10.2694,
+          "psnr_after_db": 11.4152,
+          "per_organ_dice": {
+            "liver": [
+              0.6809,
+              0.9032
+            ],
+            "lung_ll_r": [
+              0.5441,
+              0.8557
+            ],
+            "lung_ll_l": [
+              0.2165,
+              0.8508
+            ],
+            "kidney_l": [
+              0.3215,
+              0.7123
+            ],
+            "kidney_r": [
+              0.4704,
+              0.8174
+            ],
+            "pancreas": [
+              0.228,
+              0.524
+            ],
+            "spleen": [
+              0.0,
+              0.1941
+            ],
+            "aorta": [
+              0.1844,
+              0.7198
+            ],
+            "ivc": [
+              0.0314,
+              0.6286
+            ],
+            "portal_splenic_vein": [
+              0.0325,
+              0.5114
+            ],
+            "adrenal_r": [
+              0.0,
+              0.6082
+            ],
+            "adrenal_l": [
+              0.0,
+              0.1794
+            ]
+          },
+          "centroid_shift_mm": 18.1023,
+          "healthy_resid_med_hu": 30.6226,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_063": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 11,
+          "wdice_rigid": 0.6244,
+          "wdice_deformed": 0.7499,
+          "gradncc_rigid": 0.1033,
+          "gradncc_deformed": 0.228,
+          "psnr_before_db": 12.7654,
+          "psnr_after_db": 12.7177,
+          "per_organ_dice": {
+            "liver": [
+              0.8033,
+              0.8976
+            ],
+            "stomach": [
+              0.5533,
+              0.813
+            ],
+            "spleen": [
+              0.7668,
+              0.857
+            ],
+            "kidney_r": [
+              0.8513,
+              0.8765
+            ],
+            "kidney_l": [
+              0.6997,
+              0.8332
+            ],
+            "pancreas": [
+              0.4879,
+              0.621
+            ],
+            "aorta": [
+              0.5183,
+              0.7012
+            ],
+            "ivc": [
+              0.4785,
+              0.6169
+            ],
+            "gallbladder": [
+              0.0,
+              0.4544
+            ],
+            "adrenal_l": [
+              0.0138,
+              0.1041
+            ],
+            "adrenal_r": [
+              0.4856,
+              0.4741
+            ]
+          },
+          "centroid_shift_mm": 13.219,
+          "healthy_resid_med_hu": 64.9675,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_064": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.4542,
+          "wdice_deformed": 0.7595,
+          "gradncc_rigid": 0.1355,
+          "gradncc_deformed": 0.3227,
+          "psnr_before_db": 11.5878,
+          "psnr_after_db": 13.5052,
+          "per_organ_dice": {
+            "liver": [
+              0.6312,
+              0.8922
+            ],
+            "lung_ll_l": [
+              0.7437,
+              0.8572
+            ],
+            "lung_ll_r": [
+              0.6832,
+              0.8532
+            ],
+            "spleen": [
+              0.6459,
+              0.8865
+            ],
+            "kidney_r": [
+              0.3734,
+              0.8048
+            ],
+            "kidney_l": [
+              0.5468,
+              0.8642
+            ],
+            "lung_ml_r": [
+              0.3961,
+              0.8762
+            ],
+            "lung_ul_l": [
+              0.4019,
+              0.8468
+            ],
+            "aorta": [
+              0.3593,
+              0.5017
+            ],
+            "ivc": [
+              0.0893,
+              0.4419
+            ],
+            "pancreas": [
+              0.1563,
+              0.5966
+            ],
+            "gallbladder": [
+              0.0063,
+              0.6061
+            ],
+            "adrenal_r": [
+              0.0,
+              0.1705
+            ]
+          },
+          "centroid_shift_mm": 15.0914,
+          "healthy_resid_med_hu": 22.0,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_065": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 12,
+          "wdice_rigid": 0.7256,
+          "wdice_deformed": 0.8386,
+          "gradncc_rigid": 0.3063,
+          "gradncc_deformed": 0.5432,
+          "psnr_before_db": 15.3853,
+          "psnr_after_db": 17.5946,
+          "per_organ_dice": {
+            "liver": [
+              0.9098,
+              0.9436
+            ],
+            "lung_ll_l": [
+              0.8973,
+              0.9259
+            ],
+            "lung_ll_r": [
+              0.8769,
+              0.872
+            ],
+            "spleen": [
+              0.8167,
+              0.8835
+            ],
+            "kidney_l": [
+              0.6734,
+              0.9252
+            ],
+            "kidney_r": [
+              0.7207,
+              0.8826
+            ],
+            "ivc": [
+              0.6409,
+              0.8304
+            ],
+            "lung_ml_r": [
+              0.7304,
+              0.7058
+            ],
+            "aorta": [
+              0.5512,
+              0.8445
+            ],
+            "lung_ul_l": [
+              0.6858,
+              0.679
+            ],
+            "adrenal_l": [
+              0.217,
+              0.8047
+            ],
+            "portal_splenic_vein": [
+              0.001,
+              0.3384
+            ]
+          },
+          "centroid_shift_mm": 4.9416,
+          "healthy_resid_med_hu": 15.452,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_066": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 11,
+          "wdice_rigid": 0.7235,
+          "wdice_deformed": 0.7732,
+          "gradncc_rigid": 0.2575,
+          "gradncc_deformed": 0.2585,
+          "psnr_before_db": 12.8151,
+          "psnr_after_db": 14.5123,
+          "per_organ_dice": {
+            "liver": [
+              0.9001,
+              0.8749
+            ],
+            "lung_ll_l": [
+              0.8586,
+              0.849
+            ],
+            "lung_ll_r": [
+              0.7601,
+              0.6723
+            ],
+            "kidney_l": [
+              0.6594,
+              0.8574
+            ],
+            "stomach": [
+              0.7543,
+              0.7084
+            ],
+            "lung_ml_r": [
+              0.8069,
+              0.7201
+            ],
+            "kidney_r": [
+              0.6709,
+              0.6893
+            ],
+            "aorta": [
+              0.5777,
+              0.7894
+            ],
+            "lung_ul_l": [
+              0.7651,
+              0.8317
+            ],
+            "ivc": [
+              0.5276,
+              0.6923
+            ],
+            "pancreas": [
+              0.6693,
+              0.7895
+            ]
+          },
+          "centroid_shift_mm": 4.7741,
+          "healthy_resid_med_hu": 27.0,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_067": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.3283,
+          "wdice_deformed": 0.5422,
+          "gradncc_rigid": 0.0455,
+          "gradncc_deformed": 0.1594,
+          "psnr_before_db": 12.2096,
+          "psnr_after_db": 12.9242,
+          "per_organ_dice": {
+            "liver": [
+              0.6478,
+              0.8755
+            ],
+            "stomach": [
+              0.3516,
+              0.68
+            ],
+            "kidney_l": [
+              0.5502,
+              0.7203
+            ],
+            "spleen": [
+              0.6214,
+              0.6782
+            ],
+            "kidney_r": [
+              0.358,
+              0.6524
+            ],
+            "pancreas": [
+              0.31,
+              0.5066
+            ],
+            "aorta": [
+              0.1062,
+              0.3539
+            ],
+            "lung_ul_l": [
+              0.1888,
+              0.5024
+            ],
+            "lung_ml_r": [
+              0.1976,
+              0.4659
+            ],
+            "ivc": [
+              0.1477,
+              0.2893
+            ],
+            "portal_splenic_vein": [
+              0.0273,
+              0.1207
+            ],
+            "adrenal_l": [
+              0.0,
+              0.0831
+            ],
+            "adrenal_r": [
+              0.0,
+              0.2344
+            ]
+          },
+          "centroid_shift_mm": 20.0962,
+          "healthy_resid_med_hu": 22.3688,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_068": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 15,
+          "wdice_rigid": 0.6381,
+          "wdice_deformed": 0.8778,
+          "gradncc_rigid": 0.1492,
+          "gradncc_deformed": 0.4513,
+          "psnr_before_db": 11.1589,
+          "psnr_after_db": 13.5722,
+          "per_organ_dice": {
+            "liver": [
+              0.7848,
+              0.9601
+            ],
+            "spleen": [
+              0.6718,
+              0.9361
+            ],
+            "lung_ll_l": [
+              0.8533,
+              0.9149
+            ],
+            "lung_ll_r": [
+              0.8472,
+              0.9071
+            ],
+            "stomach": [
+              0.3672,
+              0.8622
+            ],
+            "lung_ul_l": [
+              0.8145,
+              0.9072
+            ],
+            "kidney_l": [
+              0.5226,
+              0.884
+            ],
+            "kidney_r": [
+              0.63,
+              0.9137
+            ],
+            "lung_ml_r": [
+              0.684,
+              0.7857
+            ],
+            "aorta": [
+              0.6635,
+              0.905
+            ],
+            "pancreas": [
+              0.0539,
+              0.8002
+            ],
+            "ivc": [
+              0.6386,
+              0.789
+            ],
+            "portal_splenic_vein": [
+              0.0716,
+              0.7088
+            ],
+            "adrenal_l": [
+              0.0324,
+              0.8129
+            ],
+            "adrenal_r": [
+              0.1638,
+              0.7136
+            ]
+          },
+          "centroid_shift_mm": 13.7876,
+          "healthy_resid_med_hu": 43.6655,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_069": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.7168,
+          "wdice_deformed": 0.8493,
+          "gradncc_rigid": 0.1801,
+          "gradncc_deformed": 0.4822,
+          "psnr_before_db": 12.9608,
+          "psnr_after_db": 13.6689,
+          "per_organ_dice": {
+            "liver": [
+              0.8231,
+              0.9444
+            ],
+            "spleen": [
+              0.8563,
+              0.9664
+            ],
+            "stomach": [
+              0.705,
+              0.896
+            ],
+            "lung_ml_r": [
+              0.6695,
+              0.8261
+            ],
+            "kidney_r": [
+              0.8554,
+              0.9244
+            ],
+            "kidney_l": [
+              0.7973,
+              0.9063
+            ],
+            "pancreas": [
+              0.7165,
+              0.8383
+            ],
+            "aorta": [
+              0.6904,
+              0.7299
+            ],
+            "ivc": [
+              0.6021,
+              0.8019
+            ],
+            "gallbladder": [
+              0.4359,
+              0.7984
+            ],
+            "portal_splenic_vein": [
+              0.2197,
+              0.6413
+            ],
+            "adrenal_l": [
+              0.3477,
+              0.5115
+            ],
+            "adrenal_r": [
+              0.5073,
+              0.6104
+            ]
+          },
+          "centroid_shift_mm": 8.5881,
+          "healthy_resid_med_hu": 14.0,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_070": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 10,
+          "wdice_rigid": 0.5498,
+          "wdice_deformed": 0.7063,
+          "gradncc_rigid": 0.1749,
+          "gradncc_deformed": 0.2769,
+          "psnr_before_db": 11.186,
+          "psnr_after_db": 11.4879,
+          "per_organ_dice": {
+            "liver": [
+              0.8507,
+              0.9055
+            ],
+            "spleen": [
+              0.7943,
+              0.8662
+            ],
+            "lung_ll_l": [
+              0.6362,
+              0.7684
+            ],
+            "kidney_l": [
+              0.5027,
+              0.8438
+            ],
+            "lung_ml_r": [
+              0.6838,
+              0.6155
+            ],
+            "kidney_r": [
+              0.6344,
+              0.7581
+            ],
+            "aorta": [
+              0.2077,
+              0.6109
+            ],
+            "pancreas": [
+              0.3477,
+              0.5084
+            ],
+            "ivc": [
+              0.2994,
+              0.4343
+            ],
+            "adrenal_l": [
+              0.0,
+              0.4399
+            ]
+          },
+          "centroid_shift_mm": 5.4961,
+          "healthy_resid_med_hu": 44.0,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    }
+  },
+  "generated": "2026-09-27T20:44:35"
+}

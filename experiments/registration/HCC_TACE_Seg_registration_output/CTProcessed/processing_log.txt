@@ -1,0 +1,318 @@
+[06:25:50] loaded 677 SeriesDir paths from metadata
+[06:25:50] processing 2 patients (region=auto) -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg
+[06:25:51]   HCC_002: region=abdomen, 2 timepoint(s)
+[06:31:10]   HCC_002/000_baseline: 2 pass(es) -> acquisition 1, aorta 332 HU, portal vein 114 HU (arterial)
+[06:31:10]   HCC_002/001_followup_1: 2 pass(es) -> acquisition 1, aorta 335 HU, portal vein 106 HU (arterial)
+[06:31:16]   HCC_002/000_baseline: Recon 2 LIVER 3 PHASE AP -> (400, 400, 272) reg=False dice=None overlap_ok=None
+[06:38:06]   HCC_002/001_followup_1: Recon 2 LIVER 3 PHASE AP -> (400, 400, 272) reg=True dice=0.9245 overlap_ok=True
+[06:38:10]   HCC_002: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_002.png
+[06:38:10]   HCC_005: region=abdomen, 2 timepoint(s)
+[06:39:13]   HCC_005/000_baseline: Recon 2 LIVER 3 PHASE AP -> (420, 420, 222) reg=False dice=None overlap_ok=None
+[06:43:40]   HCC_005/001_followup_1: Recon 3 3 PHASE LIVER ABD -> (420, 420, 222) reg=True dice=0.9203 overlap_ok=True
+[06:43:43]   HCC_005: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_005.png
+[06:43:43] wrote metadata.json (2 patients)
+[08:09:49] loaded 677 SeriesDir paths from metadata
+[08:09:49] processing 68 patients (region=auto) -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg
+[08:09:49]   HCC_001: region=abdomen, 2 timepoint(s)
+[08:10:42]   HCC_001/000_baseline: PRE LIVER -> (400, 400, 215) reg=False dice=None overlap_ok=None
+[08:18:11]   HCC_001/001_followup_1: nan -> (400, 400, 215) reg=True dice=0.8107 overlap_ok=True
+[08:18:14]   HCC_001: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_001.png
+[08:18:15]   HCC_003: region=abdomen, 2 timepoint(s)
+[08:22:17]   HCC_003/000_baseline: 2 pass(es) -> acquisition 2, aorta 158 HU, portal vein 157 HU (portal-venous/delayed)
+[08:22:17]   HCC_003/001_followup_1: 2 pass(es) -> acquisition 2, aorta 159 HU, portal vein 159 HU (portal-venous/delayed)
+[08:22:22]   HCC_003/000_baseline: Recon 2 LIVER 3 PHASE AP -> (360, 360, 238) reg=False dice=None overlap_ok=None
+[08:27:52]   HCC_003/001_followup_1: Recon 2 3 PHASE LIVER ABD -> (360, 360, 238) reg=True dice=0.9185 overlap_ok=True
+[08:27:54]   HCC_003: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_003.png
+[08:27:55]   HCC_004: region=abdomen, 2 timepoint(s)
+[08:30:39]   HCC_004/000_baseline: 1 pass(es) -> acquisition None, aorta 186 HU, portal vein 188 HU (portal-venous/delayed)
+[08:30:39]   HCC_004/001_followup_1: 2 pass(es) -> acquisition 3, aorta 181 HU, portal vein 220 HU (portal-venous/delayed)
+[08:30:42]   HCC_004/000_baseline: Recon 3 LIVER 3 PHASE AP -> (320, 320, 198) reg=False dice=None overlap_ok=None
+[08:34:37]   HCC_004/001_followup_1: Recon 2 LIVER 3 PHASE AP -> (320, 320, 198) reg=True dice=0.8756 overlap_ok=True
+[08:34:39]   HCC_004: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_004.png
+[08:34:40]   HCC_006: region=abdomen, 2 timepoint(s)
+[08:36:03]   HCC_006/000_baseline: LIVER 3 PHASE AP -> (400, 400, 272) reg=False dice=None overlap_ok=None
+[08:44:55]   HCC_006/001_followup_1: Recon 3 LIVER 3 PHASE AP -> (400, 400, 272) reg=True dice=0.8756 overlap_ok=True
+[08:44:58]   HCC_006: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_006.png
+[08:44:59]   HCC_007: region=abdomen, 2 timepoint(s)
+[08:48:27]   HCC_007/000_baseline: 2 pass(es) -> acquisition 3, aorta 149 HU, portal vein 159 HU (portal-venous/delayed)
+[08:48:27]   HCC_007/001_followup_1: 2 pass(es) -> acquisition 3, aorta 168 HU, portal vein 169 HU (portal-venous/delayed)
+[08:48:31]   HCC_007/000_baseline: Recon 2 LIVER 3 PHASE AP -> (360, 360, 188) reg=False dice=None overlap_ok=None
+[08:50:43]   HCC_007/001_followup_1: Recon 2 3 PHASE LIVER ABD -> (360, 360, 188) reg=True dice=0.9459 overlap_ok=True
+[08:50:45]   HCC_007: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_007.png
+[08:50:45]   HCC_008: region=abdomen, 2 timepoint(s)
+[08:55:22]   HCC_008/000_baseline: 3 pass(es) -> acquisition 2, aorta 192 HU, portal vein 191 HU (portal-venous/delayed)
+[08:55:22]   HCC_008/001_followup_1: 2 pass(es) -> acquisition 3, aorta 163 HU, portal vein 185 HU (portal-venous/delayed)
+[08:55:26]   HCC_008/000_baseline: 3 PHASE LIVER ABD -> (360, 360, 200) reg=False dice=None overlap_ok=None
+[08:59:54]   HCC_008/001_followup_1: Recon 2 3 PHASE LIVER ABD -> (360, 360, 200) reg=True dice=0.921 overlap_ok=True
+[08:59:56]   HCC_008: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_008.png
+[08:59:57]   HCC_009: region=abdomen, 2 timepoint(s)
+[09:00:32]   HCC_009/000_baseline: Recon 2 LIVER 3 PHASE CAP -> (380, 380, 172) reg=False dice=None overlap_ok=None
+[09:01:56]   HCC_009/001_followup_1: PRE LIVER -> (380, 380, 172) reg=True dice=0.9467 overlap_ok=True
+[09:01:58]   HCC_009: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_009.png
+[09:01:59]   HCC_010: region=abdomen, 2 timepoint(s)
+[09:04:53]   HCC_010/000_baseline: 2 pass(es) -> acquisition 3, aorta 143 HU, portal vein 168 HU (portal-venous/delayed)
+[09:04:53]   HCC_010/001_followup_1: 1 pass(es) -> acquisition None, aorta 167 HU, portal vein 202 HU (portal-venous/delayed)
+[09:04:58]   HCC_010/000_baseline: Recon 2 LIVER 3 PHASE AP -> (360, 360, 238) reg=False dice=None overlap_ok=None
+[09:08:39]   HCC_010/001_followup_1: Recon 3 LIVER 3 PHASE AP -> (360, 360, 238) reg=True dice=0.95 overlap_ok=True
+[09:08:42]   HCC_010: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_010.png
+[09:08:42]   HCC_011: region=abdomen, 2 timepoint(s)
+[09:12:30]   HCC_011/000_baseline: 3 pass(es) -> acquisition 2, aorta 202 HU, portal vein 163 HU (portal-venous/delayed)
+[09:12:30]   HCC_011/001_followup_1: 1 pass(es) -> acquisition None, aorta 222 HU, portal vein 168 HU (portal-venous/delayed)
+[09:12:34]   HCC_011/000_baseline: Recon 2 LIVER 3 PHASE AP -> (400, 400, 198) reg=False dice=None overlap_ok=None
+[09:13:51]   HCC_011/001_followup_1: Recon 3 3 PHASE LIVER ABD -> (400, 400, 198) reg=True dice=0.9495 overlap_ok=True
+[09:13:53]   HCC_011: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_011.png
+[09:13:54]   HCC_012: region=abdomen, 2 timepoint(s)
+[09:15:16]   HCC_012/000_baseline: Recon 2 PRE LIVER -> (440, 440, 228) reg=False dice=None overlap_ok=None
+[09:25:05]   HCC_012/001_followup_1: Recon 2 PRE LIVER -> (440, 440, 228) reg=True dice=0.8174 overlap_ok=True
+[09:25:08]   HCC_012: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_012.png
+[09:25:09]   HCC_013: region=abdomen, 2 timepoint(s)
+[09:26:06]   HCC_013/000_baseline: Recon 2 LIVER 3 PHASE AP -> (380, 380, 202) reg=False dice=None overlap_ok=None
+[09:27:55]   HCC_013/001_followup_1: Recon 3 LIVER 3 PHASE AP -> (380, 380, 202) reg=True dice=0.9547 overlap_ok=True
+[09:27:58]   HCC_013: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_013.png
+[09:27:59]   HCC_014: region=abdomen, 2 timepoint(s)
+[09:28:50]   HCC_014/000_baseline: Recon 2 LIVER 3 PHASE AP -> (340, 340, 158) reg=False dice=None overlap_ok=None
+[09:29:45]   HCC_014/001_followup_1: 3 PHASE LIVER ABD -> (340, 340, 158) reg=True dice=0.9144 overlap_ok=True
+[09:29:47]   HCC_014: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_014.png
+[09:29:48]   HCC_015: region=abdomen, 2 timepoint(s)
+[09:30:35]   HCC_015/000_baseline: LIVER 3 PHASE AP -> (340, 340, 155) reg=False dice=None overlap_ok=None
+[09:33:18]   HCC_015/001_followup_1: Recon 2 LIVER 3 PHASE AP -> (340, 340, 155) reg=True dice=0.9544 overlap_ok=True
+[09:33:20]   HCC_015: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_015.png
+[09:33:20]   HCC_016: region=abdomen, 2 timepoint(s)
+[09:34:28]   HCC_016/000_baseline: LIVER 3 PHASE AP -> (400, 400, 245) reg=False dice=None overlap_ok=None
+[09:36:27]   HCC_016/001_followup_1: 3 PHASE LIVER ABD -> (400, 400, 245) reg=True dice=0.9531 overlap_ok=True
+[09:36:30]   HCC_016: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_016.png
+[09:36:30]   HCC_017: region=abdomen, 2 timepoint(s)
+[09:37:18]   HCC_017/000_baseline: Recon 3 3 PHASE LIVER ABD -> (360, 360, 158) reg=False dice=None overlap_ok=None
+[09:40:14]   HCC_017/001_followup_1: Recon 3 LIVER 3 PHASE AP -> (360, 360, 158) reg=True dice=0.8708 overlap_ok=True
+[09:40:16]   HCC_017: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_017.png
+[09:40:16]   HCC_018: region=abdomen, 2 timepoint(s)
+[09:41:15]   HCC_018/000_baseline: Recon 2 LIVER 3 PHASE CAP -> (380, 380, 198) reg=False dice=None overlap_ok=None
+[09:43:10]   HCC_018/001_followup_1: Recon 2 3 PHASE LIVER ABD -> (380, 380, 198) reg=True dice=0.9213 overlap_ok=True
+[09:43:12]   HCC_018: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_018.png
+[09:43:13]   HCC_019: region=abdomen, 2 timepoint(s)
+[09:44:05]   HCC_019/000_baseline: LIVER 3 PHASE AP -> (360, 360, 168) reg=False dice=None overlap_ok=None
+[09:48:00]   HCC_019/001_followup_1: Recon 2 LIVER 3 PHASE AP -> (360, 360, 168) reg=True dice=0.9498 overlap_ok=True
+[09:48:02]   HCC_019: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_019.png
+[09:48:03]   HCC_020: region=abdomen, 2 timepoint(s)
+[09:48:59]   HCC_020/000_baseline: Recon 2 LIVER 3 PHASE CAP -> (420, 420, 208) reg=False dice=None overlap_ok=None
+[09:50:24]   HCC_020/001_followup_1: Recon 3 LIVER 3 PHASE CAP -> (420, 420, 208) reg=True dice=0.9246 overlap_ok=True
+[09:50:27]   HCC_020: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_020.png
+[09:50:27]   HCC_021: region=abdomen, 2 timepoint(s)
+[09:51:23]   HCC_021/000_baseline: LIVER 3 PHASE AP -> (320, 320, 197) reg=False dice=None overlap_ok=None
+[09:52:36]   HCC_021/001_followup_1: Recon 3 LIVER 3 PHASE CA -> (320, 320, 197) reg=True dice=0.8756 overlap_ok=True
+[09:52:38]   HCC_021: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_021.png
+[09:52:39]   HCC_022: region=abdomen, 2 timepoint(s)
+[09:53:30]   HCC_022/000_baseline: Recon 2 LIVER 3 PHASE CAP -> (360, 360, 178) reg=False dice=None overlap_ok=None
+[09:55:59]   HCC_022/001_followup_1: MI Dice 0.867 < silhouette_z 0.915; used silhouette_z
+[09:56:01]   HCC_022/001_followup_1: Recon 2 LIVER 3 PHASE AP -> (360, 360, 178) reg=True dice=0.9154 overlap_ok=True
+[09:56:03]   HCC_022: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_022.png
+[09:56:04]   HCC_023: region=abdomen, 2 timepoint(s)
+[09:57:01]   HCC_023/000_baseline: Recon 2 PRE LIVER -> (360, 360, 192) reg=False dice=None overlap_ok=None
+[10:02:00]   HCC_023/001_followup_1: Recon 3 LIVER 3 PHASE CAP -> (360, 360, 192) reg=True dice=0.9115 overlap_ok=True
+[10:02:02]   HCC_023: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_023.png
+[10:02:02]   HCC_024: region=abdomen, 2 timepoint(s)
+[10:03:08]   HCC_024/000_baseline: Recon 2 LIVER 3 PHASE AP -> (380, 380, 162) reg=False dice=None overlap_ok=None
+[10:08:10]   HCC_024/001_followup_1: MI Dice 0.886 < silhouette_z 0.907; used silhouette_z
+[10:08:13]   HCC_024/001_followup_1: 3 PHASE LIVER ABD -> (380, 380, 162) reg=True dice=0.907 overlap_ok=True
+[10:08:15]   HCC_024: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_024.png
+[10:08:16]   HCC_025: region=abdomen, 2 timepoint(s)
+[10:09:11]   HCC_025/000_baseline: Recon 3 LIVER 3 PHASE AP -> (360, 360, 188) reg=False dice=None overlap_ok=None
+[10:10:12]   HCC_025/001_followup_1: MI Dice 0.856 < centred 0.856; used centred
+[10:10:15]   HCC_025/001_followup_1: Recon 3 LIVER 3 PHASE CAP -> (360, 360, 188) reg=True dice=0.8559 overlap_ok=True
+[10:10:17]   HCC_025: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_025.png
+[10:10:18]   HCC_026: region=abdomen, 2 timepoint(s)
+[10:11:28]   HCC_026/000_baseline: Recon 2 PRE LIVER -> (360, 360, 207) reg=False dice=None overlap_ok=None
+[10:17:13]   HCC_026/001_followup_1: 3 PHASE LIVER ABD -> (360, 360, 207) reg=True dice=0.917 overlap_ok=True
+[10:17:15]   HCC_026: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_026.png
+[10:17:16]   HCC_027: region=abdomen, 2 timepoint(s)
+[10:18:13]   HCC_027/000_baseline: nan -> (380, 380, 198) reg=False dice=None overlap_ok=None
+[10:23:47]   HCC_027/001_followup_1: MI Dice 0.760 < centred 0.762; used centred
+[10:23:51]   HCC_027/001_followup_1: Recon 3 LIVER 3 PHASE CAP -> (380, 380, 198) reg=True dice=0.7622 overlap_ok=True
+[10:23:53]   HCC_027: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_027.png
+[10:23:54]   HCC_028: region=abdomen, 2 timepoint(s)
+[10:25:06]   HCC_028/000_baseline: Recon 3 LIVER 3 PHASE AP -> (400, 400, 282) reg=False dice=None overlap_ok=None
+[10:32:21]   HCC_028/001_followup_1: MI Dice 0.847 < silhouette_z 0.856; used silhouette_z
+[10:32:25]   HCC_028/001_followup_1: Recon 2 3 PHASE LIVER ABD -> (400, 400, 282) reg=True dice=0.856 overlap_ok=True
+[10:32:28]   HCC_028: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_028.png
+[10:32:29]   HCC_029: region=abdomen, 2 timepoint(s)
+[10:33:17]   HCC_029/000_baseline: Recon 3 LIVER 3 PHASE CAP -> (340, 340, 198) reg=False dice=None overlap_ok=None
+[10:38:16]   HCC_029/001_followup_1: MI Dice 0.909 < silhouette_z 0.910; used silhouette_z
+[10:38:19]   HCC_029/001_followup_1: ABD -> (340, 340, 198) reg=True dice=0.9099 overlap_ok=True
+[10:38:21]   HCC_029: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_029.png
+[10:38:22]   HCC_030: region=abdomen, 2 timepoint(s)
+[10:42:23]   HCC_030/000_baseline: 2 pass(es) -> acquisition 3, aorta 103 HU, portal vein 119 HU (portal-venous/delayed)
+[10:42:23]   HCC_030/001_followup_1: 1 pass(es) -> acquisition None, aorta 196 HU, portal vein 164 HU (portal-venous/delayed)
+[10:42:30]   HCC_030/000_baseline: Recon 2 LIVER 3 PHASE AP -> (480, 480, 222) reg=False dice=None overlap_ok=None
+[10:53:42]   HCC_030/001_followup_1: Recon 3 LIVER 3 PHASE AP -> (480, 480, 222) reg=True dice=0.8193 overlap_ok=True
+[10:53:46]   HCC_030: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_030.png
+[10:53:47]   HCC_031: region=abdomen, 2 timepoint(s)
+[10:54:57]   HCC_031/000_baseline: LIVER 3 PHASE AP -> (400, 400, 220) reg=False dice=None overlap_ok=None
+[11:02:32]   HCC_031/001_followup_1: MI Dice 0.855 < centred 0.855; used centred
+[11:02:37]   HCC_031/001_followup_1: Recon 2 PRE LIVER -> (400, 400, 220) reg=True dice=0.8551 overlap_ok=True
+[11:02:40]   HCC_031: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_031.png
+[11:02:40]   HCC_032: region=abdomen, 2 timepoint(s)
+[11:03:30]   HCC_032/000_baseline: Recon 3 LIVER 3 PHASE CAP -> (380, 380, 148) reg=False dice=None overlap_ok=None
+[11:08:05]   HCC_032/001_followup_1: Recon 3 LIVER 3 PHASE CAP -> (380, 380, 148) reg=True dice=0.8144 overlap_ok=True
+[11:08:07]   HCC_032: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_032.png
+[11:08:08]   HCC_033: region=abdomen, 2 timepoint(s)
+[11:09:03]   HCC_033/000_baseline: Recon 2 LIVER 3 PHASE CAP -> (380, 380, 182) reg=False dice=None overlap_ok=None
+[11:14:16]   HCC_033/001_followup_1: Recon 2 LIVER 3 PHASE CAP -> (380, 380, 182) reg=True dice=0.87 overlap_ok=True
+[11:14:18]   HCC_033: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_033.png
+[11:14:19]   HCC_034: region=abdomen, 2 timepoint(s)
+[11:15:14]   HCC_034/000_baseline: Recon 3 LIVER 3 PHASE AP -> (400, 400, 178) reg=False dice=None overlap_ok=None
+[11:19:25]   HCC_034/001_followup_1: Recon 3 LIVER 3 PHASE CAP -> (400, 400, 178) reg=True dice=0.8983 overlap_ok=True
+[11:19:28]   HCC_034: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_034.png
+[11:19:28]   HCC_035: region=abdomen, 2 timepoint(s)
+[11:20:42]   HCC_035/000_baseline: Recon 2 PRE LIVER -> (400, 400, 238) reg=False dice=None overlap_ok=None
+[11:23:04]   HCC_035/001_followup_1: Recon 2 PRE LIVER -> (400, 400, 238) reg=True dice=0.9418 overlap_ok=True
+[11:23:07]   HCC_035: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_035.png
+[11:23:08]   HCC_036: region=abdomen, 2 timepoint(s)
+[11:24:02]   HCC_036/000_baseline: Recon 3 LIVER 3 PHASE CAP -> (340, 340, 162) reg=False dice=None overlap_ok=None
+[11:28:03]   HCC_036/001_followup_1: Recon 2 PRE LIVER -> (340, 340, 162) reg=True dice=0.8816 overlap_ok=True
+[11:28:05]   HCC_036: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_036.png
+[11:28:06]   HCC_037: region=abdomen, 2 timepoint(s)
+[11:29:18]   HCC_037/000_baseline: Recon 3 LIVER 3 PHASE CAP -> (440, 440, 258) reg=False dice=None overlap_ok=None
+[11:36:15]   HCC_037/001_followup_1: MI Dice 0.835 < silhouette_z 0.861; used silhouette_z
+[11:36:21]   HCC_037/001_followup_1: Recon 2 PRE LIVER -> (440, 440, 258) reg=True dice=0.861 overlap_ok=True
+[11:36:25]   HCC_037: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_037.png
+[11:36:26]   HCC_038: region=abdomen, 2 timepoint(s)
+[11:37:50]   HCC_038/000_baseline: Recon 2 PRE LIVER -> (420, 420, 248) reg=False dice=None overlap_ok=None
+[11:47:22]   HCC_038/001_followup_1: 3 PHASE LIVER ABD -> (420, 420, 248) reg=True dice=0.9014 overlap_ok=True
+[11:47:26]   HCC_038: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_038.png
+[11:47:26]   HCC_039: region=abdomen, 2 timepoint(s)
+[11:48:24]   HCC_039/000_baseline: Recon 2 3 PHASE LIVER ABD -> (340, 340, 192) reg=False dice=None overlap_ok=None
+[11:53:07]   HCC_039/001_followup_1: Recon 2 3 PHASE LIVER ABD -> (340, 340, 192) reg=True dice=0.8919 overlap_ok=True
+[11:53:10]   HCC_039: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_039.png
+[11:53:10]   HCC_040: region=abdomen, 2 timepoint(s)
+[11:54:08]   HCC_040/000_baseline: Recon 2 LIVER 3 PHASE CAP -> (360, 360, 198) reg=False dice=None overlap_ok=None
+[11:55:00]   HCC_040/001_followup_1: MI Dice 0.779 < silhouette_z 0.804; used silhouette_z
+[11:55:03]   HCC_040/001_followup_1: Recon 2 LIVER 3 PHASE CAP -> (360, 360, 198) reg=True dice=0.8038 overlap_ok=True
+[11:55:05]   HCC_040: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_040.png
+[11:55:05]   HCC_041: region=abdomen, 2 timepoint(s)
+[11:56:27]   HCC_041/000_baseline: Recon 3 LIVER 3 PHASE CAP -> (380, 380, 262) reg=False dice=None overlap_ok=None
+[11:59:50]   HCC_041/001_followup_1: Recon 2 PRE LIVER -> (380, 380, 262) reg=True dice=0.9256 overlap_ok=True
+[11:59:53]   HCC_041: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_041.png
+[11:59:54]   HCC_042: region=abdomen, 2 timepoint(s)
+[12:01:06]   HCC_042/000_baseline: LIVER 3 PHASE AP -> (440, 440, 262) reg=False dice=None overlap_ok=None
+[12:09:55]   HCC_042/001_followup_1: Recon 2 PRE LIVER -> (440, 440, 262) reg=True dice=0.9125 overlap_ok=True
+[12:09:59]   HCC_042: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_042.png
+[12:10:00]   HCC_043: region=abdomen, 2 timepoint(s)
+[12:11:00]   HCC_043/000_baseline: Recon 2 PRE LIVER -> (360, 360, 212) reg=False dice=None overlap_ok=None
+[12:16:54]   HCC_043/001_followup_1: 3 PHASE LIVER ABD -> (360, 360, 212) reg=True dice=0.8162 overlap_ok=True
+[12:16:57]   HCC_043: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_043.png
+[12:16:57]   HCC_044: region=abdomen, 2 timepoint(s)
+[12:18:13]   HCC_044/000_baseline: Recon 2 PRE LIVER -> (360, 360, 252) reg=False dice=None overlap_ok=None
+[12:24:16]   HCC_044/001_followup_1: Recon 2 PRE LIVER -> (360, 360, 252) reg=True dice=0.9404 overlap_ok=True
+[12:24:19]   HCC_044: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_044.png
+[12:24:19]   HCC_045: region=abdomen, 2 timepoint(s)
+[12:25:18]   HCC_045/000_baseline: Recon 2 PRE LIVER -> (360, 360, 233) reg=False dice=None overlap_ok=None
+[12:29:53]   HCC_045/001_followup_1: Recon 2 PRE LIVER -> (360, 360, 233) reg=True dice=0.9159 overlap_ok=True
+[12:29:56]   HCC_045: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_045.png
+[12:29:56]   HCC_046: region=abdomen, 2 timepoint(s)
+[12:31:02]   HCC_046/000_baseline: Recon 2 LIVER 2 PHASE CAP -> (380, 380, 222) reg=False dice=None overlap_ok=None
+[12:33:33]   HCC_046/001_followup_1: Recon 3 2 PHASE LIVER ABD -> (380, 380, 222) reg=True dice=0.9435 overlap_ok=True
+[12:33:36]   HCC_046: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_046.png
+[12:33:36]   HCC_047: region=abdomen, 2 timepoint(s)
+[12:34:42]   HCC_047/000_baseline: Recon 3 LIVER 2PHASE CAP -> (460, 460, 248) reg=False dice=None overlap_ok=None
+[12:43:39]   HCC_047/001_followup_1: Recon 3 LIVER 3 PHASE AP -> (460, 460, 248) reg=True dice=0.876 overlap_ok=True
+[12:43:43]   HCC_047: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_047.png
+[12:43:43]   HCC_048: region=abdomen, 2 timepoint(s)
+[12:44:50]   HCC_048/000_baseline: Recon 3 LIVER 2 PHASE CAP -> (360, 360, 222) reg=False dice=None overlap_ok=None
+[12:51:02]   HCC_048/001_followup_1: Recon 2 PRE LIVER -> (360, 360, 222) reg=True dice=0.8808 overlap_ok=True
+[12:51:05]   HCC_048: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_048.png
+[12:51:06]   HCC_049: region=abdomen, 2 timepoint(s)
+[12:52:16]   HCC_049/000_baseline: Recon 2 LIVER 2 PHASE CAP -> (400, 400, 248) reg=False dice=None overlap_ok=None
+[12:58:58]   HCC_049/001_followup_1: MI Dice 0.823 < centred 0.824; used centred
+[12:59:02]   HCC_049/001_followup_1: Recon 3 LIVER 2 PHASE AP -> (400, 400, 248) reg=True dice=0.8238 overlap_ok=True
+[12:59:05]   HCC_049: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_049.png
+[12:59:06]   HCC_050: region=abdomen, 2 timepoint(s)
+[13:00:12]   HCC_050/000_baseline: Recon 3 LIVER 2PHASE CAP -> (440, 440, 228) reg=False dice=None overlap_ok=None
+[13:07:46]   HCC_050/001_followup_1: Recon 2 PRE LIVER -> (440, 440, 228) reg=True dice=0.8847 overlap_ok=True
+[13:07:49]   HCC_050: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_050.png
+[13:07:50]   HCC_051: region=abdomen, 2 timepoint(s)
+[13:08:56]   HCC_051/000_baseline: Recon 3 LIVER  2PHASE WITH CON -> (360, 360, 222) reg=False dice=None overlap_ok=None
+[13:14:03]   HCC_051/001_followup_1: Recon 3 2 PHASE LIVER ABD -> (360, 360, 222) reg=True dice=0.9211 overlap_ok=True
+[13:14:06]   HCC_051: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_051.png
+[13:14:06]   HCC_052: region=abdomen, 2 timepoint(s)
+[13:15:23]   HCC_052/000_baseline: Recon 3 LIVER 3 PHASE AP -> (420, 420, 302) reg=False dice=None overlap_ok=None
+[13:25:44]   HCC_052/001_followup_1: MI Dice 0.928 < silhouette_z 0.930; used silhouette_z
+[13:25:50]   HCC_052/001_followup_1: Recon 2 PRE LIVER -> (420, 420, 302) reg=True dice=0.9305 overlap_ok=True
+[13:25:54]   HCC_052: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_052.png
+[13:25:54]   HCC_053: region=abdomen, 2 timepoint(s)
+[13:27:12]   HCC_053/000_baseline: Recon 2 PRE LIVER -> (400, 400, 252) reg=False dice=None overlap_ok=None
+[13:35:41]   HCC_053/001_followup_1: Recon 2 PRE LIVER -> (400, 400, 252) reg=True dice=0.9199 overlap_ok=True
+[13:35:45]   HCC_053: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_053.png
+[13:35:45]   HCC_054: region=abdomen, 1 timepoint(s)
+[13:36:25]   HCC_054/000_baseline: Recon 3 LIVER 2 PHASE CAP -> (400, 400, 242) reg=False dice=None overlap_ok=None
+[13:36:27]   HCC_054: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_054.png
+[13:36:27]   HCC_055: region=abdomen, 2 timepoint(s)
+[13:37:28]   HCC_055/000_baseline: Recon 2 PRE LIVER -> (400, 400, 208) reg=False dice=None overlap_ok=None
+[13:39:27]   HCC_055/001_followup_1: Recon 2 PRE LIVER -> (400, 400, 208) reg=True dice=0.8685 overlap_ok=True
+[13:39:30]   HCC_055: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_055.png
+[13:39:30]   HCC_056: region=abdomen, 2 timepoint(s)
+[13:40:54]   HCC_056/000_baseline: Recon 2 PRE LIVER -> (420, 420, 282) reg=False dice=None overlap_ok=None
+[13:51:37]   HCC_056/001_followup_1: Recon 2 PRE LIVER -> (420, 420, 282) reg=True dice=0.904 overlap_ok=True
+[13:51:41]   HCC_056: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_056.png
+[13:51:41]   HCC_057: region=abdomen, 2 timepoint(s)
+[13:53:06]   HCC_057/000_baseline: Recon 2 PRE LIVER -> (440, 440, 278) reg=False dice=None overlap_ok=None
+[13:55:18]   HCC_057/001_followup_1: Recon 2 LIVER 2PHASE CAP -> (440, 440, 278) reg=True dice=0.9537 overlap_ok=True
+[13:55:23]   HCC_057: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_057.png
+[13:55:23]   HCC_058: region=abdomen, 2 timepoint(s)
+[13:56:42]   HCC_058/000_baseline: Recon 2 PRE LIVER -> (460, 460, 228) reg=False dice=None overlap_ok=None
+[14:08:11]   HCC_058/001_followup_1: Recon 3 LIVER 3 PHASE AP -> (460, 460, 228) reg=True dice=0.8811 overlap_ok=True
+[14:08:15]   HCC_058: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_058.png
+[14:08:15]   HCC_059: region=abdomen, 2 timepoint(s)
+[14:09:23]   HCC_059/000_baseline: Recon 3 LIVER 2PHASE CAP -> (450, 450, 242) reg=False dice=None overlap_ok=None
+[14:18:56]   HCC_059/001_followup_1: MI Dice 0.859 < silhouette_z 0.870; used silhouette_z
+[14:19:01]   HCC_059/001_followup_1: Recon 2 LIVER 3 PHASE AP -> (450, 450, 242) reg=True dice=0.8697 overlap_ok=True
+[14:19:04]   HCC_059: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_059.png
+[14:19:05]   HCC_060: region=abdomen, 2 timepoint(s)
+[14:20:15]   HCC_060/000_baseline: Recon 2 LIVER 2PHASE CAP -> (420, 420, 228) reg=False dice=None overlap_ok=None
+[14:23:19]   HCC_060/001_followup_1: Recon 3 LIVER 2PHASE CAP -> (420, 420, 228) reg=True dice=0.8877 overlap_ok=True
+[14:23:22]   HCC_060: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_060.png
+[14:23:23]   HCC_061: region=abdomen, 2 timepoint(s)
+[14:24:42]   HCC_061/000_baseline: Recon 2 PRE LIVER -> (440, 440, 242) reg=False dice=None overlap_ok=None
+[14:35:36]   HCC_061/001_followup_1: Recon 2 PRE LIVER -> (440, 440, 242) reg=True dice=0.9284 overlap_ok=True
+[14:35:40]   HCC_061: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_061.png
+[14:35:40]   HCC_062: region=abdomen, 2 timepoint(s)
+[14:36:55]   HCC_062/000_baseline: Recon 2 LIVER 2 PHASE CAP -> (360, 360, 278) reg=False dice=None overlap_ok=None
+[14:38:53]   HCC_062/001_followup_1: MI Dice 0.877 < centred 0.878; used centred
+[14:38:57]   HCC_062/001_followup_1: Recon 2 2 PHASE LIVER ABD -> (360, 360, 278) reg=True dice=0.878 overlap_ok=True
+[14:39:00]   HCC_062: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_062.png
+[14:39:00]   HCC_063: region=abdomen, 2 timepoint(s)
+[14:40:08]   HCC_063/000_baseline: Recon 3 LIVER 2 PHASE CAP -> (440, 440, 248) reg=False dice=None overlap_ok=None
+[14:48:56]   HCC_063/001_followup_1: MI Dice 0.884 < silhouette_z 0.886; used silhouette_z
+[14:49:01]   HCC_063/001_followup_1: Recon 2 PRE LIVER -> (440, 440, 248) reg=True dice=0.8862 overlap_ok=True
+[14:49:05]   HCC_063: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_063.png
+[14:49:05]   HCC_064: region=abdomen, 2 timepoint(s)
+[14:50:28]   HCC_064/000_baseline: Recon 3 LIVER 2 PHASE CAP -> (420, 420, 272) reg=False dice=None overlap_ok=None
+[15:00:58]   HCC_064/001_followup_1: Recon 2 LIVER 2 PHASE CAP -> (420, 420, 272) reg=True dice=0.8418 overlap_ok=True
+[15:01:02]   HCC_064: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_064.png
+[15:01:03]   HCC_065: region=abdomen, 2 timepoint(s)
+[15:02:38]   HCC_065/000_baseline: VENOUS -> (380, 380, 354) reg=False dice=None overlap_ok=None
+[15:05:31]   HCC_065/001_followup_1: MI Dice 0.936 < silhouette_z 0.940; used silhouette_z
+[15:05:37]   HCC_065/001_followup_1: Recon 3 LIVER 2 PHASE CAP -> (380, 380, 354) reg=True dice=0.9395 overlap_ok=True
+[15:05:41]   HCC_065: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_065.png
+[15:05:42]   HCC_066: region=abdomen, 2 timepoint(s)
+[15:06:59]   HCC_066/000_baseline: Recon 2 PRE LIVER -> (340, 340, 268) reg=False dice=None overlap_ok=None
+[15:13:34]   HCC_066/001_followup_1: Recon 3 LIVER 2 PHASE AP -> (340, 340, 268) reg=True dice=0.9189 overlap_ok=True
+[15:13:37]   HCC_066: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_066.png
+[15:13:38]   HCC_067: region=abdomen, 2 timepoint(s)
+[15:14:37]   HCC_067/000_baseline: Recon 2 PRE LIVER -> (360, 360, 198) reg=False dice=None overlap_ok=None
+[15:20:04]   HCC_067/001_followup_1: Recon 2 PRE LIVER -> (360, 360, 198) reg=True dice=0.8721 overlap_ok=True
+[15:20:06]   HCC_067: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_067.png
+[15:20:06]   HCC_068: region=abdomen, 2 timepoint(s)
+[15:24:38]   HCC_068/000_baseline: 1 pass(es) -> acquisition None, aorta 275 HU, portal vein 186 HU (arterial)
+[15:24:38]   HCC_068/001_followup_1: 2 pass(es) -> acquisition 2, aorta 214 HU, portal vein 261 HU (portal-venous/delayed)
+[15:24:45]   HCC_068/000_baseline: 2.5 SOFT -> (400, 400, 302) reg=False dice=None overlap_ok=None
+[15:29:53]   HCC_068/001_followup_1: 2.5 STANDARD -> (400, 400, 302) reg=True dice=0.9448 overlap_ok=True
+[15:29:57]   HCC_068: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_068.png
+[15:29:57]   HCC_069: region=abdomen, 2 timepoint(s)
+[15:31:27]   HCC_069/000_baseline: Recon 2 PRE LIVER -> (440, 440, 282) reg=False dice=None overlap_ok=None
+[15:43:51]   HCC_069/001_followup_1: Recon 2 PRE LIVER -> (440, 440, 282) reg=True dice=0.9064 overlap_ok=True
+[15:43:56]   HCC_069: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_069.png
+[15:43:56]   HCC_070: region=abdomen, 2 timepoint(s)
+[15:45:00]   HCC_070/000_baseline: Recon 3 LIVER 2 PHASE CAP -> (400, 400, 192) reg=False dice=None overlap_ok=None
+[15:52:00]   HCC_070/001_followup_1: Recon 2 PRE LIVER -> (400, 400, 192) reg=True dice=0.8764 overlap_ok=True
+[15:52:02]   HCC_070: montage -> /teamspace/studios/this_studio/hope_data/CTProcessed/HCC-TACE-Seg/visualization/HCC_070.png
+[15:52:02] wrote metadata_full70.json (68 patients)

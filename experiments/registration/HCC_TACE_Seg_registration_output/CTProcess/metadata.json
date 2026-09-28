@@ -1,0 +1,178 @@
+{
+  "dataset": "HCC-TACE-Seg",
+  "anchor_organ": [
+    5
+  ],
+  "processed_in": "/teamspace/studios/this_studio/hope_data/CTProcessed",
+  "registration": "ANTs SyNRA on 2mm signed-distance maps of the SHARED organ set (union channel + per-organ channels for the largest shared organs); mean-per-organ-Dice gated; transform persisted under xfm/ and applied to full-res CT and masks",
+  "intensity_matching": "organ-anchored monotone HU remap on non-lesion tissue (follow-up -> baseline)",
+  "standard": {
+    "orientation": "RAS+",
+    "spacing_mm": [
+      1,
+      1,
+      1
+    ],
+    "dtype": "float32",
+    "values": "HU"
+  },
+  "patients": {
+    "HCC_002": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 12,
+          "wdice_rigid": 0.6124,
+          "wdice_deformed": 0.7669,
+          "gradncc_rigid": 0.1954,
+          "gradncc_deformed": 0.2791,
+          "psnr_before_db": 11.5526,
+          "psnr_after_db": 11.8023,
+          "per_organ_dice": {
+            "liver": [
+              0.8846,
+              0.9434
+            ],
+            "spleen": [
+              0.7291,
+              0.8842
+            ],
+            "kidney_l": [
+              0.7309,
+              0.9128
+            ],
+            "kidney_r": [
+              0.4752,
+              0.7845
+            ],
+            "aorta": [
+              0.6497,
+              0.7123
+            ],
+            "lung_ml_r": [
+              0.5661,
+              0.6998
+            ],
+            "lung_ul_l": [
+              0.4487,
+              0.7639
+            ],
+            "pancreas": [
+              0.6211,
+              0.7726
+            ],
+            "ivc": [
+              0.5752,
+              0.6036
+            ],
+            "gallbladder": [
+              0.4747,
+              0.7576
+            ],
+            "adrenal_l": [
+              0.2784,
+              0.3647
+            ],
+            "adrenal_r": [
+              0.2622,
+              0.3196
+            ]
+          },
+          "centroid_shift_mm": 9.9393,
+          "healthy_resid_med_hu": 25.0188,
+          "flags": [],
+          "intensity_matched": true
+        }
+      ]
+    },
+    "HCC_005": {
+      "anchor": "5",
+      "timepoints": [
+        {
+          "stage": "000_baseline",
+          "role": "baseline",
+          "anchor": "5"
+        },
+        {
+          "stage": "001_followup_1",
+          "role": "followup",
+          "shared_organs": 13,
+          "wdice_rigid": 0.6649,
+          "wdice_deformed": 0.7314,
+          "gradncc_rigid": 0.1935,
+          "gradncc_deformed": 0.2418,
+          "psnr_before_db": 12.2105,
+          "psnr_after_db": 12.1916,
+          "per_organ_dice": {
+            "liver": [
+              0.7808,
+              0.9109
+            ],
+            "spleen": [
+              0.8158,
+              0.868
+            ],
+            "lung_ll_r": [
+              0.681,
+              0.8676
+            ],
+            "lung_ll_l": [
+              0.9104,
+              0.8581
+            ],
+            "lung_ml_r": [
+              0.5523,
+              0.4372
+            ],
+            "kidney_r": [
+              0.6665,
+              0.7841
+            ],
+            "kidney_l": [
+              0.6565,
+              0.7682
+            ],
+            "aorta": [
+              0.6994,
+              0.7362
+            ],
+            "pancreas": [
+              0.5281,
+              0.523
+            ],
+            "ivc": [
+              0.5518,
+              0.6279
+            ],
+            "portal_splenic_vein": [
+              0.2,
+              0.3792
+            ],
+            "adrenal_r": [
+              0.204,
+              0.7093
+            ],
+            "adrenal_l": [
+              0.2803,
+              0.2481
+            ]
+          },
+          "centroid_shift_mm": 9.7017,
+          "healthy_resid_med_hu": 38.2933,
+          "flags": [
+            "NO_COLOR"
+          ],
+          "intensity_matched": true
+        }
+      ]
+    }
+  },
+  "generated": "2026-09-27T06:55:41"
+}

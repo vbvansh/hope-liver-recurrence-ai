@@ -1,0 +1,144 @@
+[06:47:47] === HCC-TACE-Seg: 2 patients (>=2 tp), anchor=[5] -> /teamspace/studios/this_studio/hope_data/CTProcess/HCC-TACE-Seg
+[06:47:47] [1/2] HCC_002
+[06:52:06]   HCC_002/001_followup_1: shared=12 organs  wDice 0.612->0.767  gradNCC 0.195->0.279  PSNR 11.6->11.8dB  (COM 10mm)  med|Δ|=25.0HU
+[06:52:16] [2/2] HCC_005
+[06:55:32]   HCC_005/001_followup_1: shared=13 organs  wDice 0.665->0.731  gradNCC 0.193->0.242  PSNR 12.2->12.2dB  (COM 10mm)  med|Δ|=38.3HU  [NO_COLOR]
+[06:55:41] wrote metadata.json (2 new patients)
+[17:29:08] === HCC-TACE-Seg: 69 patients (>=2 tp), anchor=[5] -> /teamspace/studios/this_studio/hope_data/CTProcess/HCC-TACE-Seg
+[17:29:08] [1/69] HCC_001
+[17:32:01]   HCC_001/001_followup_1: shared=11 organs  wDice 0.376->0.648  gradNCC 0.074->0.182  PSNR 10.4->12.8dB  (COM 23mm)  med|Δ|=33.3HU
+[17:32:08] [2/69] HCC_002: already done, skip
+[17:32:08] [3/69] HCC_003
+[17:34:36]   HCC_003/001_followup_1: shared=13 organs  wDice 0.673->0.731  gradNCC 0.185->0.304  PSNR 12.2->13.1dB  (COM 8mm)  med|Δ|=25.4HU  [NO_COLOR]
+[17:34:43] [4/69] HCC_004
+[17:36:29]   HCC_004/001_followup_1: shared=11 organs  wDice 0.469->0.635  gradNCC 0.113->0.224  PSNR 10.4->11.5dB  (COM 16mm)  med|Δ|=42.1HU  [NO_COLOR]
+[17:36:33] [5/69] HCC_005: already done, skip
+[17:36:33] [6/69] HCC_006
+[17:40:15]   HCC_006/001_followup_1: shared=15 organs  wDice 0.592->0.709  gradNCC 0.185->0.251  PSNR 11.2->12.4dB  (COM 16mm)  med|Δ|=36.9HU
+[17:40:24] [7/69] HCC_007
+[17:42:25]   HCC_007/001_followup_1: shared=14 organs  wDice 0.659->0.700  gradNCC 0.193->0.294  PSNR 12.5->13.4dB  (COM 5mm)  med|Δ|=26.2HU  [NO_COLOR]
+[17:42:30] [8/69] HCC_008
+[17:44:39]   HCC_008/001_followup_1: shared=11 organs  wDice 0.407->0.781  gradNCC 0.122->0.253  PSNR 11.8->12.8dB  (COM 20mm)  med|Δ|=26.0HU
+[17:44:45] [9/69] HCC_009
+[17:47:06]   HCC_009/001_followup_1: shared=14 organs  wDice 0.819->0.875  gradNCC 0.297->0.444  PSNR 12.3->13.5dB  (COM 6mm)  med|Δ|=38.5HU  [NO_COLOR]
+[17:47:12] [10/69] HCC_010
+[17:49:48]   HCC_010/001_followup_1: shared=14 organs  wDice 0.678->0.849  gradNCC 0.277->0.430  PSNR 13.2->15.1dB  (COM 5mm)  med|Δ|=28.2HU
+[17:49:55] [11/69] HCC_011
+[17:52:45]   HCC_011/001_followup_1: shared=14 organs  wDice 0.803->0.814  gradNCC 0.369->0.470  PSNR 13.1->13.1dB  (COM 2mm)  med|Δ|=26.6HU  [KEPT_RIGID,NO_COLOR]
+[17:52:52] [12/69] HCC_012
+[17:55:55]   HCC_012/001_followup_1: shared=12 organs  wDice 0.191->0.515  gradNCC 0.085->0.171  PSNR 12.8->13.4dB  (COM 31mm)  med|Δ|=29.5HU  [NO_COLOR]
+[17:56:04] [13/69] HCC_013
+[17:58:10]   HCC_013/001_followup_1: shared=13 organs  wDice 0.801->0.860  gradNCC 0.483->0.258  PSNR 15.2->15.2dB  (COM 8mm)  med|Δ|=26.3HU  [NCC_REJECT,NO_COLOR]
+[17:58:16] [14/69] HCC_014
+[17:59:39]   HCC_014/001_followup_1: shared=14 organs  wDice 0.808->0.859  gradNCC 0.346->0.464  PSNR 13.2->14.5dB  (COM 2mm)  med|Δ|=46.0HU
+[17:59:43] [15/69] HCC_015
+[18:01:06]   HCC_015/001_followup_1: shared=13 organs  wDice 0.738->0.822  gradNCC 0.329->0.418  PSNR 13.1->13.5dB  (COM 5mm)  med|Δ|=100.0HU  [NO_COLOR]
+[18:01:10] [16/69] HCC_016
+[18:04:40]   HCC_016/001_followup_1: shared=16 organs  wDice 0.827->0.840  gradNCC 0.386->0.379  PSNR 15.6->15.6dB  (COM 2mm)  med|Δ|=27.9HU  [KEPT_RIGID,NO_COLOR]
+[18:04:48] [17/69] HCC_017
+[18:06:14]   HCC_017/001_followup_1: shared=10 organs  wDice 0.433->0.734  gradNCC 0.115->0.286  PSNR 10.5->12.3dB  (COM 26mm)  med|Δ|=28.6HU  [NO_COLOR]
+[18:06:19] [18/69] HCC_018
+[18:08:20]   HCC_018/001_followup_1: shared=14 organs  wDice 0.664->0.705  gradNCC 0.188->0.261  PSNR 11.9->12.1dB  (COM 6mm)  med|Δ|=23.6HU  [NO_COLOR]
+[18:08:26] [19/69] HCC_019
+[18:10:24]   HCC_019/001_followup_1: shared=12 organs  wDice 0.771->0.876  gradNCC 0.255->0.398  PSNR 12.2->13.8dB  (COM 5mm)  med|Δ|=23.5HU
+[18:10:29] [20/69] HCC_020
+[18:13:32]   HCC_020/001_followup_1: shared=13 organs  wDice 0.803->0.875  gradNCC 0.416->0.416  PSNR 14.4->14.2dB  (COM 9mm)  med|Δ|=53.7HU  [REVERT_RAW]
+[18:13:40] [21/69] HCC_021
+[18:15:16]   HCC_021/001_followup_1: shared=14 organs  wDice 0.550->0.751  gradNCC 0.200->0.424  PSNR 11.6->13.2dB  (COM 9mm)  med|Δ|=26.7HU
+[18:15:21] [22/69] HCC_022
+[18:17:00]   HCC_022/001_followup_1: shared=11 organs  wDice 0.319->0.639  gradNCC 0.063->0.167  PSNR 10.1->11.1dB  (COM 19mm)  med|Δ|=37.8HU  [NO_COLOR]
+[18:17:05] [23/69] HCC_023
+[18:19:00]   HCC_023/001_followup_1: shared=14 organs  wDice 0.649->0.757  gradNCC 0.187->0.291  PSNR 11.2->14.7dB  (COM 4mm)  med|Δ|=30.2HU
+[18:19:05] [24/69] HCC_024
+[18:20:49]   HCC_024/001_followup_1: shared=15 organs  wDice 0.571->0.748  gradNCC 0.117->0.258  PSNR 10.8->11.9dB  (COM 14mm)  med|Δ|=51.0HU
+[18:20:54] [25/69] HCC_025
+[18:22:38]   HCC_025/001_followup_1: shared=13 organs  wDice 0.313->0.751  gradNCC 0.038->0.296  PSNR 9.5->12.4dB  (COM 28mm)  med|Δ|=30.1HU  [NO_COLOR]
+[18:22:44] [26/69] HCC_026
+[18:24:49]   HCC_026/001_followup_1: shared=13 organs  wDice 0.762->0.775  gradNCC 0.253->0.295  PSNR 12.3->12.2dB  (COM 8mm)  med|Δ|=27.3HU  [KEPT_RIGID]
+[18:24:55] [27/69] HCC_027
+[18:27:09]   HCC_027/001_followup_1: shared=13 organs  wDice 0.206->0.676  gradNCC 0.073->0.211  PSNR 9.0->11.3dB  (COM 22mm)  med|Δ|=36.8HU
+[18:27:15] [28/69] HCC_028
+[18:31:33]   HCC_028/001_followup_1: shared=14 organs  wDice 0.328->0.811  gradNCC 0.061->0.399  PSNR 10.1->14.2dB  (COM 29mm)  med|Δ|=34.0HU  [NO_COLOR]
+[18:31:43] [29/69] HCC_029
+[18:33:33]   HCC_029/001_followup_1: shared=12 organs  wDice 0.615->0.830  gradNCC 0.184->0.369  PSNR 11.6->14.3dB  (COM 10mm)  med|Δ|=25.7HU  [NO_COLOR]
+[18:33:38] [30/69] HCC_030
+[18:38:19]   HCC_030/001_followup_1: shared=16 organs  wDice 0.725->0.891  gradNCC 0.218->0.540  PSNR 9.8->15.7dB  (COM 42mm)  med|Δ|=17.7HU
+[18:38:30] [31/69] HCC_031
+[18:41:02]   HCC_031/001_followup_1: shared=13 organs  wDice 0.354->0.765  gradNCC 0.070->0.225  PSNR 9.6->12.1dB  (COM 21mm)  med|Δ|=71.5HU  [NO_COLOR]
+[18:41:09] [32/69] HCC_032
+[18:42:34]   HCC_032/001_followup_1: shared=9 organs  wDice 0.153->0.673  gradNCC 0.032->0.302  PSNR 9.9->13.1dB  (COM 36mm)  med|Δ|=30.5HU  [NO_COLOR]
+[18:42:39] [33/69] HCC_033
+[18:44:32]   HCC_033/001_followup_1: shared=15 organs  wDice 0.394->0.838  gradNCC 0.099->0.462  PSNR 10.8->14.2dB  (COM 21mm)  med|Δ|=28.5HU  [NO_COLOR]
+[18:44:38] [34/69] HCC_034
+[18:46:56]   HCC_034/001_followup_1: shared=14 organs  wDice 0.650->0.804  gradNCC 0.179->0.404  PSNR 12.3->13.9dB  (COM 5mm)  med|Δ|=26.5HU
+[18:47:02] [35/69] HCC_035
+[18:50:22]   HCC_035/001_followup_1: shared=16 organs  wDice 0.781->0.848  gradNCC 0.419->0.448  PSNR 14.5->14.5dB  (COM 6mm)  med|Δ|=19.4HU
+[18:50:31] [36/69] HCC_036
+[18:51:58]   HCC_036/001_followup_1: shared=11 organs  wDice 0.499->0.643  gradNCC 0.135->0.235  PSNR 10.6->11.1dB  (COM 17mm)  med|Δ|=99.9HU  [NO_COLOR]
+[18:52:02] [37/69] HCC_037
+[18:55:59]   HCC_037/001_followup_1: shared=10 organs  wDice 0.265->0.655  gradNCC 0.072->0.173  PSNR 10.6->12.6dB  (COM 27mm)  med|Δ|=64.4HU  [NO_COLOR]
+[18:56:10] [38/69] HCC_038
+[18:59:42]   HCC_038/001_followup_1: shared=11 organs  wDice 0.386->0.704  gradNCC 0.096->0.174  PSNR 12.1->13.5dB  (COM 35mm)  med|Δ|=22.1HU
+[18:59:51] [39/69] HCC_039
+[19:01:39]   HCC_039/001_followup_1: shared=10 organs  wDice 0.410->0.722  gradNCC 0.085->0.242  PSNR 10.6->12.5dB  (COM 16mm)  med|Δ|=25.3HU
+[19:01:44] [40/69] HCC_040
+[19:03:47]   HCC_040/001_followup_1: shared=12 organs  wDice 0.309->0.703  gradNCC 0.095->0.259  PSNR 9.8->11.0dB  (COM 23mm)  med|Δ|=34.3HU
+[19:03:52] [41/69] HCC_041
+[19:07:35]   HCC_041/001_followup_1: shared=12 organs  wDice 0.651->0.784  gradNCC 0.307->0.307  PSNR 12.1->12.2dB  (COM 8mm)  med|Δ|=37.4HU  [NO_COLOR,REVERT_RAW]
+[19:07:43] [42/69] HCC_042
+[19:11:44]   HCC_042/001_followup_1: shared=11 organs  wDice 0.420->0.767  gradNCC 0.125->0.345  PSNR 12.2->14.0dB  (COM 24mm)  med|Δ|=35.8HU  [NO_COLOR]
+[19:11:54] [43/69] HCC_043
+[19:14:02]   HCC_043/001_followup_1: shared=7 organs  wDice 0.439->0.686  gradNCC -0.021->0.132  PSNR 9.9->11.1dB  (COM 23mm)  med|Δ|=41.6HU
+[19:14:08] [44/69] HCC_044
+[19:16:40]   HCC_044/001_followup_1: shared=15 organs  wDice 0.766->0.819  gradNCC 0.435->0.424  PSNR 14.3->14.7dB  (COM 3mm)  med|Δ|=14.3HU
+[19:16:47] [45/69] HCC_045
+[19:19:20]   HCC_045/001_followup_1: shared=13 organs  wDice 0.555->0.735  gradNCC 0.194->0.234  PSNR 11.9->12.4dB  (COM 6mm)  med|Δ|=17.9HU
+[19:19:27] [46/69] HCC_046
+[19:21:43]   HCC_046/001_followup_1: shared=14 organs  wDice 0.733->0.764  gradNCC 0.443->0.385  PSNR 12.5->12.2dB  (COM 6mm)  med|Δ|=26.9HU  [NCC_REJECT]
+[19:21:50] [47/69] HCC_047
+[19:25:33]   HCC_047/001_followup_1: shared=14 organs  wDice 0.668->0.786  gradNCC 0.181->0.432  PSNR 11.7->13.2dB  (COM 11mm)  med|Δ|=24.2HU  [NO_COLOR]
+[19:25:43] [48/69] HCC_048
+[19:27:49]   HCC_048/001_followup_1: shared=11 organs  wDice 0.466->0.820  gradNCC 0.097->0.394  PSNR 10.3->13.2dB  (COM 17mm)  med|Δ|=66.0HU  [NO_COLOR]
+[19:27:55] [49/69] HCC_049
+[19:30:46]   HCC_049/001_followup_1: shared=12 organs  wDice 0.185->0.697  gradNCC 0.061->0.239  PSNR 10.3->13.6dB  (COM 31mm)  med|Δ|=51.2HU  [NO_COLOR]
+[19:30:55] [50/69] HCC_050
+[19:34:14]   HCC_050/001_followup_1: shared=13 organs  wDice 0.490->0.639  gradNCC 0.107->0.167  PSNR 12.0->12.5dB  (COM 10mm)  med|Δ|=52.6HU  [NO_COLOR]
+[19:34:24] [51/69] HCC_051
+[19:36:27]   HCC_051/001_followup_1: shared=14 organs  wDice 0.661->0.815  gradNCC 0.174->0.289  PSNR 12.3->13.3dB  (COM 6mm)  med|Δ|=32.2HU
+[19:36:33] [52/69] HCC_052
+[19:40:57]   HCC_052/001_followup_1: shared=11 organs  wDice 0.619->0.875  gradNCC 0.200->0.352  PSNR 13.5->15.5dB  (COM 14mm)  med|Δ|=39.7HU  [NO_COLOR]
+[19:41:08] [53/69] HCC_053
+[19:44:12]   HCC_053/001_followup_1: shared=15 organs  wDice 0.568->0.831  gradNCC 0.232->0.367  PSNR 12.9->14.9dB  (COM 10mm)  med|Δ|=12.0HU
+[19:44:21] [54/69] HCC_055
+[19:46:50]   HCC_055/001_followup_1: shared=14 organs  wDice 0.471->0.666  gradNCC 0.106->0.207  PSNR 12.2->13.7dB  (COM 13mm)  med|Δ|=19.9HU
+[19:46:57] [55/69] HCC_056
+[19:51:02]   HCC_056/001_followup_1: shared=16 organs  wDice 0.468->0.746  gradNCC 0.160->0.250  PSNR 12.1->14.2dB  (COM 14mm)  med|Δ|=18.9HU
+[19:51:13] [56/69] HCC_057
+[19:55:36]   HCC_057/001_followup_1: shared=14 organs  wDice 0.687->0.722  gradNCC 0.186->0.231  PSNR 13.3->13.6dB  (COM 11mm)  med|Δ|=47.8HU  [NO_COLOR]
+[19:55:47] [57/69] HCC_058
+[19:59:54]   HCC_058/001_followup_1: shared=13 organs  wDice 0.300->0.819  gradNCC 0.057->0.299  PSNR 11.0->14.1dB  (COM 24mm)  med|Δ|=18.6HU
+[20:00:04] [58/69] HCC_059
+[20:04:30]   HCC_059/001_followup_1: shared=12 organs  wDice 0.457->0.843  gradNCC 0.113->0.312  PSNR 10.0->12.3dB  (COM 11mm)  med|Δ|=61.0HU  [NO_COLOR]
+[20:04:41] [59/69] HCC_060
+[20:07:54]   HCC_060/001_followup_1: shared=13 organs  wDice 0.337->0.776  gradNCC 0.088->0.356  PSNR 11.6->14.9dB  (COM 25mm)  med|Δ|=46.1HU  [NO_COLOR]
+[20:08:03] [60/69] HCC_061
+[20:11:57]   HCC_061/001_followup_1: shared=15 organs  wDice 0.541->0.711  gradNCC 0.174->0.284  PSNR 13.0->13.9dB  (COM 10mm)  med|Δ|=19.2HU
+[20:12:07] [61/69] HCC_062
+[20:14:56]   HCC_062/001_followup_1: shared=12 organs  wDice 0.282->0.682  gradNCC 0.106->0.273  PSNR 10.3->11.4dB  (COM 18mm)  med|Δ|=30.6HU  [NO_COLOR]
+[20:15:04] [62/69] HCC_063
+[20:18:59]   HCC_063/001_followup_1: shared=11 organs  wDice 0.624->0.750  gradNCC 0.103->0.228  PSNR 12.8->12.7dB  (COM 13mm)  med|Δ|=65.0HU  [NO_COLOR]
+[20:19:09] [63/69] HCC_064
+[20:23:07]   HCC_064/001_followup_1: shared=13 organs  wDice 0.454->0.759  gradNCC 0.136->0.323  PSNR 11.6->13.5dB  (COM 15mm)  med|Δ|=22.0HU
+[20:23:17] [64/69] HCC_065
+[20:27:26]   HCC_065/001_followup_1: shared=12 organs  wDice 0.726->0.839  gradNCC 0.306->0.543  PSNR 15.4->17.6dB  (COM 5mm)  med|Δ|=15.5HU  [NO_COLOR]
+[20:27:37] [65/69] HCC_066
+[20:30:12]   HCC_066/001_followup_1: shared=11 organs  wDice 0.724->0.773  gradNCC 0.257->0.258  PSNR 12.8->14.5dB  (COM 5mm)  med|Δ|=27.0HU
+[20:30:18] [66/69] HCC_067
+[20:32:22]   HCC_067/001_followup_1: shared=13 organs  wDice 0.328->0.542  gradNCC 0.046->0.159  PSNR 12.2->12.9dB  (COM 20mm)  med|Δ|=22.4HU
+[20:32:28] [67/69] HCC_068
+[20:37:02]   HCC_068/001_followup_1: shared=15 organs  wDice 0.638->0.878  gradNCC 0.149->0.451  PSNR 11.2->13.6dB  (COM 14mm)  med|Δ|=43.7HU  [NO_COLOR]
+[20:37:12] [68/69] HCC_069
+[20:41:48]   HCC_069/001_followup_1: shared=13 organs  wDice 0.717->0.849  gradNCC 0.180->0.482  PSNR 13.0->13.7dB  (COM 9mm)  med|Δ|=14.0HU
+[20:41:59] [69/69] HCC_070
+[20:44:28]   HCC_070/001_followup_1: shared=10 organs  wDice 0.550->0.706  gradNCC 0.175->0.277  PSNR 11.2->11.5dB  (COM 5mm)  med|Δ|=44.0HU
+[20:44:35] wrote metadata_full70.json (67 new patients)
