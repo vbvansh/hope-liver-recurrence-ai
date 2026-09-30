@@ -1,0 +1,115 @@
+patient,stage,phase_pair,shared_organs,organ_overlap_rigid,organ_overlap_bending,organ_overlap_delivered,edge_match_rigid,edge_match_after,psnr_before_db,psnr_after_db,organ_shift_mm,healthy_residual_hu,flags
+2,001_followup_1,no dye->arterial,16,0.913,0.94,0.94,0.618,0.767,16.6,17.3,2,13.9,
+2,002_followup_2,no dye->portal,15,0.718,0.913,0.913,0.256,0.769,13.4,18.7,7,14.1,
+2,003_followup_3,no dye->delayed,16,0.87,0.934,0.934,0.582,0.822,16.5,19.7,3,12.5,
+3,001_followup_1,no dye->arterial,13,0.864,0.902,0.864,0.301,0.301,15.0,15.0,2,44.1,REVERT_RAW
+3,002_followup_2,no dye->portal,13,0.854,0.851,0.854,0.302,0.283,15.0,15.5,1,37.3,KEPT_RIGID
+3,003_followup_3,no dye->delayed,13,0.849,0.912,0.849,0.249,0.249,14.8,14.7,4,43.3,REVERT_RAW
+5,001_followup_1,arterial->portal,15,0.879,0.939,0.939,0.439,0.696,16.6,17.3,3,19.0,
+5,002_followup_2,arterial->delayed,15,0.766,0.916,0.916,0.324,0.623,14.6,17.2,6,32.0,NO_COLOR
+10,001_followup_1,no dye->arterial,16,0.879,0.918,0.918,0.455,0.671,15.5,17.5,1,14.9,
+10,002_followup_2,no dye->portal,16,0.875,0.923,0.923,0.461,0.754,15.4,18.5,2,14.7,
+10,003_followup_3,no dye->delayed,15,0.875,0.906,0.875,0.608,0.542,17.2,18.8,1,14.2,NCC_REJECT
+13,001_followup_1,no dye->arterial,15,0.843,0.897,0.843,0.477,0.454,19.7,19.7,2,24.9,NCC_REJECT NO_COLOR
+13,002_followup_2,no dye->portal,15,0.859,0.892,0.859,0.516,0.484,19.3,20.6,1,16.2,NCC_REJECT
+13,003_followup_3,no dye->delayed,15,0.825,0.899,0.899,0.369,0.504,17.5,17.2,1,32.3,NO_COLOR
+14,001_followup_1,no dye->arterial,16,0.919,0.94,0.94,0.634,0.725,19.8,20.0,0,14.4,
+14,002_followup_2,no dye->portal,16,0.859,0.885,0.885,0.557,0.586,18.6,18.7,2,14.8,
+15,001_followup_1,no dye->arterial,14,0.925,0.93,0.925,0.568,0.66,20.0,20.5,3,15.8,KEPT_RIGID
+15,002_followup_2,no dye->portal,14,0.901,0.931,0.931,0.531,0.655,19.1,19.8,3,14.9,
+15,003_followup_3,no dye->delayed,13,0.814,0.888,0.814,0.429,0.429,17.9,17.7,5,28.0,REVERT_RAW
+16,001_followup_1,no dye->arterial,16,0.947,0.942,0.947,0.644,0.696,20.0,20.2,1,17.6,KEPT_RIGID
+16,002_followup_2,no dye->portal,16,0.899,0.935,0.935,0.562,0.711,17.9,18.9,2,16.7,
+18,001_followup_1,no dye->arterial,15,0.918,0.939,0.918,0.519,0.519,19.2,19.2,1,26.4,NO_COLOR REVERT_RAW
+18,002_followup_2,no dye->portal,14,0.846,0.931,0.931,0.38,0.672,17.0,18.4,4,14.3,
+18,003_followup_3,no dye->delayed,14,0.861,0.896,0.861,0.633,0.448,19.1,19.1,3,48.4,NCC_REJECT NO_COLOR
+19,001_followup_1,no dye->arterial,15,0.917,0.934,0.917,0.524,0.695,18.8,18.8,1,24.6,KEPT_RIGID NO_COLOR
+19,002_followup_2,no dye->portal,15,0.884,0.936,0.936,0.5,0.722,18.1,18.4,4,36.9,NO_COLOR
+19,003_followup_3,no dye->delayed,15,0.895,0.94,0.895,0.5,0.5,18.8,18.8,3,35.4,NO_COLOR REVERT_RAW
+20,001_followup_1,no dye->arterial,15,0.671,0.788,0.788,0.278,0.313,13.5,14.9,9,17.4,
+20,002_followup_2,no dye->portal,12,0.6,0.862,0.862,0.168,0.418,13.5,13.6,11,14.7,
+20,003_followup_3,no dye->delayed,12,0.729,0.863,0.863,0.204,0.412,11.4,14.6,76,14.6,
+21,001_followup_1,no dye->arterial,16,0.807,0.928,0.807,0.568,0.435,17.4,17.4,4,28.8,NCC_REJECT NO_COLOR
+21,002_followup_2,no dye->portal,16,0.906,0.931,0.931,0.661,0.722,19.7,19.6,1,41.1,NO_COLOR
+23,001_followup_1,no dye->arterial,10,0.83,0.833,0.83,0.455,0.408,16.1,16.9,1,14.2,KEPT_RIGID
+23,002_followup_2,no dye->portal,10,0.781,0.87,0.87,0.35,0.69,13.0,16.6,3,14.6,
+23,003_followup_3,no dye->delayed,10,0.852,0.806,0.852,0.629,0.528,16.2,18.3,2,13.5,KEPT_RIGID
+24,001_followup_1,no dye->arterial,11,0.909,0.94,0.94,0.531,0.67,18.7,19.3,2,11.5,
+24,002_followup_2,no dye->portal,17,0.923,0.958,0.958,0.716,0.827,19.2,19.0,1,44.9,NO_COLOR
+25,001_followup_1,arterial->portal,0,nan,nan,nan,nan,nan,10.7,10.9,0,nan,NO_SHARED_ORGAN
+25,002_followup_2,arterial->delayed,9,0.738,0.814,0.814,0.196,0.255,15.0,16.0,7,33.9,NO_COLOR
+26,001_followup_1,arterial->portal,13,0.856,0.833,0.856,0.41,0.4,16.9,16.9,21,37.6,KEPT_RIGID NO_COLOR
+26,002_followup_2,arterial->delayed,13,0.745,0.786,0.786,0.289,0.354,14.1,14.4,22,27.5,NO_COLOR
+27,001_followup_1,no dye->arterial,16,0.919,0.94,0.94,0.554,0.592,18.0,18.4,2,17.3,
+27,002_followup_2,no dye->portal,16,0.906,0.943,0.943,0.61,0.669,18.4,18.9,2,16.2,
+27,003_followup_3,no dye->delayed,16,0.9,0.945,0.945,0.564,0.676,18.4,18.9,2,16.3,
+28,001_followup_1,no dye->arterial,16,0.91,0.95,0.91,0.615,0.615,19.3,19.3,1,22.0,REVERT_RAW
+28,002_followup_2,no dye->portal,16,0.921,0.941,0.921,0.695,0.723,20.2,20.2,3,29.9,KEPT_RIGID NO_COLOR
+29,001_followup_1,no dye->arterial,16,0.88,0.941,0.941,0.451,0.643,16.7,16.9,4,18.2,NO_COLOR
+29,002_followup_2,no dye->portal,16,0.903,0.946,0.946,0.528,0.695,17.1,18.0,2,12.2,
+29,003_followup_3,no dye->delayed,16,0.901,0.946,0.901,0.631,0.631,18.6,18.5,2,39.1,REVERT_RAW
+31,001_followup_1,no dye->arterial,16,0.875,0.902,0.875,0.618,0.618,17.3,17.2,2,32.6,NO_COLOR REVERT_RAW
+31,002_followup_2,no dye->portal,16,0.79,0.864,0.864,0.299,0.384,14.0,15.1,3,17.9,
+31,003_followup_3,no dye->delayed,6,0.81,0.858,0.858,0.319,0.382,13.7,14.0,13,17.7,
+33,001_followup_1,no dye->arterial,15,0.707,0.885,0.885,0.18,0.433,13.7,16.4,8,16.4,
+33,002_followup_2,no dye->portal,5,0.399,0.492,0.399,0.094,0.073,11.7,12.8,18,55.9,NCC_REJECT
+33,003_followup_3,no dye->delayed,5,0.737,0.915,0.915,-0.035,0.275,10.3,13.6,19,31.9,
+34,001_followup_1,no dye->arterial,14,0.92,0.944,0.944,0.576,0.724,18.0,18.0,1,21.2,NO_COLOR
+34,002_followup_2,no dye->portal,3,0.424,0.586,0.424,0.028,0.028,13.6,12.9,36,75.4,REVERT_RAW
+34,003_followup_3,no dye->delayed,13,0.91,0.929,0.91,0.549,0.727,18.2,19.4,2,15.5,KEPT_RIGID
+35,001_followup_1,no dye->arterial,15,0.908,0.94,0.908,0.514,0.514,17.7,17.7,2,29.0,NO_COLOR REVERT_RAW
+35,002_followup_2,no dye->portal,15,0.927,0.945,0.927,0.585,0.785,18.3,18.3,2,45.3,KEPT_RIGID NO_COLOR
+36,001_followup_1,no dye->arterial,15,0.825,0.933,0.933,0.39,0.623,16.4,18.1,5,9.2,
+36,002_followup_2,no dye->portal,10,0.85,0.906,0.906,0.339,0.413,14.4,14.2,7,23.2,NO_COLOR
+37,001_followup_1,arterial->portal,14,0.885,0.942,0.942,0.384,0.601,16.8,17.3,2,25.5,NO_COLOR
+37,002_followup_2,arterial->delayed,15,0.855,0.908,0.855,0.421,0.421,17.3,17.4,2,24.4,NO_COLOR REVERT_RAW
+38,001_followup_1,no dye->arterial,16,0.864,0.876,0.864,0.475,0.545,16.0,16.7,1,17.9,KEPT_RIGID
+38,002_followup_2,no dye->portal,16,0.878,0.901,0.901,0.574,0.65,16.8,18.0,1,14.5,
+38,003_followup_3,no dye->delayed,14,0.811,0.843,0.811,0.491,0.45,16.5,18.3,2,18.9,NCC_REJECT
+39,001_followup_1,no dye->arterial,16,0.908,0.934,0.908,0.716,0.716,18.4,18.5,2,19.3,REVERT_RAW
+39,002_followup_2,no dye->portal,15,0.913,0.928,0.913,0.759,0.784,18.1,20.8,1,12.3,KEPT_RIGID
+39,003_followup_3,no dye->delayed,15,0.883,0.92,0.92,0.683,0.723,17.7,17.5,3,11.0,
+41,001_followup_1,arterial->portal,16,0.814,0.929,0.929,0.286,0.554,14.4,15.8,3,20.1,
+41,002_followup_2,arterial->delayed,16,0.88,0.929,0.88,0.465,0.465,16.9,16.9,2,39.4,REVERT_RAW
+42,001_followup_1,no dye->arterial,14,0.862,0.926,0.862,0.529,0.529,17.4,17.3,2,20.4,NO_COLOR REVERT_RAW
+42,002_followup_2,no dye->portal,14,0.852,0.906,0.852,0.533,0.533,16.4,16.1,2,48.3,REVERT_RAW
+42,003_followup_3,no dye->delayed,14,0.828,0.827,0.828,0.581,0.58,16.6,16.9,2,14.2,KEPT_RIGID
+43,001_followup_1,arterial->portal,15,0.758,0.857,0.758,0.214,0.214,13.7,13.6,6,45.8,REVERT_RAW
+43,002_followup_2,arterial->delayed,16,0.827,0.909,0.909,0.382,0.429,15.9,15.7,3,28.7,NO_COLOR
+44,001_followup_1,no dye->arterial,15,0.911,0.943,0.943,0.531,0.683,17.7,18.7,1,12.6,
+44,002_followup_2,no dye->portal,15,0.898,0.928,0.928,0.515,0.761,17.8,18.9,2,12.5,
+44,003_followup_3,no dye->delayed,16,0.856,0.925,0.925,0.427,0.649,17.8,18.3,2,12.6,
+45,001_followup_1,arterial->portal,15,0.833,0.907,0.907,0.489,0.616,15.9,16.2,4,20.9,
+45,002_followup_2,arterial->delayed,11,0.716,0.794,0.716,0.253,0.253,15.8,15.7,17,46.6,REVERT_RAW
+46,001_followup_1,arterial->portal,16,0.816,0.866,0.816,0.457,0.457,16.9,17.0,3,45.7,REVERT_RAW
+46,002_followup_2,arterial->delayed,16,0.706,0.804,0.706,0.458,0.458,16.0,16.0,5,43.3,NCC_REJECT REVERT_RAW
+47,001_followup_1,arterial->portal,16,0.926,0.914,0.926,0.562,0.478,18.5,18.5,2,38.0,KEPT_RIGID NO_COLOR
+47,002_followup_2,arterial->delayed,16,0.898,0.921,0.898,0.481,0.481,17.6,17.6,3,29.6,NO_COLOR REVERT_RAW
+48,001_followup_1,no dye->arterial,15,0.75,0.886,0.886,0.252,0.346,14.8,16.1,8,29.6,NO_COLOR
+48,002_followup_2,no dye->portal,13,0.484,0.753,0.753,0.126,0.24,13.1,14.4,23,53.8,NO_COLOR
+50,001_followup_1,arterial->portal,14,0.96,0.899,0.96,0.674,0.674,19.1,19.1,1,35.2,KEPT_RIGID REVERT_RAW
+50,002_followup_2,arterial->delayed,16,0.943,0.93,0.943,0.618,0.58,18.3,18.3,1,31.0,KEPT_RIGID NO_COLOR
+53,001_followup_1,no dye->arterial,16,0.905,0.942,0.905,0.48,0.48,18.6,18.5,2,31.2,REVERT_RAW
+53,002_followup_2,no dye->portal,16,0.888,0.932,0.888,0.422,0.422,17.8,17.8,3,50.9,NO_COLOR REVERT_RAW
+53,003_followup_3,no dye->delayed,16,0.894,0.953,0.953,0.359,0.667,17.5,17.6,2,34.9,NO_COLOR
+54,001_followup_1,no dye->arterial,15,0.918,0.917,0.918,0.529,0.504,18.6,19.3,2,15.4,KEPT_RIGID
+54,002_followup_2,no dye->portal,15,0.877,0.907,0.877,0.554,0.524,17.7,19.9,2,16.4,NCC_REJECT
+54,003_followup_3,no dye->delayed,15,0.917,0.945,0.945,0.627,0.686,18.2,19.5,2,13.2,
+56,001_followup_1,no dye->arterial,16,0.918,0.929,0.918,0.469,0.524,17.0,18.0,2,18.5,KEPT_RIGID
+56,002_followup_2,no dye->portal,16,0.845,0.882,0.882,0.27,0.423,16.4,17.3,4,16.8,
+56,003_followup_3,no dye->delayed,16,0.903,0.935,0.935,0.442,0.689,17.2,18.7,2,15.0,
+57,001_followup_1,no dye->arterial,15,0.615,0.89,0.89,0.465,0.46,13.8,13.9,8,27.5,NO_COLOR
+57,002_followup_2,no dye->portal,15,0.771,0.916,0.916,0.541,0.573,16.0,15.9,5,42.2,NO_COLOR
+57,003_followup_3,no dye->delayed,15,0.875,0.933,0.933,0.606,0.684,17.2,17.2,3,9.5,
+58,001_followup_1,no dye->arterial,16,0.67,0.943,0.943,0.171,0.725,13.7,18.0,9,18.5,NO_COLOR
+58,002_followup_2,no dye->portal,16,0.633,0.936,0.936,0.146,0.824,12.9,19.7,10,12.6,
+58,003_followup_3,no dye->delayed,16,0.644,0.936,0.936,0.167,0.837,13.6,18.6,10,40.6,NO_COLOR
+59,001_followup_1,no dye->arterial,16,0.715,0.902,0.715,0.278,0.278,16.3,16.4,5,28.3,NO_COLOR REVERT_RAW
+59,002_followup_2,no dye->portal,16,0.657,0.889,0.657,0.239,0.239,15.2,15.3,9,56.6,REVERT_RAW
+59,003_followup_3,no dye->delayed,12,0.404,0.732,0.404,0.144,0.144,16.2,16.4,28,38.1,REVERT_RAW
+60,001_followup_1,no dye->arterial,16,0.848,0.927,0.848,0.491,0.491,17.1,17.0,4,23.1,REVERT_RAW
+60,002_followup_2,no dye->portal,15,0.897,0.897,0.897,0.593,0.69,17.3,19.0,1,19.7,KEPT_RIGID
+60,003_followup_3,no dye->delayed,15,0.875,0.927,0.875,0.602,0.602,17.7,17.7,4,44.7,REVERT_RAW
+61,001_followup_1,no dye->arterial,14,0.887,0.912,0.887,0.49,0.49,16.8,16.9,1,61.7,NO_COLOR REVERT_RAW
+61,002_followup_2,no dye->portal,14,0.876,0.924,0.876,0.462,0.462,17.1,17.1,2,68.0,NO_COLOR REVERT_RAW
+61,003_followup_3,no dye->delayed,14,0.868,0.928,0.928,0.456,0.75,17.2,16.9,1,42.6,NO_COLOR
