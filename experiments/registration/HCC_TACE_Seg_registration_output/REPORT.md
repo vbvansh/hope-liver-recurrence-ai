@@ -91,7 +91,7 @@ All metrics are **computed by the team pipeline itself** (`CTProcess/metadata*.j
 | **Edge match** | 0.17 [0.10–0.22] | **0.29 [0.24–0.40]** | — |
 | **Image similarity** | 11.9 dB [10.6–12.8] | **13.3 dB [12.3–14.2]** | **61 / 69** |
 
-Values are median [25th–75th percentile]. Liver overlap is reported for the 64 patients whose deformable result was kept (Section 5.3).
+Values are median [25th–75th percentile]. The deformable column shows what the bending achieved. For the 7 patients where a safety check kept the rigid or unprocessed scan (Section 5.3), the delivered scan has the rigid value instead. Liver overlap is reported for the 64 patients whose bending passed the organ-overlap check (this includes HCC_020 and HCC_041, which were later reverted to the unprocessed scan).
 
 | Other numbers | Median [25th–75th] (range) |
 |---|---|
@@ -113,7 +113,9 @@ Values are median [25th–75th percentile]. Liver overlap is reported for the 64
 | HCC_068 | 0.64 → **0.88** | HCC_067 | 0.33 → **0.54** |
 | HCC_019 | 0.77 → **0.88** | HCC_004 | 0.47 → **0.64** |
 | HCC_052 | 0.62 → **0.88** | HCC_050 | 0.49 → **0.64** |
-| HCC_020 | 0.80 → **0.87** | HCC_022 | 0.32 → **0.64** |
+| HCC_020 | 0.80 → **0.87** ¹ | HCC_022 | 0.32 → **0.64** |
+
+¹ HCC_020's bent scan was discarded by the `REVERT_RAW` safety check, so the delivered scan is the rigid one (0.80).
 
 Even the worst cases improved substantially; they started from a much larger initial misalignment.
 

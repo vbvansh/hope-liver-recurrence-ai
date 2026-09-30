@@ -1,0 +1,1730 @@
+{
+  "dataset": "WAW-TACE",
+  "standard": {
+    "orientation": "RAS+",
+    "spacing_mm": [
+      1,
+      1,
+      1
+    ],
+    "values": "raw HU",
+    "axis": "CT contrast phase (0 native /1 arterial /2 portal /3 delayed) mapped to timepoint folders; non-baseline phases rigidly registered to phase 0; tumour.nii.gz warped by the same transform"
+  },
+  "patients": [
+    {
+      "patient": "2",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9758,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.934,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9647,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "3",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9895,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9881,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9823,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "5",
+      "timepoints": [
+        {
+          "phase": 1,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 2,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.973,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9469,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "7",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9845,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9782,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9734,
+          "aligned_by": "silhouette_z"
+        }
+      ]
+    },
+    {
+      "patient": "8",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9759,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9763,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9722,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "10",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9535,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9537,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9531,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "13",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null,
+          "has_tumor": true
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9842,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9853,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9798,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "14",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.991,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.983,
+          "aligned_by": "silhouette_z"
+        }
+      ]
+    },
+    {
+      "patient": "15",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9578,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.956,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9462,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "16",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9898,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9794,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "18",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9891,
+          "aligned_by": "centred"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9845,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9819,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "19",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9894,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9888,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9894,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        }
+      ]
+    },
+    {
+      "patient": "20",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9492,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9488,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.8894,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "21",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9789,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9901,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "23",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9569,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9383,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.966,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "24",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9909,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9907,
+          "aligned_by": "mi",
+          "has_tumor": true
+        }
+      ]
+    },
+    {
+      "patient": "25",
+      "timepoints": [
+        {
+          "phase": 1,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 2,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9005,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.971,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "26",
+      "timepoints": [
+        {
+          "phase": 1,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null,
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9753,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9364,
+          "aligned_by": "silhouette_z"
+        }
+      ]
+    },
+    {
+      "patient": "27",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.984,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9866,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9869,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "28",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9843,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9915,
+          "aligned_by": "centred",
+          "has_tumor": true
+        }
+      ]
+    },
+    {
+      "patient": "29",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9807,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9803,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9826,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "31",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9803,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.964,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9498,
+          "aligned_by": "silhouette_z"
+        }
+      ]
+    },
+    {
+      "patient": "33",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9328,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.8996,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.8896,
+          "aligned_by": "silhouette_z"
+        }
+      ]
+    },
+    {
+      "patient": "34",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9872,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9242,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.986,
+          "aligned_by": "mi",
+          "has_tumor": true
+        }
+      ]
+    },
+    {
+      "patient": "35",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9878,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9884,
+          "aligned_by": "silhouette_z"
+        }
+      ]
+    },
+    {
+      "patient": "36",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9713,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.7327,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "37",
+      "timepoints": [
+        {
+          "phase": 1,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null,
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9822,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9779,
+          "aligned_by": "silhouette_z"
+        }
+      ]
+    },
+    {
+      "patient": "38",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9766,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9824,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9694,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "39",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.985,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9875,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9791,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "41",
+      "timepoints": [
+        {
+          "phase": 1,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 2,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9728,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9771,
+          "aligned_by": "mi",
+          "has_tumor": true
+        }
+      ]
+    },
+    {
+      "patient": "42",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.97,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9673,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9665,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "43",
+      "timepoints": [
+        {
+          "phase": 1,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 2,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9615,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9713,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "44",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9804,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9829,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9757,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "45",
+      "timepoints": [
+        {
+          "phase": 1,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null,
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.97,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.952,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "46",
+      "timepoints": [
+        {
+          "phase": 1,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 2,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9764,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9636,
+          "aligned_by": "silhouette_z"
+        }
+      ]
+    },
+    {
+      "patient": "47",
+      "timepoints": [
+        {
+          "phase": 1,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 2,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9841,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9782,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "48",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9722,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9581,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        }
+      ]
+    },
+    {
+      "patient": "50",
+      "timepoints": [
+        {
+          "phase": 1,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 2,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.994,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9918,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "53",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9874,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9839,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9869,
+          "aligned_by": "silhouette_z"
+        }
+      ]
+    },
+    {
+      "patient": "54",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9785,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9743,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9757,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "56",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9787,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9725,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9753,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "57",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9489,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9683,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9782,
+          "aligned_by": "mi",
+          "has_tumor": true
+        }
+      ]
+    },
+    {
+      "patient": "58",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9404,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9313,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9381,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "59",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9669,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9628,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9405,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "60",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9725,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9781,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9766,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "61",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9608,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9597,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9605,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "62",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9774,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9782,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9685,
+          "aligned_by": "silhouette_z"
+        }
+      ]
+    },
+    {
+      "patient": "63",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9828,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9546,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9856,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "65",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.994,
+          "aligned_by": "centred"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 1.0,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9858,
+          "aligned_by": "silhouette_z"
+        }
+      ]
+    },
+    {
+      "patient": "66",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9803,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9503,
+          "aligned_by": "silhouette_z",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9775,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "67",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9693,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9381,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9381,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "69",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9772,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.984,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9766,
+          "aligned_by": "silhouette_z"
+        }
+      ]
+    },
+    {
+      "patient": "72",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9774,
+          "aligned_by": "centred",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9755,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9774,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "73",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9732,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9596,
+          "aligned_by": "silhouette_z"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9662,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "74",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9811,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9862,
+          "aligned_by": "mi"
+        },
+        {
+          "phase": 3,
+          "stage": "003_followup_3",
+          "registered": true,
+          "body_dice": 0.9832,
+          "aligned_by": "mi"
+        }
+      ]
+    },
+    {
+      "patient": "77",
+      "timepoints": [
+        {
+          "phase": 0,
+          "stage": "000_baseline",
+          "registered": false,
+          "body_dice": null
+        },
+        {
+          "phase": 1,
+          "stage": "001_followup_1",
+          "registered": true,
+          "body_dice": 0.9917,
+          "aligned_by": "mi",
+          "has_tumor": true
+        },
+        {
+          "phase": 2,
+          "stage": "002_followup_2",
+          "registered": true,
+          "body_dice": 0.9896,
+          "aligned_by": "silhouette_z"
+        }
+      ]
+    }
+  ]
+}
