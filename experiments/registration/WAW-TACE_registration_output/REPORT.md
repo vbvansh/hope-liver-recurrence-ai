@@ -203,12 +203,7 @@ In the worst pairs, bending **did** improve organ overlap (e.g. patient 59: 0.40
 
 ---
 
-## 7. Next steps
 
-1. **Use WAW-TACE's phase labels to test phase detection.** HCC-TACE-Seg needs the same contrast phase at both visits (see the HCC-TACE-Seg report, Section 6), but its scans carry no phase labels, so the phase must be measured from aorta and portal-vein brightness on the CADS outlines. WAW-TACE has **known labels** for every scan and CADS outlines for all 56 patients already, so it can show **how accurately** that measurement identifies no-dye, arterial, portal and delayed scans before it is used to pick matching scans in HCC-TACE-Seg.
-2. **Optional: complete the remaining 12 patients** (≈2 h of GPU machine time). Stage 5 resumes where it stopped (`bash processing/WAW-TACE/run.sh --steps 5` with a new `LONG_SHARD_TAG`); it would also write the results file with per-organ (liver) overlap for those patients.
-
----
 
 ## 8. Files in this folder
 
