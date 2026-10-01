@@ -138,12 +138,4 @@ Grade the alignment with references that were **not used to align**:
 
 ---
 
-## Suggested order of work
 
-| Step | What | Builds on | Why this order |
-|---|---|---|---|
-| 1 | Build and **test a phase detector on WAW-TACE** (true labels available) | Segment-and-Classify idea with our CADS outlines, or `totalseg_get_phase` | Needs no new data; CADS outlines for 56 patients already exist |
-| 2 | **Pick same-phase dye scans** in HCC-TACE-Seg and re-run | Team pipeline + the detector | Fixes Concern 1; compare `NO_COLOR` rate (35 of 69 now) and leftover brightness |
-| 3 | **Artificial small-tumour test** and squeeze check | DiffTumor, tumour-preserving registration | Answers Concern 2 |
-| 4 | **Independent grading** with radiologist tumour outlines | Learn2Reg principle, WAW-TACE masks | Answers Concern 3; makes steps 2–3 trustworthy |
-| 5 | Model that analyses both scans together | SimU-Net, Deep Lesion Tracker | HOPE's early-detection model, on top of steps 1–4 |
