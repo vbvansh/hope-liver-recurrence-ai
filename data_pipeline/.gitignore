@@ -1,0 +1,5 @@
+# processed data, exports and run logs stay outside git
+outputs/
+logs/
+# local checkout of Yifan's LiverPreprocessing (pinned commit, see PLAN.md)
+third_party/
