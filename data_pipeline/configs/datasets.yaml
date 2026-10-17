@@ -1,0 +1,57 @@
+# Dataset settings for the data pipeline.
+# raw_root: where the downloaded data lives on the machine running the pipeline (edit per machine).
+
+output_root: /path/to/processed/unified_miccai
+
+datasets:
+  MCT-LTDiag:
+    role: development            # train / validation / internal test
+    raw_root: /path/to/raw/MCT-LTDiag
+    phases: [nc, ap, pvp, dp]
+    converter: liverpreprocessing
+    source: "Wu et al., Scientific Data (Dataverse); copy from Yifan"
+    expected_patients: 517
+
+  PLC-CECT:
+    role: development
+    raw_root: /path/to/raw/PLC-CECT
+    phases: [nc, ap, pvp, dp]
+    converter: liverpreprocessing   # includes geometry repair (stage 0, GPU)
+    source: "Luo et al., Scientific Data 2025 (Science Data Bank)"
+    expected_patients: 361
+
+  WAW-TACE:
+    role: external
+    raw_root: /path/to/raw/WAW-TACE
+    phases: [nc, ap, pvp, dp]
+    converter: liverpreprocessing   # four-phase patients only
+    source: "Zenodo 12741586 (all four ct_scans zips + tumor_masks)"
+    expected_patients: 233          # 164 with all four phases are used
+
+  LiTS:
+    role: external
+    raw_root: /path/to/raw/LiTS
+    phases: [pvp]
+    converter: lits                 # new
+    source: "LiTS challenge, 131 labelled training scans"
+    expected_patients: 131
+
+  HCC-TACE-Seg:
+    role: external
+    raw_root: /path/to/raw/HCC-TACE-Seg   # TCIA manifest folder with metadata.csv
+    phases: detected                # identified from the images
+    visit: pre_tace                 # expert masks exist only on the pre-TACE visit
+    converter: hcc_tace_seg         # new
+    source: "TCIA HCC-TACE-Seg"
+    expected_patients: 105
+
+split:
+  development_datasets: [MCT-LTDiag, PLC-CECT]
+  ratios: {train: 0.70, val: 0.10, test: 0.20}
+  seed: 0
+  stratify_by: [dataset, diagnosis, lesion_presence, size_bin]
+
+crop:
+  margin_mm: 20
+  train: liver_and_tumour
+  eval: auto_liver
