@@ -1,57 +1,80 @@
-# Dataset settings for the data pipeline.
+# Dataset and processing settings (MICCAI 2027 Plan v2 + team decisions, Oct 2026).
 # raw_root: where the downloaded data lives on the machine running the pipeline (edit per machine).
 
 output_root: /path/to/processed/unified_miccai
 
 datasets:
   MCT-LTDiag:
-    role: development            # train / validation / internal test
+    role: development             # train / validation / internal test
     raw_root: /path/to/raw/MCT-LTDiag
     phases: [nc, ap, pvp, dp]
-    converter: liverpreprocessing
-    source: "Wu et al., Scientific Data (Dataverse); copy from Yifan"
+    registered_by_source: true    # NC/AP/DP already B-spline-registered to PVP
+    small_lesions_annotated: false  # protocol excludes tumours < 1 cm
+    source: "Wu et al., Sci Data 2025; Harvard Dataverse doi:10.7910/DVN/S3RW15 (CC0); copy from Yifan"
     expected_patients: 517
 
   PLC-CECT:
     role: development
     raw_root: /path/to/raw/PLC-CECT
     phases: [nc, ap, pvp, dp]
-    converter: liverpreprocessing   # includes geometry repair (stage 0, GPU)
-    source: "Luo et al., Scientific Data 2025 (Science Data Bank)"
-    expected_patients: 361
+    registered_by_source: false   # register NC/AP/DP to PVP
+    geometry_recovery: true       # released headers are wrong
+    small_lesions_annotated: true
+    source: "Luo et al., Sci Data 2025; Science Data Bank doi:10.57760/sciencedb.12207 (CC BY 4.0)"
+    expected_patients: 361        # 278 cancer + 83 controls
 
   WAW-TACE:
     role: external
     raw_root: /path/to/raw/WAW-TACE
-    phases: [nc, ap, pvp, dp]
-    converter: liverpreprocessing   # four-phase patients only
-    source: "Zenodo 12741586 (all four ct_scans zips + tumor_masks)"
-    expected_patients: 233          # 164 with all four phases are used
+    phases: any                   # phase availability varies per patient
+    small_lesions_annotated: true
+    source: "Zenodo 12741586 (all four ct_scans zips + tumor_masks), CC BY 4.0"
+    expected_patients: 233
+
+  TCIA-CRLM:
+    role: external
+    raw_root: /path/to/raw/Colorectal-Liver-Metastases
+    phases: [pvp]
+    keep_vessel_masks: true       # hepatic and portal vein masks for the false-positive analysis
+    small_lesions_annotated: true
+    source: "TCIA Colorectal-Liver-Metastases, CC BY 4.0"
+    expected_patients: 197
 
   LiTS:
     role: external
     raw_root: /path/to/raw/LiTS
     phases: [pvp]
-    converter: lits                 # new
-    source: "LiTS challenge, 131 labelled training scans"
+    small_lesions_annotated: false  # small uncertain structures omitted
+    small_lesion_min_native_slice_mm: 2   # < 10 mm lesions counted only when native slice <= 2 mm
+    source: "LiTS challenge, 131 labelled training volumes"
     expected_patients: 131
 
-  HCC-TACE-Seg:
-    role: external
-    raw_root: /path/to/raw/HCC-TACE-Seg   # TCIA manifest folder with metadata.csv
-    phases: detected                # identified from the images
-    visit: pre_tace                 # expert masks exist only on the pre-TACE visit
-    converter: hcc_tace_seg         # new
-    source: "TCIA HCC-TACE-Seg"
-    expected_patients: 105
+  # TriALS: on hold (optional missing-phase yardstick)
+
+processing:
+  spacing_mm: [1.0, 1.0, 1.0]
+  interpolation: {image: linear, mask: nearest}
+  hu_clip: [-200, 200]
+  reference_phase: pvp
+  crop: {source: auto_pvp_liver, margin_mm: 20}
+  liver_masks: totalsegmentator   # on every phase
+
+registration_qc:
+  liver_dice_min: 0.9
+  landmarks:
+    points_per_case: 5
+    cases_per_dataset: 20
+    seed: 0
+    tre_max_mm: 5
+    fallback_without_landmarks: liver_dice   # phases where vessels are not visible (e.g. NC)
+
+lesions:
+  measure_on: native
+  size_strata_mm: [10, 20, 30]    # <10 (exploratory), 10-19, 20-29, >=30 by in-plane max diameter
+  lesion_free_masks: {remove: malignant, per_phase: true, margin_mm: 0}
 
 split:
   development_datasets: [MCT-LTDiag, PLC-CECT]
   ratios: {train: 0.70, val: 0.10, test: 0.20}
   seed: 0
-  stratify_by: [dataset, diagnosis, lesion_presence, size_bin]
-
-crop:
-  margin_mm: 20
-  train: liver_and_tumour
-  eval: auto_liver
+  stratify_by: [dataset, tumour_type, lesion_count_1_vs_2plus, max_diameter_bin]
