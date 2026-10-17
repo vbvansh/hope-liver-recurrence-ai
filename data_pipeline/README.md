@@ -6,11 +6,11 @@ Prepares five public liver CT datasets in one standard format, with fixed patien
 |---|---|---|
 | MCT-LTDiag | train / validation / internal test | NC, AP, PVP, DP |
 | PLC-CECT | train / validation / internal test | NC, AP, PVP, DP |
-| WAW-TACE | external test | NC, AP, PVP, DP (patients with all four) |
+| WAW-TACE | external test | any subset of NC, AP, PVP, DP |
+| TCIA Colorectal-Liver-Metastases | external test | PVP only |
 | LiTS | external test | PVP only |
-| HCC-TACE-Seg | external test | pre-TACE visit; phases identified from the images |
 
-The three multiphase datasets are converted with Yifan Li's public [LiverPreprocessing](https://github.com/lyf7374/LiverPreprocessing) code (run by us, not rewritten). This folder adds what the MICCAI plan needs on top: converters for LiTS and HCC-TACE-Seg, a data check, the new splits, leak-free test crops, and exports for the baselines.
+Requirements follow *MICCAI 2027 Plan v2* (Yifan, Oct 2026). Where useful, parts of Yifan Li's public [LiverPreprocessing](https://github.com/lyf7374/LiverPreprocessing) code are run (e.g. PLC-CECT geometry recovery) rather than rewritten.
 
 - Plan and status: [PLAN.md](PLAN.md)
 - Output format: [STANDARD.md](STANDARD.md)
