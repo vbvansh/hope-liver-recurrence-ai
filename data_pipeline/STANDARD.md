@@ -1,66 +1,80 @@
 # Output standard
 
-Every processed patient, from every dataset, follows this format. It matches LiverPreprocessing's `unified_v2` layout, so its scripts (`make_splits.py`, `evaluate_by_lesion_size.py`, `verify_unified_v2_output.py`) keep working, with additions marked **(new)**.
+Every processed patient, from every dataset, follows this format. Requirements come from MICCAI 2027 Plan v2 and the decisions recorded in [PLAN.md](PLAN.md).
 
 ## Folder layout
 
 ```
 <output-root>/
 ├── cases/<DATASET>_<patient>/
-│   ├── image_nc.nii.gz      image_ap.nii.gz      image_pvp.nii.gz      image_dp.nii.gz
-│   ├── liver_mask.nii.gz    tumor_mask.nii.gz
-│   ├── lesion_instances.nii.gz              (new) each lesion numbered 1..N
+│   ├── image_nc.nii.gz   image_ap.nii.gz   image_pvp.nii.gz   image_dp.nii.gz
+│   ├── liver_nc.nii.gz   liver_ap.nii.gz   liver_pvp.nii.gz   liver_dp.nii.gz
+│   ├── lesion_label.nii.gz
+│   ├── lesion_instances.nii.gz
+│   ├── lesion_free_nc.nii.gz   lesion_free_ap.nii.gz   lesion_free_pvp.nii.gz   lesion_free_dp.nii.gz
 │   └── case.json
-├── dataset_manifest.csv                     one row per case
-├── lesions.csv                              (new) one row per lesion, all datasets
-├── splits/                                  split files (also committed to git)
-└── exports/                                 nnU-Net v2 / nnDetection datasets
+├── manifest.csv              one row per case
+├── lesions.csv               one row per lesion
+├── exclusion.csv             excluded cases and reasons
+├── qc/
+│   ├── registration_qc.csv   liver Dice per phase
+│   ├── landmark_tre.csv      TRE per landmark and phase (20 random cases per dataset)
+│   ├── landmarks/            landmark files
+│   └── overlays/             visual QC images
+├── splits/                   split files (also committed to git)
+└── exports/                  nnU-Net v2 / nnDetection datasets
 ```
 
-`<DATASET>` is one of `MCT-LTDiag`, `PLC-CECT`, `WAW-TACE`, `LiTS`, `HCC-TACE-Seg`.
+`<DATASET>` is one of `MCT-LTDiag`, `PLC-CECT`, `WAW-TACE`, `TCIA-CRLM`, `LiTS`. A phase that does not exist for a patient has no files.
 
 ## Images
 
 | Property | Value |
 |---|---|
 | Orientation | LPS |
-| Spacing | 1 × 1 × 1 mm (the native spacing is recorded in `case.json`; resampling adds no detail) |
-| Values | int16 Hounsfield units, unnormalised. Dataset-specific corrections (e.g. PLC-CECT +40 HU) are recorded, not applied |
-| Phases | NC, AP, PVP, DP, all on the PVP grid (PVP is the registration reference) |
-| Missing phase | file not written; `phases_present` is false for it. Multiphase models fill it with zeros (rule to be confirmed by the team) |
-| Failed phase (registration liver Dice < 0.80) | file written; `usable_<phase>` is false |
+| Spacing | 1 × 1 × 1 mm, resampled once (native spacing recorded in `case.json`) |
+| Interpolation | Linear for images (B-spline allowed); nearest neighbour for every mask |
+| Values | int16 HU, clipped to [-200, 200] |
+| Phases | NC, AP, PVP, DP on the PVP grid (PVP is the registration reference) |
+| Crop | Box around the automatic PVP liver mask (TotalSegmentator) + 20 mm, identical for all phases and masks of a case; never built from a lesion mask |
 
 ## Masks
 
 | File | Type | Values |
 |---|---|---|
-| `liver_mask.nii.gz` | uint8 | 0 background, 1 liver |
-| `tumor_mask.nii.gz` | uint8 | 0 background, 1 lesion (all lesion types) |
-| `lesion_instances.nii.gz` (new) | uint16 | 0 background, 1..N one id per 26-connected lesion |
+| `liver_<phase>.nii.gz` | uint8 | 0 / 1, TotalSegmentator liver on that phase (used for registration QC and lesion-free masks) |
+| `lesion_label.nii.gz` | uint8 | 0 background · 1 malignant · 2 haemangioma · 3 ignore |
+| `lesion_instances.nii.gz` | uint16 | 0 background · 1..N one id per lesion (3D connected component, multi-lesion cases reviewed by hand) |
+| `lesion_free_<phase>.nii.gz` | uint8 | 0 / 1, `liver_<phase>` minus malignant lesions |
 
-The lesion type (HCC, ICC, metastasis, haemangioma, …) is stored per patient in `case.json`, not in the mask.
+Class 1 (malignant) covers HCC, ICC, cHCC-CCA and metastasis. Class 2 is used only where haemangiomas are annotated (MCT-LTDiag). Class 3 covers cysts and any lesion type a dataset leaves unannotated; per-dataset rules are in `configs/label_maps.yaml`. Lesions keep the mask they were drawn on (e.g. WAW-TACE tumours stay on their own phase; recorded as `drawn_phase` in `lesions.csv`).
 
-## Crop
-
-| Case role | Crop box |
-|---|---|
-| Train | liver ∪ tumour, + 20 mm |
-| Validation, internal test, external test | **automatic** liver mask only (TotalSegmentator), + 20 mm. Never uses the tumour mask (new) |
-
-`case.json` records which rule was used (`crop_source`).
-
-## `case.json` additions (new)
+## `case.json`
 
 | Field | Meaning |
 |---|---|
 | `dataset`, `patient_id`, `case_id` | identifiers |
-| `phases_present` | {nc, ap, pvp, dp} → true/false |
-| `phase_source` | how each phase was identified: `dataset_label` or `detected` (HCC-TACE-Seg) |
-| `crop_source` | `liver_and_tumour` or `auto_liver` |
-| `liver_mask_source` | `expert`, `dataset`, or `totalsegmentator` |
 | `role` | `development` (MCT-LTDiag, PLC-CECT) or `external` |
-| `pipeline_commit` | git commit of this repository and of LiverPreprocessing used |
+| `phases_present` | {nc, ap, pvp, dp} → true / false |
+| `native_spacing_mm` | per phase, before resampling |
+| `registration` | per phase: method, liver Dice, failure flag |
+| `landmark_case` | true for the 20 random landmark cases per dataset |
+| `crop_box_mm` | crop box in physical coordinates |
+| `diagnosis` | patient-level tumour type(s) |
+| `pipeline_commit` | git commit of this repository (and of LiverPreprocessing if used) |
 
-## `lesions.csv` columns (new)
+## `manifest.csv`
 
-`case_id, lesion_id, voxels, volume_ml, esd_mm, longest_axial_mm, size_bin, centroid_x_mm, centroid_y_mm, centroid_z_mm, native_slice_mm, lesion_type`
+One row per case: `case_id, dataset, role, diagnosis, phases_present, native_slice_mm, liver_dice_nc, liver_dice_ap, liver_dice_dp, registration_failed, landmark_case, tre_failed, n_malignant_lesions, max_diameter_bin, excluded`.
+
+## `lesions.csv`
+
+One row per lesion, all measurements on the **original (native) scan**:
+
+`dataset, patient, case_id, lesion_id, class, drawn_phase, volume_ml, equivalent_diameter_mm, inplane_max_diameter_mm, size_stratum, native_slice_mm, multi_lesion_reviewed`
+
+`size_stratum` uses the in-plane maximum diameter: `<10` (exploratory), `10-19`, `20-29`, `>=30` mm.
+
+## `exclusion.csv`
+
+`case_id, dataset, stage, reason` — every case left out of any split, with the step that excluded it.
