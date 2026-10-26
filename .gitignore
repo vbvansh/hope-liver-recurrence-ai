@@ -64,7 +64,11 @@ tmp/
 temp/
 # Downloaded datasets (patient imaging + metadata)
 /Datasets/
+# Local cluster notes (username, host names): never commit
+/UCL_CLUSTER.md
 
-
-.CLAUDE.md
-.HANDOFF.md
+# Local working notes and plan documents: kept on this machine, not pushed
+/CLAUDE.md
+/HANDOFF.md
+/data_pipeline/PLAN.md
+/data_pipeline/STANDARD.md
