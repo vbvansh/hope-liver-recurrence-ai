@@ -37,7 +37,7 @@ datasets:
     phases: [pvp]
     keep_vessel_masks: true       # hepatic and portal vein masks for the false-positive analysis
     small_lesions_annotated: true
-    source: "TCIA Colorectal-Liver-Metastases, CC BY 4.0"
+    source: "TCIA Colorectal-Liver-Metastases, doi:10.7937/QXK2-QG03 (Simpson et al., Sci Data 2024), CC BY 4.0"
     expected_patients: 197
 
   LiTS:
@@ -46,7 +46,7 @@ datasets:
     phases: [pvp]
     small_lesions_annotated: false  # small uncertain structures omitted
     small_lesion_min_native_slice_mm: 2   # < 10 mm lesions counted only when native slice <= 2 mm
-    source: "LiTS challenge, 131 labelled training volumes"
+    source: "LiTS (Bilic et al., Med Image Anal 2023), 131 labelled training volumes; copy used: Medical Segmentation Decathlon Task03_Liver; non-commercial licence"
     expected_patients: 131
 
   # TriALS: on hold (optional missing-phase yardstick)
@@ -71,6 +71,7 @@ registration_qc:
 lesions:
   measure_on: native
   size_strata_mm: [10, 20, 30]    # <10 (exploratory), 10-19, 20-29, >=30 by in-plane max diameter
+  small_stratum_min_lesions: {internal_test: 50, external: 30}   # Plan v2: otherwise <10 merges into <20
   lesion_free_masks: {remove: malignant, per_phase: true, margin_mm: 0}
 
 split:
