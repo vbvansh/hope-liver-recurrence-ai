@@ -1,0 +1,15 @@
+# Per-machine paths. Copy to configs/paths.local.yaml (gitignored) and edit there.
+# Values here replace the placeholders in datasets.yaml; "~" means your home folder.
+# Cluster layout until project storage is assigned: everything under ~/hope_data (50 GB home).
+
+output_root: ~/hope_data/processed
+work_root: ~/hope_data/work          # temporary files (unpacked archives, intermediate volumes)
+log_root: ~/hope_data/logs           # scheduler job logs
+python: ~/envs/hope/bin/python       # environment used by job scripts
+
+datasets:
+  MCT-LTDiag: {raw_root: ~/hope_data/raw/MCT-LTDiag}
+  PLC-CECT: {raw_root: ~/hope_data/raw/PLC-CECT}
+  WAW-TACE: {raw_root: ~/hope_data/raw/WAW-TACE}
+  TCIA-CRLM: {raw_root: ~/hope_data/raw/TCIA-CRLM}
+  LiTS: {raw_root: ~/hope_data/raw/LiTS}

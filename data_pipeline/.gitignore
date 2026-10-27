@@ -3,3 +3,5 @@ outputs/
 logs/
 # local checkout of Yifan's LiverPreprocessing (pinned commit, see PLAN.md)
 third_party/
+# per-machine data paths (copy configs/paths.example.yaml)
+configs/paths.local.yaml

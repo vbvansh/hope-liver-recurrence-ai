@@ -1,5 +1,6 @@
 # Dataset and processing settings (MICCAI 2027 Plan v2 + team decisions, Oct 2026).
-# raw_root: where the downloaded data lives on the machine running the pipeline (edit per machine).
+# output_root and raw_root below are placeholders: each machine sets its own in configs/paths.local.yaml
+# (copy configs/paths.example.yaml; that file is gitignored).
 
 output_root: /path/to/processed/unified_miccai
 
