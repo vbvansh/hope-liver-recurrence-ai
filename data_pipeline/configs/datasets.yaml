@@ -72,7 +72,7 @@ lesions:
   measure_on: native
   size_strata_mm: [10, 20, 30]    # <10 (exploratory), 10-19, 20-29, >=30 by in-plane max diameter
   small_stratum_min_lesions: {internal_test: 50, external: 30}   # Plan v2: otherwise <10 merges into <20
-  lesion_free_masks: {remove: malignant, per_phase: true, margin_mm: 0}
+  lesion_free_masks: {remove: all_annotated, per_phase: true, margin_mm: 5, keep_no_margin_copy: true}   # no-margin copy for the ablation
 
 split:
   development_datasets: [MCT-LTDiag, PLC-CECT]
