@@ -1,15 +1,22 @@
 #!/bin/bash
-# Test job: what GPU, driver, OS and glibc does a GPU node have? (decides the PyTorch build for TotalSegmentator)
-# Submit from the repo:  mkdir -p ~/hope_data/logs && qsub data_pipeline/jobs/check_gpu_node.sh
+# Test job: can a GPU node use the project storage, and what GPU, driver, OS and glibc does it have?
+# (decides the PyTorch build for TotalSegmentator)
+# Submit from the repo folder (the job runs there and logs to logs/):  qsub data_pipeline/jobs/check_gpu_node.sh
 #$ -S /bin/bash
 #$ -N hope_gpu_check
 #$ -l gpu=true
 #$ -l tmem=4G
 #$ -l h_rt=0:10:00
+#$ -cwd
 #$ -j y
-#$ -o $HOME/hope_data/logs/$JOB_NAME.$JOB_ID.log
+#$ -o logs/$JOB_NAME.$JOB_ID.log
 
+source data_pipeline/jobs/project_env.sh
 echo "Job $JOB_ID started $(date)"
+echo "--- project storage (the job runs inside it, so getting here means the node can see it)"
+ls "$HOPE_ROOT"
+df -h "$HOPE_ROOT" | tail -1
+touch "$HOPE_ROOT/work/.write_test_$JOB_ID" && rm "$HOPE_ROOT/work/.write_test_$JOB_ID" && echo "write ok"
 echo "--- GPU and driver (top-right of the table = highest CUDA version the driver supports)"
 nvidia-smi
 nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv
