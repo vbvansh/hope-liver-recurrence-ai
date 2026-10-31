@@ -27,8 +27,10 @@ env/
 .DS_Store
 Thumbs.db
 
-# Logs
+# Logs (job logs go to logs/ in the repo; .gitkeep keeps the folder in every clone)
 *.log
+/logs/*
+!/logs/.gitkeep
 
 # Large model files
 *.pt
