@@ -18,13 +18,14 @@ ls "$HOPE_ROOT"
 df -h "$HOPE_ROOT" | tail -1
 touch "$HOPE_ROOT/work/.write_test_$JOB_ID" && rm "$HOPE_ROOT/work/.write_test_$JOB_ID" && echo "write ok"
 echo "--- GPU and driver (top-right of the table = highest CUDA version the driver supports)"
+echo "CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-unset}"
 nvidia-smi
 nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv
 echo "--- operating system / glibc"
 cat /etc/redhat-release 2>/dev/null || grep PRETTY_NAME /etc/os-release
 ldd --version | head -1
 echo "--- containers"
-which singularity apptainer 2>/dev/null || echo "no singularity/apptainer"
+for tool in singularity apptainer; do command -v "$tool" || echo "$tool: not found"; done
 echo "--- internet from the GPU node"
 curl -s -o /dev/null -w "huggingface.co %{http_code}\n" --max-time 20 https://huggingface.co
 echo "Job finished $(date)"
