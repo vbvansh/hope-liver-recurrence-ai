@@ -1,15 +1,18 @@
 # Per-machine paths. Copy to configs/paths.local.yaml (gitignored) and edit there.
-# Values here replace the placeholders in datasets.yaml; "~" means your home folder.
-# Cluster layout until project storage is assigned: everything under ~/hope_data (50 GB home).
+# Values here replace the placeholders in datasets.yaml. Relative paths are relative to the repo folder.
+# Cluster layout: the repo sits inside the project storage folder, next to data/, processed/, outputs/,
+# checkpoints/, envs/, cache/ and work/; job logs go to logs/ inside the repo.
+# Shell scripts get the same folders from data_pipeline/jobs/project_env.sh.
 
-output_root: ~/hope_data/processed
-work_root: ~/hope_data/work          # temporary files (unpacked archives, intermediate volumes)
-log_root: ~/hope_data/logs           # scheduler job logs
-python: ~/envs/hope/bin/python       # environment used by job scripts
+output_root: ../processed/unified_miccai
+results_root: ../outputs             # registration results, QC tables, predictions
+work_root: ../work                   # temporary files (unpacked archives), emptied after each step
+log_root: logs                       # scheduler job logs
+python: ../envs/hope/bin/python      # environment used by job scripts
 
 datasets:
-  MCT-LTDiag: {raw_root: ~/hope_data/raw/MCT-LTDiag}
-  PLC-CECT: {raw_root: ~/hope_data/raw/PLC-CECT}
-  WAW-TACE: {raw_root: ~/hope_data/raw/WAW-TACE}
-  TCIA-CRLM: {raw_root: ~/hope_data/raw/TCIA-CRLM}
-  LiTS: {raw_root: ~/hope_data/raw/LiTS}
+  MCT-LTDiag: {raw_root: ../data/MCT-LTDiag}
+  PLC-CECT: {raw_root: ../data/PLC-CECT}
+  WAW-TACE: {raw_root: ../data/WAW-TACE}
+  TCIA-CRLM: {raw_root: ../data/TCIA-CRLM}
+  LiTS: {raw_root: ../data/LiTS}
