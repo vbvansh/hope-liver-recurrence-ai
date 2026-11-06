@@ -1,0 +1,60 @@
+# Label maps (PLAN.md Step 2): how each dataset's annotations become the standard lesion classes.
+# Standard classes: 0 background, 1 malignant (HCC, ICC, cHCC-CCA, metastasis), 2 haemangioma, 3 ignore.
+# Lesion = one 3D connected component (26-connectivity) of a mask, unless a dataset gives one file or segment per
+# tumour. lesion_instances numbers classes 1-2 only; class 3 regions get no instance id.
+# Decisions: team, 2026-11-05 (PLAN.md "Decisions taken"). Code: data_pipeline/lib/labels.py.
+
+classes: {background: 0, malignant: 1, haemangioma: 2, ignore: 3}
+connectivity: 26
+
+datasets:
+  MCT-LTDiag:
+    mask: mask_pvp.nii.gz            # one binary tumour mask per patient, in the patient's tar, on the PVP grid
+    drawn_phase: pvp
+    class_from_patient_type:         # meta_info_patient.csv "type" (also the letter in the patient ID)
+      HCC: 1
+      ICC: 1
+      CRLM: 1                        # colorectal cancer liver metastasis
+      BCLM: 1                        # breast cancer liver metastasis
+      HH: 2                          # hepatic haemangioma
+    pieces:                          # blob rule (open item 8, decided 2026-11-05)
+      lesion: largest piece, and every piece with more than 50 voxels on more than 1 slice (authors' VOI rule)
+      ignore: every other piece (class 3)
+    small_lesions_annotated: false   # the dataset excludes tumours < 1 cm; slices are 5 mm
+
+  PLC-CECT:
+    masks: mask_files/<id>_mask_<phase>.nii.gz   # a lesion mask on every phase of the 278 cancer patients
+    phase_codes: {P: nc, C1: ap, C2: pvp, C3: dp}   # must be stated in the release documentation
+    main_mask_phase: pvp             # the C2 mask is the lesion mask; the other phases' masks are kept for QC only
+    class_from_patient_type: {HCC: 1, ICC: 1, CHCC: 1}
+    controls: CN                     # 83 patients without lesions: label all 0, no lesion mask needed
+    value_threshold: 0.5             # masks are stored as 0 / 0.99999...
+    small_lesions_annotated: true
+
+  WAW-TACE:
+    masks: tumor_masks_*/<id>/<id>_<phase>_<k>_tumor_seg.nrrd   # one file per tumour
+    phase_codes: {"0": nc, "1": ap, "2": pvp, "3": dp}
+    lesion: one file = one lesion (class 1, HCC), on the phase it was drawn on
+    placement:                       # decided 2026-11-05 (option A)
+      - a mask whose voxel grid matches one of the patient's scans exactly stays on that scan
+        (15 masks match another phase than their file name; the file-name phase is kept as named_phase)
+      - otherwise it is placed on its named phase by physical position (nearest neighbour) if its volume stays
+        within 10 %; such masks are checked visually
+    unannotated: haemangiomas and other benign lesions are not drawn (false positives there are an upper bound)
+    small_lesions_annotated: true
+
+  TCIA-CRLM:
+    masks: DICOM SEG segments Tumor_<k> (one segment per tumour), on the PVP CT grid
+    drawn_phase: pvp
+    lesion: one segment = one lesion (class 1, colorectal metastasis); overlapping segments stay separate lesions
+    instance_overlap: overlapping voxels take the smaller lesion's id, so every lesion keeps visible voxels
+    other_segments: {Liver: reference liver, Liver Remnant: kept, Hepatic: hepatic vein, Portal: portal vein}
+    small_lesions_annotated: true
+
+  LiTS:
+    source_labels: {0: background, 1: liver, 2: cancer}   # dataset.json of MSD Task03_Liver
+    lesion: each 26-connected piece of label 2 (class 1)
+    liver_reference: labels 1 and 2 together
+    drawn_phase: pvp                 # assumed; LiTS mixes phases, mostly portal-venous
+    small_lesions_counted_on_slices_up_to_mm: 2   # small uncertain structures were not annotated
+    small_lesions_annotated: false

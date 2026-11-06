@@ -30,6 +30,7 @@ from scipy import ndimage
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
 import components as C  # noqa: E402
 import mct_reader  # noqa: E402
+from labels import geometry, place_mask  # noqa: E402
 
 PHASES = ["nc", "ap", "pvp", "dp"]
 ROLE = {"MCT-LTDiag": "development", "PLC-CECT": "development",
@@ -160,42 +161,6 @@ def plc(data):
         rows.append(finish(row, mine))
         progress(k, len(groups))
     return rows, lesions
-
-
-def geometry(path):
-    """(size, spacing, origin, direction) of an image file, without reading its pixels."""
-    r = sitk.ImageFileReader()
-    r.SetFileName(str(path))
-    r.ReadImageInformation()
-    return r.GetSize(), r.GetSpacing(), r.GetOrigin(), r.GetDirection()
-
-
-def place_mask(mask, named, grids):
-    """(phase, array (z, y, x), "same grid" | "resampled") for a WAW tumour mask, or None.
-
-    19 masks do not sit on the grid of the phase in their file name (checked 2026-11-04). A mask lying exactly on
-    another phase's grid was drawn on that phase; otherwise it is placed on its named phase by physical position,
-    if that keeps its volume within 10 % (else on another phase that does).
-    """
-    geom = (mask.GetSize(), mask.GetSpacing(), mask.GetOrigin(), mask.GetDirection())
-    same = lambda a, b: a[0] == b[0] and all(np.allclose(x, y, atol=1e-2) for x, y in zip(a[1:], b[1:]))  # noqa: E731
-    order = [named] + [p for p in grids if p != named]
-    for ph in order:
-        if ph in grids and same(geom, grids[ph]):
-            return ph, sitk.GetArrayFromImage(mask) > 0, "same grid"
-    volume = float(sitk.GetArrayViewFromImage(mask).sum()) * np.prod(mask.GetSpacing())
-    for ph in order:
-        if ph not in grids:
-            continue
-        size, spacing, origin, direction = grids[ph]
-        ref = sitk.Image(size, sitk.sitkUInt8)
-        ref.SetSpacing(spacing)
-        ref.SetOrigin(origin)
-        ref.SetDirection(direction)
-        arr = sitk.GetArrayFromImage(sitk.Resample(mask, ref, sitk.Transform(), sitk.sitkNearestNeighbor, 0)) > 0
-        if volume > 0 and abs(arr.sum() * np.prod(spacing) - volume) <= 0.1 * volume:
-            return ph, arr, "resampled"
-    return None
 
 
 def waw(data):
