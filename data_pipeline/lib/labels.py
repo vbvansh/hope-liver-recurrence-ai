@@ -3,7 +3,8 @@
 Each function returns a list of Labels, one per phase that has lesions drawn on it (one for every dataset except
 WAW-TACE, where tumours may be drawn on different phases). Arrays follow nibabel's voxel order (x, y, z) of the
 image they sit on, on its native grid: no resampling here. lesion_instances numbers lesions (classes 1-2); where
-lesions overlap, the smaller one keeps the overlapping voxels so that every lesion stays visible.
+lesions overlap, the smaller one keeps the overlapping voxels so that every lesion stays visible. Where lesions can
+overlap (WAW-TACE, TCIA-CRLM), each lesion dict also carries "idx", the voxel indices of its own full outline.
 """
 import json
 import re
@@ -166,7 +167,8 @@ def waw(cts, masks, pid):
         for i, (code, k, m, how) in enumerate(items, 1):
             parts.append((i, MALIGNANT, m))
             lesions.append({"instance": i, "class": MALIGNANT, "source": f"tumour file {code}_{k}",
-                            "named_phase": WAW_PHASES[code], "placement": how, "voxels": int(m.sum())})
+                            "named_phase": WAW_PHASES[code], "placement": how, "voxels": int(m.sum()),
+                            "idx": np.argwhere(m)})  # own full outline, also where tumours overlap
         label, instances = paint(img.shape, parts)
         out.append(Labels(ph, img, label, instances, lesions))
     return out
@@ -186,7 +188,7 @@ def tcia(nifti_dir):
         k = int(re.fullmatch(r"Tumor_(\d+)", name).group(1))
         parts.append((k, MALIGNANT, arr[..., j]))
         lesions.append({"instance": k, "class": MALIGNANT, "source": f"segment {name}",
-                        "voxels": int(arr[..., j].sum())})
+                        "voxels": int(arr[..., j].sum()), "idx": np.argwhere(arr[..., j])})  # own full outline
     label, instances = paint(img.shape, parts)
     return [Labels("pvp", img, label, instances, lesions)]
 

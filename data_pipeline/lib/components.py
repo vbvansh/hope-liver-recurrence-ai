@@ -1,7 +1,7 @@
 """3D connected components of a binary mask, measured in mm (MCT blob check now, lesion measurement in Step 7).
 
-Sizes use the outer surface of the voxels (their corners), close to pyradiomics' mesh-based diameters: a single
-voxel has the size of one voxel, not zero.
+Sizes use the outer surface of the voxels (their corners) by default, close to pyradiomics' mesh-based diameters
+(the blob check); lesion measurement (Step 7) uses voxel centres, the release convention.
 """
 import numpy as np
 from scipy import ndimage
@@ -27,17 +27,22 @@ def corners(idx, spacing):
     return np.unique(((idx[:, None, :] + offsets[None]) * spacing).reshape(-1, d), axis=0)
 
 
-def measure(idx, spacing, slice_axis):
-    """Voxels, volume, slices, in-plane / 3D max and equivalent diameter of the voxels at indices idx (n, 3)."""
+def measure(idx, spacing, slice_axis, centres=False):
+    """Voxels, volume, slices, in-plane / 3D max and equivalent diameter of the voxels at indices idx (n, 3).
+
+    centres=True measures diameters between voxel centres (the release convention, decided 2026-11-06: a single
+    voxel measures 0 mm); otherwise between the voxels' outer corners.
+    """
     spacing = np.asarray(spacing, float)
     plane = [a for a in range(3) if a != slice_axis]
+    points = (lambda i, s: np.unique(i * s, axis=0)) if centres else corners
     slices = np.unique(idx[:, slice_axis])
-    inplane = max(max_distance(corners(idx[idx[:, slice_axis] == z][:, plane], spacing[plane])) for z in slices)
+    inplane = max(max_distance(points(idx[idx[:, slice_axis] == z][:, plane], spacing[plane])) for z in slices)
     volume = len(idx) * float(np.prod(spacing))
     return {"voxels": len(idx), "volume_mm3": round(volume, 1),
             "slices": len(slices), "slice_first": int(slices[0]), "slice_last": int(slices[-1]),
             "inplane_max_diameter_mm": round(inplane, 1),
-            "max3d_diameter_mm": round(max_distance(corners(idx, spacing)), 1),
+            "max3d_diameter_mm": round(max_distance(points(idx, spacing)), 1),
             "equivalent_diameter_mm": round((6 * volume / np.pi) ** (1 / 3), 1)}
 
 
