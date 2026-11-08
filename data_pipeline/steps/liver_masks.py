@@ -2,11 +2,11 @@
 """Steps 5 and 8: TotalSegmentator liver mask for every scan (every phase of every patient), on the scan's own grid.
 
 Runs in envs/totalseg (the job unpacks it on the GPU node's local disk, see jobs/liver_masks.sh). Same call and
-settings as qc/totalseg_check.py: task total, liver only (roi_subset), full-resolution model. PLC-CECT waits for its
-geometry recovery (Step 4): its headers carry a placeholder 1 mm spacing.
+settings as qc/totalseg_check.py: task total, liver only (roi_subset), full-resolution model. PLC-CECT is read from
+its corrected files (Step 4) and listed last.
 
 Modes:
-  --make-list      write <out>/scans.csv: one row per scan (MCT-LTDiag, TCIA-CRLM, LiTS, WAW-TACE, in that order)
+  --make-list      write <out>/scans.csv: one row per scan (MCT-LTDiag, TCIA-CRLM, LiTS, WAW-TACE, PLC-CECT)
   --task K         process scans (K-1)*per_task+1 .. K*per_task of scans.csv (one array-job task)
   --test           the four scans of qc/totalseg_check.py plus the other three phases of its MCT patient; compares
                    the four with outputs/totalseg_test (same software, so Dice should be 1.000)
@@ -35,7 +35,7 @@ FIELDS = ["scan_id", "dataset", "patient", "phase", "source", "member"]
 
 
 def make_list(data):
-    """[{scan_id, dataset, patient, phase, source, member}] for every scan except PLC-CECT."""
+    """[{scan_id, dataset, patient, phase, source, member}] for every scan."""
     rows = []
     for t in mct_reader.patients(data / "MCT-LTDiag").itertuples():
         rows += [{"dataset": "MCT-LTDiag", "patient": t.patient_id, "phase": ph, "source": str(t.tar),
@@ -51,6 +51,10 @@ def make_list(data):
     for p in waw:
         pid, code = re.fullmatch(r"(\d+)_(\d)_scan\.nii\.gz", p.name).groups()
         rows.append({"dataset": "WAW-TACE", "patient": pid, "phase": WAW_PHASES[code], "source": str(p), "member": ""})
+    fixed = data / "PLC-CECT" / "fixed"  # corrected PLC-CECT files (Step 4), appended last: tasks 131 on
+    for folder in sorted(p for p in fixed.iterdir() if p.is_dir() and not p.name.endswith(".part")):
+        rows += [{"dataset": "PLC-CECT", "patient": folder.name, "phase": ph, "source": str(folder / f"ct_{ph}.nii.gz"),
+                  "member": ""} for ph in MCT_PHASES]
     for r in rows:
         r["scan_id"] = f"{r['dataset']}_{r['patient']}_{r['phase']}"
     return rows

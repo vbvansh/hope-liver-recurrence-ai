@@ -3,7 +3,7 @@
 
 For each picked patient and each phase with lesions: the axial slice where the lesions cover the most area,
 shown twice side by side (CT alone, CT with labels): malignant red, haemangioma blue, ignore yellow. CT is shown
-at -200..200 HU (PLC-CECT as stored, 0-255). Images are in radiological view (patient's right on the left).
+at -200..200 HU (PLC-CECT from its corrected files). Images are in radiological view (patient's right on the left).
 Patients are picked with a fixed seed among those with at least one lesion; file names carry a running number,
 the number-to-patient list is written next to the pictures (it stays on the cluster).
 
@@ -55,10 +55,7 @@ def to_display(arr, affine):
 def panel(ct, lab, dataset):
     """RGB image: CT slice and the same slice with labels, side by side (radiological view)."""
     view = lambda a: np.flip(a.T, axis=(0, 1))  # noqa: E731  RAS (x, y) -> rows anterior at top, patient's right left
-    if dataset == "PLC-CECT":
-        grey = np.clip(ct, 0, 255).astype(np.uint8)
-    else:
-        grey = ((np.clip(ct, -200, 200) + 200) / 400 * 255).astype(np.uint8)
+    grey = ((np.clip(ct, -200, 200) + 200) / 400 * 255).astype(np.uint8)
     grey, lab = view(grey), view(lab)
     base = np.stack([grey] * 3, axis=-1).astype(float)
     over = base.copy()

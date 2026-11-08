@@ -87,13 +87,19 @@ def plc_ct(raw, pid, code):
 
 
 def plc(raw, pid, cancer_type):
-    """PLC-CECT: every piece of the PVP (C2) mask is a malignant lesion; controls (CN) have none."""
-    img = plc_ct(raw, pid, "C2")
+    """PLC-CECT: every piece of the PVP (C2) mask is a malignant lesion; controls (CN) have none.
+
+    Reads the corrected files (convert/plc_cect_geometry.py: true voxel size, right way up, HU + 40).
+    """
+    fixed = Path(raw) / "fixed" / pid
+    if not (fixed / "geometry.json").exists():
+        raise FileNotFoundError("no corrected PLC-CECT files for this patient (run plc_cect_geometry.py apply)")
+    img = nib.load(fixed / "ct_pvp.nii.gz")
     shape = img.shape[:3]
-    mask_path = Path(raw) / "mask_files" / f"{pid}_mask_C2.nii.gz"
+    mask_path = fixed / "lesion_pvp.nii.gz"
     if cancer_type == "CN" or not mask_path.exists():
         return [Labels("pvp", img, np.zeros(shape, np.uint8), np.zeros(shape, np.uint16), [])]
-    lab, found = pieces(np.asarray(nib.load(mask_path).dataobj) > 0.5)
+    lab, found = pieces(np.asarray(nib.load(mask_path).dataobj) > 0)
     lesions = [{"instance": i, "class": MALIGNANT, "source": f"piece {i} by size", "voxels": p[1]}
                for i, p in enumerate(found, 1)]
     label, instances = from_pieces(lab, {p[0]: (i, MALIGNANT) for i, p in enumerate(found, 1)})

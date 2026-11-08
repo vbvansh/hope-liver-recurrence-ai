@@ -7,14 +7,15 @@ notes on anything that may stop a case from being used ("BLOCK: ..." stops it, "
 class, the phase it was drawn on, voxels, slices and a provisional in-plane maximum diameter (outer voxel surface;
 Step 7 fixes the convention). Reads only; nothing in data/ changes.
 
-Phase codes (to confirm in Step 2): PLC-CECT P / C1 / C2 / C3 = NC / AP / PVP / DP (the dataset README calls C1
-arterial); WAW-TACE 0 / 1 / 2 / 3 = NC / AP / PVP / DP (team pipeline processing/WAW-TACE); TCIA-CRLM and LiTS are
+Phase codes: PLC-CECT P / C1 / C2 / C3 = NC / AP / PVP / DP (read from its corrected files, Step 4); WAW-TACE 0 /
+1 / 2 / 3 = NC / AP / PVP / DP (team pipeline processing/WAW-TACE); TCIA-CRLM and LiTS are
 taken as PVP. MCT-LTDiag lesions use the blob-check output and the proposed blob rule (open item 8, pending Yifan).
 
 Output (--out folder): inventory_<dataset>.csv, lesions_<dataset>.csv
 Usage: python -I -u inventory.py --dataset PLC-CECT --data <project>/data --out <project>/outputs/inventory
 """
 import argparse
+import json
 import os
 import re
 import sys
@@ -114,6 +115,7 @@ def mct(data, blobs):
 
 
 def plc(data):
+    """PLC-CECT from its corrected files (Step 4: true voxel size, right way up, HU + 40), phases nc / ap / pvp / dp."""
     raw = data / "PLC-CECT"
     table = pd.read_csv(raw / "patient_data.csv")
     rows, lesions = [], []
@@ -123,37 +125,38 @@ def plc(data):
         row = patient("PLC-CECT", pid, "/".join(types))
         if len(types) != 1:
             row["notes"].append("NOTE: cancer type differs between phase rows")
-        row["notes"].append("NOTE: placeholder 1 mm spacing and 0-255 values until geometry recovery (Step 4)")
+        fixed = raw / "fixed" / pid
+        if not (fixed / "geometry.json").exists():
+            row["notes"].append("BLOCK: no corrected files (Step 4)")
+            rows.append(finish(row, []))
+            continue
+        geo = json.loads((fixed / "geometry.json").read_text())
+        row["notes"] += [f"NOTE: {n}" for n in geo.get("notes", [])]
+        low = [ph for ph, info in geo["phases"].items() if info["spacing_z_confidence"] == "low"]
+        if low:
+            row["notes"].append(f"NOTE: slice spacing estimate of low confidence on {'+'.join(low)}")
         mine, mask_phases, liver_phases = [], [], []
-        for code, ph in PLC_PHASES.items():
-            ct = raw / "ct_files" / f"{pid}_ct_{code}.nii.gz"
+        for ph in PLC_PHASES.values():
+            ct = fixed / f"ct_{ph}.nii.gz"
             if not ct.exists():
                 continue
             img = nib.load(ct)
-            add_phase(row, ph, img.shape, img.header.get_zooms(), slice_axis_of(img.affine))
-            if len(img.shape) > 3:  # 91 patients: grey CT saved as an RGB vector image (512, 512, z, 1, 3)
-                a = np.asarray(img.dataobj)
-                same = all(np.array_equal(a[..., 0, 0], a[..., 0, c]) for c in range(1, a.shape[-1]))
-                row["notes"].append(f"NOTE: {ph} CT saved with {a.shape[-1]} colour channels "
-                                    f"({'identical' if same else 'DIFFERENT'})")
-            liver = raw / "liver_mask_files" / f"{pid}-livermask_{code}.nii.gz"
-            if liver.exists():
+            axis = slice_axis_of(img.affine)
+            add_phase(row, ph, img.shape, img.header.get_zooms(), axis)
+            row[f"spacing_confidence_{ph}"] = geo["phases"][ph]["spacing_z_confidence"]
+            if (fixed / f"liver_{ph}.nii.gz").exists():
                 liver_phases.append(ph)
-            mask = raw / "mask_files" / f"{pid}_mask_{code}.nii.gz"
+            mask = fixed / f"lesion_{ph}.nii.gz"
             if mask.exists():
                 mask_phases.append(ph)
-                m = nib.load(mask)
-                if m.shape[:3] != img.shape[:3]:
-                    row["notes"].append(f"BLOCK: {ph} lesion mask not on the CT grid")
-                    continue
-                labels, n = ndimage.label(np.asarray(m.dataobj) > 0.5, structure=C.FULL)
+                found, n = ndimage.label(np.asarray(nib.load(mask).dataobj) > 0, structure=C.FULL)
                 row[f"lesions_on_{ph}"] = n
-                if ph == "pvp":  # lesion rows from the PVP mask; sizes in mm wait for the real spacing (Step 4)
-                    axis, voxels = slice_axis_of(m.affine), np.bincount(labels.ravel())
-                    mine = [lesion("PLC-CECT", pid, j, 1, "pvp",
-                                   {"voxels": int(voxels[j]), "slices": box[axis].stop - box[axis].start,
-                                    "inplane_max_diameter_mm": np.nan, "equivalent_diameter_mm": np.nan})
-                            for j, box in enumerate(ndimage.find_objects(labels), 1)]
+                if ph == "pvp":  # lesion rows from the PVP mask, the main lesion mask
+                    spacing = img.header.get_zooms()[:3]
+                    boxes = ndimage.find_objects(found)
+                    mine = [lesion("PLC-CECT", pid, j, 1, "pvp", C.measure(
+                                np.argwhere(found[box] == j) + [sl.start for sl in box], spacing, axis))
+                            for j, box in enumerate(boxes, 1)]
         if types[0] != "CN" and "pvp" not in mask_phases:
             row["notes"].append("BLOCK: cancer patient without a PVP lesion mask")
         row["lesion_mask_phases"], row["liver_mask_phases"] = "|".join(mask_phases), "|".join(liver_phases)

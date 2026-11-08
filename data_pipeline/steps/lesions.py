@@ -4,8 +4,7 @@
 Lesions come from the standard labels (lib/labels.py, configs/label_maps.yaml). Diameters are measured between voxel
 centres (decided 2026-11-06), on the grid of the phase each lesion was drawn on: in-plane maximum diameter (largest
 over the lesion's slices), 3D maximum diameter, volume and equivalent diameter. The size stratum uses the in-plane
-maximum diameter: <10, 10-19, 20-29, >=30 mm. PLC-CECT headers carry a placeholder 1 mm spacing, so its lesions are
-counted and sized in voxels only until the geometry recovery (Step 4).
+maximum diameter: <10, 10-19, 20-29, >=30 mm. PLC-CECT is measured on its corrected files (Step 4: true voxel size).
 
 Output (--out folder), per dataset:
   lesions_<dataset>.csv    one row per lesion (classes 1 and 2)
@@ -31,7 +30,7 @@ import components as C  # noqa: E402
 import labels as L  # noqa: E402
 
 STRATA = [(10, "<10"), (20, "10-19"), (30, "20-29"), (np.inf, ">=30")]
-GEOMETRY_UNKNOWN = {"PLC-CECT"}  # placeholder 1 mm headers until Step 4
+GEOMETRY_UNKNOWN = set()  # PLC-CECT is read from its corrected files (Step 4)
 
 
 def stratum(d):
