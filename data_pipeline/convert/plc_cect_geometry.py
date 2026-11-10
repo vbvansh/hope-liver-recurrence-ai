@@ -13,6 +13,14 @@ Subcommands:
   apply       write data/PLC-CECT/fixed/<patient>/ct_<phase>.nii.gz (int16 HU), lesion_<phase>.nii.gz and
               liver_<phase>.nii.gz (uint8, the released masks on the same corrected grid) and geometry.json, for every
               patient (phases nc / ap / pvp / dp). Patients already written are skipped.
+              --flip-override <csv>: reverse the slice order of the volumes listed there (columns patient, phase)
+              against the reference, and write only those patients again; their existing folders are moved to
+              <out>_replaced_<date>/ first.
+
+Flip override (decided 2026-11-09, applied 2026-11-10): the reference
+flips 1,442 of 1,444 volumes; for the other 2 quick signals disagree, so only volumes that qc/plc_flip_test.py shows
+upside down by their anatomy (heart / lungs / kidneys / vertebrae order) are listed in the override file.
+geometry.json keeps stage 0's own value as k_axis_flip_stage0 and notes the override. Spacing and HU are unchanged.
 Usage: python -I -u plc_cect_geometry.py {spotcheck,apply} --raw <project>/data/PLC-CECT --out <folder> [...]
 """
 import argparse
@@ -101,7 +109,7 @@ def fixed_image(source, phase_geometry, temp, name, kind):
     return mask, details
 
 
-def apply_patient(case, out_root):
+def apply_patient(case, out_root, flip_override=frozenset()):
     """Write the corrected volumes of one patient through a temporary folder; return a short status."""
     final = out_root / case["patient_id"]
     if final.exists():
@@ -115,8 +123,13 @@ def apply_patient(case, out_root):
     with tempfile.TemporaryDirectory() as temp:
         temp = Path(temp)
         for phase in P.PHASES:
-            g = case["phase_geometry"][phase]
+            g = dict(case["phase_geometry"][phase])
             ours = OUR_PHASE[phase]
+            stage0_flip = g["k_axis_flip"]
+            if (case["patient_id"], ours) in flip_override:
+                g["k_axis_flip"] = not stage0_flip
+                record.setdefault("notes", []).append(
+                    f"{ours}: slice order reversed against stage 0 (anatomy test, qc/plc_flip_test.py)")
             ct, details = fixed_image(case["phase_sources"][phase], g, temp, f"ct-{phase}", "ct")
             sitk.WriteImage(ct, str(tmp / f"ct_{ours}.nii.gz"), useCompression=True)
             liver_source = case["liver_sources"][phase] if case["liver_mask_origin"][phase] == "released" else None
@@ -137,7 +150,8 @@ def apply_patient(case, out_root):
                 sitk.WriteImage(lesion, str(tmp / f"lesion_{ours}.nii.gz"), useCompression=True)
             record["phases"][ours] = {
                 "source_code": CODE[phase], "size": list(ct.GetSize()), "spacing_mm": list(ct.GetSpacing()),
-                "k_axis_flip": g["k_axis_flip"], "spacing_z_confidence": g["spacing_z_confidence"],
+                "k_axis_flip": g["k_axis_flip"], "k_axis_flip_stage0": stage0_flip,
+                "spacing_z_confidence": g["spacing_z_confidence"],
                 "spacing_z_source": g["spacing_z_source"], "orientation_source": g["orientation_source"],
                 "colour_channels": details.get("vector_fix"), "geometry_version": g["geometry_version"]}
     (tmp / "geometry.json").write_text(json.dumps(record, indent=1))
@@ -145,16 +159,26 @@ def apply_patient(case, out_root):
     return "done"
 
 
-def apply(raw, out, workers, limit):
+def apply(raw, out, workers, limit, flip_override_csv=None):
     use_unpacked_release(raw)
     cases = P.build_plc_cases(raw, REFERENCE)
+    flip_override = frozenset()
+    if flip_override_csv:
+        flip_override = frozenset((r["patient"], r["phase"]) for r in csv.DictReader(flip_override_csv.open()))
+        cases = [c for c in cases if any(c["patient_id"] == p for p, _ in flip_override)]
+        backup = out.parent / f"{out.name}_replaced_{time.strftime('%Y-%m-%d')}"
+        backup.mkdir(exist_ok=True)
+        for c in cases:
+            if (out / c["patient_id"]).exists():
+                os.replace(out / c["patient_id"], backup / c["patient_id"])
+        print(f"flip overrides: {len(cases)} patients; their previous folders moved to {backup.name}/")
     if limit:
         cases = cases[:limit]
     out.mkdir(parents=True, exist_ok=True)
     print(f"{len(cases)} patients, {workers} workers", flush=True)
     counts, t0 = {}, time.time()
     with ProcessPoolExecutor(max_workers=workers, initializer=use_unpacked_release, initargs=(raw,)) as pool:
-        futures = {pool.submit(apply_patient, case, out): case for case in cases}
+        futures = {pool.submit(apply_patient, case, out, flip_override): case for case in cases}
         for k, fut in enumerate(as_completed(futures), 1):
             try:
                 status = fut.result()
@@ -178,11 +202,13 @@ def main():
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--workers", type=int, default=1, help="apply: patients in parallel")
     ap.add_argument("--limit", type=int, help="apply: only the first N patients (test run)")
+    ap.add_argument("--flip-override", type=Path,
+                    help="apply: CSV (patient, phase) of volumes to reverse against stage 0; rewrites only those patients")
     args = ap.parse_args()
     if args.command == "spotcheck":
         spotcheck(args.raw, args.out, args.n, args.seed)
     else:
-        apply(args.raw, args.out, args.workers, args.limit)
+        apply(args.raw, args.out, args.workers, args.limit, args.flip_override)
 
 
 if __name__ == "__main__":
