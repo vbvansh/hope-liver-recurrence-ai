@@ -7,8 +7,14 @@ cannot be used (a "BLOCK" note) and the usable count, with the expected train / 
 development sets. It also estimates Plan v2's < 10 mm reporting rule (internal test >= 50 such lesions, each external
 set >= 30). Step 10 regenerates it with the QC exclusions.
 
+With --lesions (Step 7 output, outputs/lesions/) the lesion counts and sizes are the final ones: voxel-centre
+diameters measured on the native scan, size strata < 10 / 10-19 / 20-29 / >= 30 mm, TCIA-CRLM tumours kept separate
+(524, decided 2026-11-05) and MCT-LTDiag ignore regions from patients_<dataset>.csv. Without it, the provisional
+inventory sizes (outer voxel edges) are used as before.
+
 Output (--out folder): dataset_summary.csv (one row per dataset) and dataset_summary.md (counts only, for the team).
-Usage: python -I dataset_summary.py --inventory <project>/outputs/inventory --out <project>/outputs/dataset_summary
+Usage: python -I dataset_summary.py --inventory <project>/outputs/inventory [--lesions <project>/outputs/lesions]
+           --out <project>/outputs/dataset_summary
 """
 import argparse
 from pathlib import Path
@@ -24,9 +30,24 @@ TEXT = ["dataset", "patient_id", "role", "diagnosis", "phases_present", "missing
 SPLIT = {"train": 0.7, "val": 0.1, "test": 0.2}
 SMALL_MM, SMALL_MIN = 10, {"internal_test": 50, "external": 30}  # Plan v2 reporting rule for the < 10 mm stratum
 LITS_SMALL_MAX_SLICE_MM = 2  # LiTS: < 10 mm lesions count only on slices <= 2 mm
+STRATA = {"<10": "class1_lt10mm_all", "10-19": "class1_10_19mm", "20-29": "class1_20_29mm", ">=30": "class1_ge30mm"}
 
 
-def summarise(name, inv, les):
+def final_lesions(name, usable_ids, final, final_patients):
+    """Lesion counts and malignant size strata from the Step 7 tables (usable patients only)."""
+    f = final[final.patient.isin(usable_ids)]
+    c1 = f[f["class"] == 1]
+    out = {"lesions_class1": len(c1), "lesions_class2": int((f["class"] == 2).sum()),
+           "lesions_class3": int(final_patients[final_patients.patient.isin(usable_ids)].ignore_regions.sum())}
+    for stratum, col in STRATA.items():
+        out[col] = int((c1.size_stratum == stratum).sum())
+    # class1_lt10mm = the count Plan v2's reporting rule uses; LiTS counts only lesions on slices <= 2 mm
+    out["class1_lt10mm"] = (int(((c1.size_stratum == "<10") & (c1.native_slice_mm <= LITS_SMALL_MAX_SLICE_MM)).sum())
+                            if name == "LiTS" else out["class1_lt10mm_all"])
+    return out
+
+
+def summarise(name, inv, les, final=None, final_patients=None):
     blocked = inv.notes.str.contains("BLOCK")
     if inv.role.iloc[0] == "development":
         blocked |= ~inv.phases_present.str.contains("pvp")
@@ -57,7 +78,8 @@ def summarise(name, inv, les):
                                       inv.lesion_mask_phases.replace("", "none").value_counts().items()),
            "lesions_class1": int(inv.lesions_class1.sum()), "lesions_class2": int(inv.lesions_class2.sum()),
            "lesions_class3": int(inv.lesions_class3.sum()),
-           "class1_lt10mm_provisional": small,
+           **({"class1_lt10mm_provisional": small} if final is None else
+              final_lesions(name, set(inv.patient_id[~blocked]), final, final_patients)),
            "slice_mm_min": inv[slice_col].min(), "slice_mm_median": inv[slice_col].median(),
            "slice_mm_max": inv[slice_col].max(),
            "blocked": int(blocked.sum()), "blocked_reasons": "; ".join(f"{k} {v}" for k, v in reasons.items()),
@@ -71,6 +93,9 @@ def summarise(name, inv, les):
 
 
 def markdown(df):
+    final = "class1_lt10mm" in df
+    small = "class1_lt10mm" if final else "class1_lt10mm_provisional"
+
     def cell(v):
         return "–" if pd.isna(v) or v == "" else (f"{v:g}" if isinstance(v, float) else str(v))
 
@@ -82,15 +107,20 @@ def markdown(df):
              ("Lesions: malignant (1)", lambda r: r.lesions_class1),
              ("Lesions: haemangioma (2)", lambda r: r.lesions_class2),
              ("Regions: ignore (3)", lambda r: r.lesions_class3),
-             ("Malignant lesions < 10 mm (provisional)", lambda r: cell(r.class1_lt10mm_provisional)),
+             ("Malignant lesions < 10 mm" + (" (rule count; LiTS: slices ≤ 2 mm only)" if final else " (provisional)"), lambda r: cell(getattr(r, small))),
+             *([("Malignant by size: < 10 / 10–19 / 20–29 / ≥ 30 mm", lambda r: (
+                 f"{r.class1_lt10mm_all} / {r.class1_10_19mm} / {r.class1_20_29mm} / {r.class1_ge30mm}"))]
+               if final else []),
              ("Slice spacing, mm (min / median / max)",
               lambda r: f"{cell(r.slice_mm_min)} / {cell(r.slice_mm_median)} / {cell(r.slice_mm_max)}"),
              ("Not usable yet", lambda r: r.blocked),
              ("**Usable**", lambda r: f"**{r.usable}**"),
              ("Expected train / val / test", lambda r: (f"{r.expected_train} / {r.expected_val} / {r.expected_test}"
                                                        if r.role == "development" else f"test {r.expected_test}"))]
+    source = ("From the Step 1 inventories and the Step 7 lesion tables (final sizes)." if final else
+              "First version, from the Step 1 inventories.")
     lines = ["# Dataset summary", "",
-             "First version, from the Step 1 inventories. Counts only; per-patient tables stay on the cluster.", "",
+             f"{source} Counts only; per-patient tables stay on the cluster.", "",
              "| | " + " | ".join(df.dataset) + " |", "|---|" + "---|" * len(df)]
     lines += [f"| {label} | " + " | ".join(cell(get(r)) for r in df.itertuples()) + " |" for label, get in table]
     lines += ["", "## Details per dataset", ""]
@@ -105,15 +135,29 @@ def markdown(df):
         lines.append("")
     lines += ["## The < 10 mm rule (Plan v2)", ""]
     dev = df[df.role == "development"]
-    if dev.class1_lt10mm_provisional.notna().any():
-        est = SPLIT["test"] * dev.class1_lt10mm_provisional.sum()
-        lines.append(f"- < 10 mm rule (Plan v2): internal test ≈ 20 % of the measurable development lesions < 10 mm "
-                     f"= about {est:.0f} (needs >= {SMALL_MIN['internal_test']}; PLC-CECT sizes not yet measurable).")
+    if dev[small].notna().any():
+        est = SPLIT["test"] * dev[small].sum()
+        ok = "meets" if est >= SMALL_MIN["internal_test"] else "below"
+        tail = ("" if final or dev[small].notna().all() else "; PLC-CECT sizes not yet measurable")
+        lines.append(f"- Internal test: ≈ 20 % of the development lesions < 10 mm = about {est:.0f} ({ok} the "
+                     f"{SMALL_MIN['internal_test']} needed{tail})."
+                     + (" Plan v2 then merges the < 10 mm stratum into < 20 mm for the internal test." if ok == "below"
+                        else ""))
     for r in df[df.role == "external"].itertuples():
-        if pd.notna(r.class1_lt10mm_provisional):
-            ok = "meets" if r.class1_lt10mm_provisional >= SMALL_MIN["external"] else "below"
-            lines.append(f"- < 10 mm rule, {r.dataset}: {int(r.class1_lt10mm_provisional)} lesions ({ok} "
-                         f"the {SMALL_MIN['external']} needed).")
+        v = getattr(r, small)
+        if pd.notna(v):
+            ok = "meets" if v >= SMALL_MIN["external"] else "below"
+            lines.append(f"- {r.dataset}: {int(v)} lesions < 10 mm ({ok} the {SMALL_MIN['external']} needed"
+                         + ("; LiTS counts only scans with slices <= 2 mm" if r.dataset == "LiTS" else "") + ").")
+    if final:
+        lines += ["", "## Assumptions", "",
+                  "PLC-CECT P/C1/C2/C3 and WAW-TACE 0/1/2/3 read as NC/AP/PVP/DP; TCIA-CRLM and LiTS taken as PVP; "
+                  "MCT-LTDiag lesions = largest piece + pieces the authors' rule keeps, the rest = class 3 ignore "
+                  "(decided 2026-11-05); TCIA-CRLM overlapping tumours counted separately; PLC-CECT measured on its "
+                  "corrected geometry (LiverPreprocessing stage 0); diameters between voxel centres on the native scan "
+                  "(decided 2026-11-06); LiTS < 10 mm lesions only on slices <= 2 mm; expected split sizes are "
+                  "70 / 10 / 20 % of the usable development patients."]
+        return "\n".join(lines) + "\n"
     lines += ["", "## Assumptions", "",
               "PLC-CECT P/C1/C2/C3 and WAW-TACE 0/1/2/3 read as NC/AP/PVP/DP; TCIA-CRLM and LiTS taken "
               "as PVP; MCT-LTDiag lesions follow the proposed blob rule (largest piece + pieces the authors' rule "
@@ -127,6 +171,7 @@ def markdown(df):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--inventory", type=Path, required=True, help="folder with inventory_*.csv and lesions_*.csv")
+    ap.add_argument("--lesions", type=Path, help="outputs/lesions (Step 7): final lesion counts and sizes")
     ap.add_argument("--out", type=Path, required=True, help="output folder")
     args = ap.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
@@ -137,12 +182,19 @@ def main():
             print(f"{name}: no inventory yet, skipped")
             continue
         inv = pd.read_csv(inv_path, dtype={c: str for c in TEXT}, keep_default_na=False)
-        inv = inv.apply(lambda col: col if col.name in TEXT else pd.to_numeric(col.replace("", np.nan)))
+        inv = inv.apply(lambda col: col if col.name in TEXT or col.name.startswith("spacing_confidence_")
+                        else pd.to_numeric(col.replace("", np.nan)))  # PLC-CECT has spacing_confidence_<phase> text
         les_path = args.inventory / f"lesions_{name}.csv"
         les = pd.read_csv(les_path, dtype={"patient_id": str}) if les_path.stat().st_size > 1 else pd.DataFrame()
-        rows.append(summarise(name, inv, les))
+        final = final_patients = None
+        if args.lesions:
+            final = pd.read_csv(args.lesions / f"lesions_{name}.csv", dtype={"patient": str})
+            final_patients = pd.read_csv(args.lesions / f"patients_{name}.csv", dtype={"patient": str})
+            if "ignore_regions" not in final_patients:
+                final_patients["ignore_regions"] = 0
+        rows.append(summarise(name, inv, les, final, final_patients))
     df = pd.DataFrame(rows)
-    for col in [c for c in df if c.startswith("expected_") or c == "class1_lt10mm_provisional"]:
+    for col in [c for c in df if c.startswith("expected_") or c.startswith("class1_") or c.startswith("lesions_")]:
         df[col] = df[col].astype("Int64")  # whole numbers, blank where they don't apply
     df.to_csv(args.out / "dataset_summary.csv", index=False)
     (args.out / "dataset_summary.md").write_text(markdown(df))
