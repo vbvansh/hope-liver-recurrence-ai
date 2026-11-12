@@ -49,6 +49,14 @@ def header(path):
             tuple(np.round(r.GetDirection(), 6)), sitk.GetPixelIDValueAsString(r.GetPixelID()))
 
 
+def case_files(record):
+    """The files a case must have: images, livers and lesion-free masks of its present phases, plus the lesion maps."""
+    present = [p for p in PHASES if record.get("phases_present", {}).get(p, True)]
+    return ([f"image_{p}.nii.gz" for p in present] + [f"liver_{p}.nii.gz" for p in present]
+            + ["lesion_label.nii.gz", "lesion_instances.nii.gz"]
+            + [f"lesion_free{s}_{p}.nii.gz" for p in present for s in ("", "_nomargin")])
+
+
 def check_case(folder, table_ids):
     """(problems of one case folder (empty = fine), its case.json, Step 7 lesion ids not on the 1 mm grid).
 
@@ -56,12 +64,15 @@ def check_case(folder, table_ids):
     pieces entirely outside the liver), such a lesion is recorded as not in the release, not as a broken case.
     """
     problems, outside = [], []
-    missing = [f for f in FILES + ["case.json"] if not (folder / f).exists()]
+    record = json.loads((folder / "case.json").read_text()) if (folder / "case.json").exists() else {}
+    files = case_files(record)
+    missing = [f for f in files + ["case.json"] if not (folder / f).exists()]
     if missing:
         problems.append(f"missing files: {len(missing)}")
-    record = json.loads((folder / "case.json").read_text()) if (folder / "case.json").exists() else {}
+    if not record.get("phases_present", {}).get("pvp", True):
+        problems.append("no PVP")
     grids = set()
-    for f in FILES:
+    for f in files:
         if f in missing:
             continue
         size, spacing, origin, direction, ptype = header(folder / f)
@@ -102,7 +113,7 @@ def patient_counts(rows):
 
 
 def values_ok(folder):
-    for p in PHASES:
+    for p in [p for p in PHASES if (folder / f"image_{p}.nii.gz").exists()]:
         img = sitk.ReadImage(str(folder / f"image_{p}.nii.gz"))  # keep the image alive while its array view is used
         a = sitk.GetArrayViewFromImage(img)
         if a.min() < -200 or a.max() > 200:
@@ -122,6 +133,10 @@ def picture(folder, out_png):
     colours = {1: (255, 0, 0), 2: (0, 100, 255), 3: (255, 215, 0)}
     tiles = []
     for ph in PHASES:
+        if not (folder / f"image_{ph}.nii.gz").exists():  # a missing phase: blank tiles of the PVP size
+            blank = np.zeros_like(lab)
+            tiles.append([Image.fromarray(np.zeros(cut.shape + (3,), np.uint8)) for cut in (blank[z], blank[::-1, y, :])])
+            continue
         img, free = g(f"image_{ph}.nii.gz"), g(f"lesion_free_{ph}.nii.gz") > 0
         column = []
         for cut in (lambda a: a[z], lambda a: a[::-1, y, :]):
@@ -194,6 +209,7 @@ def main():
             manifest.append({
                 "case_id": cid, "dataset": ds, "role": rec.get("role"), "diagnosis": rec.get("diagnosis"),
                 "phases_present": "|".join(ph for ph, v in rec.get("phases_present", {}).items() if v),
+                "phase_notes": "; ".join(f"{ph}: {v}" for ph, v in rec.get("phase_notes", {}).items()),
                 "native_slice_mm": round(rec["native_spacing_mm"]["pvp"][2], 3) if rec else None,
                 **{f"liver_dice_{ph}": reg.get(ph, {}).get("liver_dice") for ph in ("nc", "ap", "dp")},
                 "registration_failed": bool(failed), "landmark_case": rec.get("landmark_case"), "tre_failed": None,

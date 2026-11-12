@@ -43,8 +43,9 @@ def write(arr, ref, path):
 
 def one_case(folder):
     """Write the masks of one case; returns QC rows, or None if it was done already."""
-    outputs = [folder / f"lesion_free{s}_{ph}.nii.gz" for ph in PHASES for s in ("", "_nomargin")]
     record = json.loads((folder / "case.json").read_text())
+    present = [ph for ph in PHASES if record.get("phases_present", {}).get(ph, True)]  # a missing phase has no files
+    outputs = [folder / f"lesion_free{s}_{ph}.nii.gz" for ph in present for s in ("", "_nomargin")]
     if all(p.exists() for p in outputs) and "lesion_free" in record:
         return None
     lab_img = sitk.ReadImage(str(folder / "lesion_label.nii.gz"))
