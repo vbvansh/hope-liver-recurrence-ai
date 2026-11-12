@@ -6,7 +6,9 @@ registration problem visible, with counts the paper's dataset table can use.
 
 What (for the datasets given, from <release>/cases/ and the Step 7 tables in <project>/outputs/lesions/):
   manifest.csv           one row per case (STANDARD.md columns first, then QC extras)
-  lesions.csv            one row per lesion, measured on the native scan (Step 7), for the cases present
+  lesions.csv            one row per lesion, measured on the native scan (Step 7), for the cases present;
+                         in_release = False for a lesion outside the liver crop (decided 2026-11-11), which is not
+                         counted in manifest.csv (counts, count group and largest stratum use the release lesions)
   exclusion.csv          case_id, dataset, stage, reason, excluded_from_split: missing or broken cases (excluded) and
                          failed registrations (flagged and kept: decided Oct 2026, "decide per experiment")
   qc/registration_qc.csv liver Dice, gradient NCC and coverage per case and phase on the 1 mm grid
@@ -14,7 +16,7 @@ What (for the datasets given, from <release>/cases/ and the Step 7 tables in <pr
   qc/overlays/<dataset>/ check pictures of --pictures random cases per dataset (seed 0) + pictures_index.csv
 Format checks per case: all 19 files present (4 images, 4 livers, 2 lesion maps, 8 lesion-free masks, case.json);
 every image and mask on one grid, 1 mm, identity direction (LPS); pixel types int16 / uint8 / uint16; lesions on the
-1 mm grid = lesions in the Step 7 table. Values in [-200, 200] are checked on --value-sample cases per dataset.
+Step 7 table = lesions on the native grid. Values in [-200, 200] are checked on --value-sample cases per dataset.
 Patient IDs stay in the files; the log and the report show counts only.
 Usage: python -I -u release_check.py --release <project>/processed/v1 --project <project> \
            --datasets MCT-LTDiag PLC-CECT [--pictures 6] [--value-sample 20]
@@ -36,7 +38,7 @@ FILES = ([f"image_{p}.nii.gz" for p in PHASES] + [f"liver_{p}.nii.gz" for p in P
 TYPES = {"image": "16-bit signed integer", "lesion_instances": "16-bit unsigned integer"}
 LESION_COLUMNS = ["dataset", "patient", "case_id", "lesion_id", "class", "drawn_phase", "named_phase", "volume_ml",
                   "equivalent_diameter_mm", "inplane_max_diameter_mm", "max3d_diameter_mm", "size_stratum",
-                  "native_slice_mm", "multi_lesion_reviewed", "voxels", "slices", "source"]
+                  "native_slice_mm", "multi_lesion_reviewed", "in_release", "voxels", "slices", "source"]
 
 
 def header(path):
@@ -47,9 +49,13 @@ def header(path):
             tuple(np.round(r.GetDirection(), 6)), sitk.GetPixelIDValueAsString(r.GetPixelID()))
 
 
-def check_case(folder, n_table):
-    """List of problems of one case folder (empty = fine) and its case.json."""
-    problems = []
+def check_case(folder, table_ids):
+    """(problems of one case folder (empty = fine), its case.json, Step 7 lesion ids not on the 1 mm grid).
+
+    A lesion missing from the 1 mm grid lies outside the crop (PVP liver box + 20 mm): decided 2026-11-11 (4 MCT
+    pieces entirely outside the liver), such a lesion is recorded as not in the release, not as a broken case.
+    """
+    problems, outside = [], []
     missing = [f for f in FILES + ["case.json"] if not (folder / f).exists()]
     if missing:
         problems.append(f"missing files: {len(missing)}")
@@ -70,13 +76,29 @@ def check_case(folder, n_table):
     if len(grids) > 1:
         problems.append("files on different grids")
     les = record.get("lesions", {})
-    if les and les.get("instances_native") != les.get("instances_on_1mm_grid"):
-        problems.append(f"lesions lost in resampling: {les.get('instances_native')} -> {les.get('instances_on_1mm_grid')}")
-    if les and n_table is not None and les.get("instances_native") != n_table:
-        problems.append(f"lesions {les.get('instances_native')} vs Step 7 table {n_table}")
+    if les and les.get("instances_native") != len(table_ids):
+        problems.append(f"lesions {les.get('instances_native')} vs Step 7 table {len(table_ids)}")
+    if les and les.get("instances_native") != les.get("instances_on_1mm_grid") and not missing:
+        inst_img = sitk.ReadImage(str(folder / "lesion_instances.nii.gz"))  # kept alive while used
+        on_grid = set(int(v) for v in np.unique(sitk.GetArrayFromImage(inst_img))) - {0}
+        outside = sorted(set(int(i) for i in table_ids) - on_grid)
     if "lesion_free" not in record:
         problems.append("no lesion-free masks recorded (Step 9)")
-    return problems, record
+    return problems, record, outside
+
+
+STRATA = [(10, "<10"), (20, "10-19"), (30, "20-29"), (np.inf, ">=30")]  # same as steps/lesions.py
+
+
+def patient_counts(rows):
+    """Lesion counts, count group and largest stratum of one case from its lesions in the release (classes 1-2),
+    with the same rules as steps/lesions.py."""
+    rows = rows[rows["class"].isin([1, 2])]
+    largest = rows.inplane_max_diameter_mm.max() if len(rows) else np.nan
+    stratum = next(name for limit, name in STRATA if largest < limit) if pd.notna(largest) else ""
+    return {"n_malignant_lesions": int((rows["class"] == 1).sum()), "n_haemangiomas": int((rows["class"] == 2).sum()),
+            "max_diameter_bin": stratum if len(rows) else "none",
+            "lesion_count_group": "0" if not len(rows) else "1" if len(rows) == 1 else "2+"}
 
 
 def values_ok(folder):
@@ -139,18 +161,27 @@ def main():
         table = pd.read_csv(args.project / "outputs" / "lesions" / f"lesions_{ds}.csv", dtype={"patient": str})
         pats = pd.read_csv(args.project / "outputs" / "lesions" / f"patients_{ds}.csv", dtype={"patient": str})
         folders = {p.name: p for p in (rel / "cases").glob(f"{ds}_*") if p.is_dir() and not p.name.endswith(".part")}
-        n_les = table.groupby("case_id").size()
-        problems_by_case, bad_values = {}, 0
+        table["in_release"] = True
+        ids_by_case = table.groupby("case_id").lesion_id.apply(list).to_dict()
+        problems_by_case, bad_values, recount_differs = {}, 0, 0
         for cid in sorted(set(pats.case_id) - set(folders)):
             exclusion.append({"case_id": cid, "dataset": ds, "stage": "Step 8", "reason": "no case folder",
                               "excluded_from_split": True})
         for k, (cid, folder) in enumerate(sorted(folders.items()), 1):
-            problems, rec = check_case(folder, int(n_les.get(cid, 0)))
+            problems, rec, outside = check_case(folder, ids_by_case.get(cid, []))
             problems_by_case[cid] = problems
+            if outside:
+                table.loc[(table.case_id == cid) & table.lesion_id.isin(outside), "in_release"] = False
+            counts = patient_counts(table[(table.case_id == cid) & table.in_release])
             if problems:
                 exclusion.append({"case_id": cid, "dataset": ds, "stage": "Step 10 format check",
                                   "reason": "; ".join(problems), "excluded_from_split": True})
             p = pats[pats.case_id == cid].iloc[0]
+            step7 = {"n_malignant_lesions": int(p.malignant_lesions), "max_diameter_bin": p.largest_stratum,
+                     "lesion_count_group": str(p.lesion_count_group),
+                     "n_haemangiomas": int(p["haemangiomas"]) if pd.notna(p.get("haemangiomas")) else 0}
+            if not outside and counts != {k: step7[k] for k in counts}:
+                recount_differs += 1  # should stay 0: the recount must match Step 7 where nothing is outside
             reg = rec.get("registration", {})
             failed = [ph for ph, v in reg.items() if v.get("failed")]
             for ph in failed:
@@ -166,13 +197,14 @@ def main():
                 "native_slice_mm": round(rec["native_spacing_mm"]["pvp"][2], 3) if rec else None,
                 **{f"liver_dice_{ph}": reg.get(ph, {}).get("liver_dice") for ph in ("nc", "ap", "dp")},
                 "registration_failed": bool(failed), "landmark_case": rec.get("landmark_case"), "tre_failed": None,
-                "n_malignant_lesions": int(p.malignant_lesions), "max_diameter_bin": p.largest_stratum,
+                "n_malignant_lesions": counts["n_malignant_lesions"], "max_diameter_bin": counts["max_diameter_bin"],
                 "excluded": bool(problems),
                 **{f"grad_ncc_{ph}": reg.get(ph, {}).get("grad_ncc") for ph in ("nc", "ap", "dp")},
                 "coverage_min": min((v.get("coverage", 1) for v in reg.values()), default=None),
-                "n_haemangiomas": int(p["haemangiomas"]) if pd.notna(p.get("haemangiomas")) else 0,
+                "n_haemangiomas": counts["n_haemangiomas"],
                 "n_ignore_regions": int(p["ignore_regions"]) if pd.notna(p.get("ignore_regions")) else 0,
-                "lesion_count_group": p.lesion_count_group, "registration_failed_phases": "|".join(failed),
+                "lesion_count_group": counts["lesion_count_group"], "lesions_outside_crop": len(outside),
+                "registration_failed_phases": "|".join(failed),
                 "pipeline_commit": rec.get("pipeline_commit")})
             if k % 100 == 0:
                 print(f"  {ds}: {k}/{len(folders)} cases checked", flush=True)
@@ -182,15 +214,20 @@ def main():
         # report section
         m = pd.DataFrame([r for r in manifest if r["dataset"] == ds])
         q = pd.DataFrame([r for r in regqc if r["dataset"] == ds])
-        t = table[table.case_id.isin(folders)]
+        t_all = table[table.case_id.isin(folders)]
+        t = t_all[t_all.in_release]
         size_gb = sum(f.stat().st_size for c in folders.values() for f in c.iterdir()) / 1e9
         report += [f"## {ds}", "",
                    f"- Cases: {len(folders)} of {len(pats)} patients; size {size_gb:.1f} GB",
                    f"- Format check: {sum(not v for v in problems_by_case.values())} of {len(folders)} cases pass "
                    f"(files, one grid, 1 mm, identity direction, pixel types, lesion counts, Step 9 masks)",
                    f"- Values within [-200, 200]: {len(sample) - bad_values} of {len(sample)} sampled cases",
-                   f"- Lesions: malignant {int((t['class'] == 1).sum())}, haemangioma {int((t['class'] == 2).sum())}; "
-                   f"ignore regions {int(m.n_ignore_regions.sum()) if len(m) else 0}",
+                   f"- Lesions in the release: malignant {int((t['class'] == 1).sum())}, haemangioma "
+                   f"{int((t['class'] == 2).sum())}; ignore regions {int(m.n_ignore_regions.sum()) if len(m) else 0}",
+                   f"- Lesions outside the liver crop (in `lesions.csv` with in_release = False, not counted): "
+                   f"{int((~t_all.in_release).sum())} in {t_all[~t_all.in_release].case_id.nunique()} cases",
+                   f"- Patient counts recomputed from the release lesions differ from Step 7 (should be 0): "
+                   f"{recount_differs}",
                    "- Malignant lesions by in-plane size (native scan): "
                    + ", ".join(f"{s} mm {int(((t['class'] == 1) & (t.size_stratum == s)).sum())}"
                                for s in ("<10", "10-19", "20-29", ">=30")),
