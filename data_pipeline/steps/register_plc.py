@@ -20,7 +20,9 @@ one QC row (Step 5 adds more):
   - liver Dice with the PVP liver, before (phases overlaid by position) and after (liver warped, nearest neighbour);
   - gradient NCC inside the PVP liver box + 20 mm, before and after: how well the edges line up, a measure the
     registration did not optimise (CLAUDE.md: never judge a registration by organ overlap alone);
-  - distance between the liver centres before registration, the shift, liver Dice after the shift alone, run time.
+  - distance between the liver centres before registration, the shift, liver Dice after the shift alone, run time;
+  - liver_edge_before / _after (added 2026-11-12): gradient NCC inside the PVP liver + 5 mm only. Breathing moves the
+    liver but not spine and ribs, so the box measure can punish a correct liver alignment; this one cannot.
 
 Outputs (--out): <patient>/<phase>_shift.txt (the starting translation), <patient>/<phase>_to_pvp.txt (the B-spline;
 its InitialTransformParameterFileName names the shift file by absolute path, so transformix applies both; if the
@@ -43,12 +45,14 @@ from pathlib import Path
 
 import numpy as np
 import SimpleITK as sitk
+from scipy import ndimage
 
 MOVING = ["nc", "ap", "dp"]
 QC_FIELDS = ["patient", "phase", "status", "seconds", "liver_dice_before", "liver_dice_shift", "liver_dice_after",
              "grad_ncc_before", "grad_ncc_after", "liver_centre_distance_before_mm", "shift_mm", "fixed_slices",
-             "moving_slices"]
+             "moving_slices", "liver_edge_before", "liver_edge_after"]
 BOX_MARGIN_MM = 20
+LIVER_BAND_MM = 5  # liver_edge_*: gradient NCC inside the PVP liver + 5 mm only (spine and ribs excluded; 2026-11-12)
 
 
 def patients(data):
@@ -71,10 +75,12 @@ def liver_box(mask, spacing_zyx):
     return tuple(slice(a, b) for a, b in zip(lo, hi))
 
 
-def grad_ncc(a, b, spacing_zyx):
-    """Normalised cross-correlation of the gradient magnitudes of two arrays on the same grid."""
+def grad_ncc(a, b, spacing_zyx, region=None):
+    """Normalised cross-correlation of the gradient magnitudes of two arrays on the same grid (inside region if given)."""
     ga = np.sqrt(sum(g ** 2 for g in np.gradient(a.astype(np.float32), *spacing_zyx)))
     gb = np.sqrt(sum(g ** 2 for g in np.gradient(b.astype(np.float32), *spacing_zyx)))
+    if region is not None:
+        ga, gb = ga[region], gb[region]
     ga, gb = ga - ga.mean(), gb - gb.mean()
     d = np.sqrt((ga ** 2).sum() * (gb ** 2).sum())
     return float((ga * gb).sum() / d) if d else float("nan")
@@ -126,6 +132,7 @@ def register_patient(itk, pid, data, livers, out, writer, threads, force, label)
     f_mask = sitk.GetArrayFromImage(f_liv) > 0
     sp = f_ct.GetSpacing()[::-1]
     box = liver_box(f_mask, sp)
+    band = ndimage.distance_transform_edt(~f_mask[box], sampling=sp) <= LIVER_BAND_MM  # liver + 5 mm, inside the box
     f_centre = centre_mm(f_liv)
     fixed_itk = itk.GetImageFromArray(f_arr)
     fixed_itk.SetSpacing(f_ct.GetSpacing()); fixed_itk.SetOrigin(f_ct.GetOrigin())
@@ -159,6 +166,7 @@ def register_patient(itk, pid, data, livers, out, writer, threads, force, label)
             write_translation(shift, f_ct, shift_file)
             row["liver_dice_before"] = round(dice(f_mask, before_liv), 4)
             row["grad_ncc_before"] = round(grad_ncc(f_arr[box], before_ct[box], sp), 4)
+            row["liver_edge_before"] = round(grad_ncc(f_arr[box], before_ct[box], sp, band), 4)
             del before_ct, before_liv
             moving_itk = itk.GetImageFromArray(sitk.GetArrayFromImage(m_ct))
             moving_itk.SetSpacing(m_ct.GetSpacing()); moving_itk.SetOrigin(m_ct.GetOrigin())
@@ -175,6 +183,7 @@ def register_patient(itk, pid, data, livers, out, writer, threads, force, label)
             os.replace(part, folder / f"{ph}_to_pvp.txt")
             after_ct = itk.GetArrayFromImage(result)
             row["grad_ncc_after"] = round(grad_ncc(f_arr[box], after_ct[box], sp), 4)
+            row["liver_edge_after"] = round(grad_ncc(f_arr[box], after_ct[box], sp, band), 4)
             del after_ct, result
             # after: warp the moving liver with the same transform, nearest neighbour
             tmap = tp.GetParameterMap(0)
@@ -239,6 +248,8 @@ def main():
     qc = args.out / "qc"
     qc.mkdir(parents=True, exist_ok=True)
     qc_path = qc / f"{tag}.csv"
+    if qc_path.exists() and qc_path.open().readline().strip().split(",") != QC_FIELDS:
+        qc_path = qc / f"{tag}_v2.csv"  # older file with fewer columns: never append rows of another layout
     new = not qc_path.exists()
     t0 = time.time()
     counts = {}
