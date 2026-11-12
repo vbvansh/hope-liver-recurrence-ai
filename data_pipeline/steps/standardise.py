@@ -39,6 +39,7 @@ import time
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 import SimpleITK as sitk
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib"))
@@ -177,12 +178,30 @@ def liver_box(mask):
 
 # ---------- one case ----------
 
-def case(dataset, pid, diagnosis, project, out, itk, commit):
-    """Write cases/<dataset>_<pid>/; returns QC rows. Skips a finished case."""
+def case(dataset, pid, diagnosis, project, out, itk, commit, overrides=None):
+    """Write cases/<dataset>_<pid>/; returns QC rows. Skips a finished case whose phase decisions are unchanged.
+
+    overrides: {(patient, phase): (action, reason)} from qc/phase_overrides.py: "use_our_registration" (MCT phase warped
+    with outputs/registration/MCT-LTDiag/) or "missing" (phase left out, phases_present false). A finished case whose
+    case.json does not record the same decisions is moved to <out>_replaced_<date>/cases/ and rebuilt.
+    """
     case_id = f"{dataset}_{pid}"
     final = out / "cases" / case_id
+    ov = {ph: v for (p, ph), v in (overrides or {}).items() if p == pid}
+    signature = sorted(f"{ph}:{a}" for ph, (a, _) in ov.items())
     if final.exists():
-        return None
+        done = json.loads((final / "case.json").read_text()) if (final / "case.json").exists() else {}
+        if done.get("overrides_applied", []) == signature:
+            return None
+        backup = out.parent / f"{out.name}_replaced_{time.strftime('%Y-%m-%d')}" / "cases"
+        backup.mkdir(parents=True, exist_ok=True)
+        target = backup / case_id
+        if target.exists():
+            target = backup / f"{case_id}.{int(time.time())}"
+        os.replace(final, target)
+    present = [ph for ph in PHASES if ov.get(ph, ("",))[0] != "missing"]
+    if "pvp" not in present:
+        raise ValueError("PVP cannot be missing")
     livers = project / "outputs" / "liver_masks" / dataset / pid
     if dataset == "MCT-LTDiag":
         tar = project / "data" / "MCT-LTDiag" / "tars" / f"{pid}.tar"
@@ -195,7 +214,7 @@ def case(dataset, pid, diagnosis, project, out, itk, commit):
         native = {ph: list(im.GetSpacing()) for ph, im in imgs.items()}
         lab = LB.plc(project / "data" / "PLC-CECT", pid, diagnosis)[0]
         method = "elastix B-spline (MCT-LTDiag authors' settings) after a liver-centre shift"
-    liv = {ph: on_grid_of(sitk.ReadImage(str(livers / f"liver_{ph}.nii.gz"), sitk.sitkUInt8), imgs[ph]) for ph in PHASES}
+    liv = {ph: on_grid_of(sitk.ReadImage(str(livers / f"liver_{ph}.nii.gz"), sitk.sitkUInt8), imgs[ph]) for ph in present}
     ref, box_mm = crop_grid(imgs["pvp"], liv["pvp"])
     lesion_label, lesion_instances = labels_image(lab, imgs["pvp"])
 
@@ -203,11 +222,16 @@ def case(dataset, pid, diagnosis, project, out, itk, commit):
     shutil.rmtree(tmp, ignore_errors=True)
     tmp.mkdir(parents=True)
     arrays, rows, registration = {}, [], {}
-    for ph in PHASES:
+    phase_method = {}
+    for ph in present:
         t0 = time.time()
         coverage = 1.0
-        if dataset == "PLC-CECT" and ph != "pvp":
-            tfile = project / "outputs" / "registration" / "PLC-CECT" / pid / f"{ph}_to_pvp.txt"
+        ours = ph != "pvp" and (dataset == "PLC-CECT" or ov.get(ph, ("",))[0] == "use_our_registration")
+        phase_method[ph] = (method if not (dataset == "MCT-LTDiag" and ours) else
+                            "elastix B-spline (MCT-LTDiag authors' settings) after a liver-centre shift; re-registered "
+                            "because it lines the liver up better than the authors' (2026-11-12)")
+        if ours:
+            tfile = project / "outputs" / "registration" / dataset / pid / f"{ph}_to_pvp.txt"
             image = warp(itk, imgs[ph], tfile, ref, 1, OUTSIDE)  # OUTSIDE marks grid voxels this phase doesn't cover
             outside = sitk.GetArrayViewFromImage(image) <= OUTSIDE / 2
             coverage = float(1 - outside.mean())
@@ -228,7 +252,7 @@ def case(dataset, pid, diagnosis, project, out, itk, commit):
             img, lv = arrays[r["phase"]]
             r["liver_dice_pvp"] = round(dice(pvp_liv, lv), 4)
             r["grad_ncc_pvp"] = round(grad_ncc(pvp_img, img, box), 4)
-            registration[r["phase"]] = {"method": method, "liver_dice": r["liver_dice_pvp"],
+            registration[r["phase"]] = {"method": phase_method[r["phase"]], "liver_dice": r["liver_dice_pvp"],
                                         "grad_ncc": r["grad_ncc_pvp"], "coverage": r["coverage"],
                                         "failed": bool(not r["liver_dice_pvp"] >= DICE_FAIL)}
     sitk.WriteImage(sitk.Cast(resample(lesion_label, ref, nearest=True), sitk.sitkUInt8),
@@ -237,7 +261,8 @@ def case(dataset, pid, diagnosis, project, out, itk, commit):
     sitk.WriteImage(sitk.Cast(inst, sitk.sitkUInt16), str(tmp / "lesion_instances.nii.gz"), useCompression=True)
     kept = set(np.unique(sitk.GetArrayViewFromImage(inst))) - {0}
     record = {"dataset": dataset, "patient_id": pid, "case_id": case_id, "role": "development",
-              "phases_present": {ph: True for ph in PHASES},
+              "phases_present": {ph: ph in present for ph in PHASES},
+              "phase_notes": {ph: f"{a}: {why}" for ph, (a, why) in ov.items()}, "overrides_applied": signature,
               "native_spacing_mm": native, "registration": registration, "landmark_case": None,
               "crop_box_mm": box_mm, "grid": {"spacing_mm": [SPACING_MM] * 3, "size": list(ref.GetSize()),
                                                "origin_mm": list(ref.GetOrigin()), "direction": "identity (LPS)"},
@@ -291,12 +316,17 @@ def main():
     g.add_argument("--test", type=int, help="N random patients (seed 0)")
     ap.add_argument("--per-task", type=int, default=20)
     ap.add_argument("--threads", type=int, default=4)
+    ap.add_argument("--overrides", type=Path, help="phase decisions CSV (default <project>/outputs/phase_overrides.csv)")
     args = ap.parse_args()
-    itk = None
-    if args.dataset == "PLC-CECT":
-        import itk  # noqa: F811  (only PLC needs transformix)
-        itk.MultiThreaderBase.SetGlobalMaximumNumberOfThreads(args.threads)
-        itk.MultiThreaderBase.SetGlobalDefaultNumberOfThreads(args.threads)
+    import itk  # transformix: PLC phases and re-registered MCT phases
+    itk.MultiThreaderBase.SetGlobalMaximumNumberOfThreads(args.threads)
+    itk.MultiThreaderBase.SetGlobalDefaultNumberOfThreads(args.threads)
+    overrides = {}
+    ov_path = args.overrides or (args.project / "outputs" / "phase_overrides.csv")
+    if ov_path.exists():
+        o = pd.read_csv(ov_path, dtype=str)
+        overrides = {(r.patient, r.phase): (r.action, r.reason) for r in o[o.dataset == args.dataset].itertuples()}
+    print(f"phase decisions for {args.dataset}: {len(overrides)}", flush=True)
     sitk.ProcessObject.SetGlobalDefaultNumberOfThreads(args.threads)
     commit = repo_commit()
     pats = patient_list(args.project, args.dataset)
@@ -318,7 +348,7 @@ def main():
         for i, (pid, dx) in enumerate(chosen, 1):
             t0 = time.time()
             try:
-                rows = case(args.dataset, pid, dx, args.project, args.out, itk, commit)
+                rows = case(args.dataset, pid, dx, args.project, args.out, itk, commit, overrides)
                 status = "skipped" if rows is None else "done"
             except Exception as e:  # keep going; the row says what failed
                 rows, status = [{"case_id": f"{args.dataset}_{pid}", "phase": "-",
