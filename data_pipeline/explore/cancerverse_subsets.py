@@ -9,6 +9,10 @@ file lists of CT volumes (CancerVerse/<cv_id>/ct.nii.gz) for these subsets of HC
                  tumour, the first date with tumour again
   hcc_recur_like patients whose tumour status goes tumour -> none -> tumour: one scan per date, all dates
   hcc_pv_long    patients with outlined portal-venous scans on >= 2 dates: all their outlined portal-venous scans
+  pilot_all_dates the 10 pilot patients with ALL their dates (one scan per date), for looking at whole courses
+  hcc_visual_review 12 other HCC patients with 4-8 dates and mostly portal-venous scans, 3 per course pattern
+                 (tumour on every date and stable lesion count; tumour on every date and lesion count rising;
+                 tumour -> none -> tumour; none first then tumour), all their dates, seed 0
 One scan per patient and date: outlined + portal-venous first, then the one with most tumour voxels.
 Sizes and checksums come from the Hugging Face paths-info API (metadata only).
 
@@ -97,12 +101,36 @@ def main():
 
     rng = np.random.default_rng(0)
     pilot = sorted(rng.choice(long_p, size=min(10, len(long_p)), replace=False).tolist())
+    # visual review: whole courses of a few HCC patients, 3 per pattern
+    feat = rep.groupby(P).agg(n=("date", "size"), pv=("pv", "mean"),
+                              seq=("outlined", lambda s: "".join("T" if x else "-" for x in s)),
+                              nl=("n_lesions", list))
+    feat = feat[(feat["n"] >= 4) & (feat["n"] <= 8) & (feat["pv"] >= 0.5) & ~feat.index.isin(pilot)]
+
+    def kind(r):
+        s, nl = r["seq"], r["nl"]
+        if "T" not in s:
+            return ""
+        if "-" not in s:
+            return "rising" if any(b > a for a, b in zip(nl, nl[1:])) and nl[-1] > nl[0] else "stable"
+        core = s[s.index("T"):s.rindex("T") + 1]
+        if "-" in core:
+            return "recurrence-like"
+        return "appears" if s.startswith("-") and s.endswith("T") else ""
+    feat["kind"] = feat.apply(kind, axis=1)
+    review = []
+    for k in ["stable", "rising", "recurrence-like", "appears"]:
+        cand = sorted(feat.index[feat["kind"] == k])
+        review += rng.choice(cand, size=min(3, len(cand)), replace=False).tolist() if cand else []
+
     subsets = {
         "pilot": pvout[pvout[P].isin(pilot)],
         "hcc_pv_pair": pvout[pvout[P].isin(long_p)].groupby(P).head(2),
         "hcc_recur_core": recur_core,
         "hcc_recur_like": rep[rep[P].isin(recur)],
         "hcc_pv_long": pvout[pvout[P].isin(long_p)],
+        "pilot_all_dates": rep[rep[P].isin(pilot)],
+        "hcc_visual_review": rep[rep[P].isin(review)],
     }
     all_ids = sorted(set().union(*[set(d["cv_id"]) for d in subsets.values()]))
     info = file_info(all_ids)
@@ -114,7 +142,9 @@ def main():
             "hcc_pv_pair": "every such HCC patient, first two portal-venous tumour dates only",
             "hcc_recur_core": "same 67 patients, only 3 dates each: last tumour, first without, tumour again",
             "hcc_recur_like": "HCC patients with tumour → none → tumour; one scan per date, all dates",
-            "hcc_pv_long": "every such HCC patient, all portal-venous tumour scans"}
+            "hcc_pv_long": "every such HCC patient, all portal-venous tumour scans",
+            "pilot_all_dates": "the 10 pilot patients, every date (one scan per date)",
+            "hcc_visual_review": "12 other HCC patients, 4–8 dates, 3 per course: stable / rising / recurrence-like / appears"}
     for name, d in subsets.items():
         d = d.assign(size_bytes=d["cv_id"].map(lambda c: info.get(c, (0, ""))[0]),
                      sha256=d["cv_id"].map(lambda c: info.get(c, (0, ""))[1]),
