@@ -47,7 +47,7 @@ cd <project path>/hope-liver-recurrence-ai
 |---|---|
 | **Positive class (fixed team rule, 26 Nov 2026)** | **Lesion level: every lesion numbered in `lesion_instances.nii.gz`, i.e. malignant (class 1) and haemangioma (class 2), as released. Ignore regions (class 3) are neutral: a detection on them is neither a hit nor a false alarm. Patient level: malignant diagnosis vs others (haemangioma patients and controls are negatives).** <!-- If this experiment adds a "malignant only" line, label those numbers clearly. --> |
 | Evaluation code and version | |
-| Lesion matching rule | <!-- e.g. centroid rule / mask IoU >= 0.1, one-to-one (open item 7) --> |
+| Lesion matching rule (fixed team rule, 26 Nov 2026) | A candidate hits a lesion when their 3D masks have IoU ≥ 0.1, matched one-to-one (extra candidates on a found lesion are false positives) |
 | FROC points | 1/8, 1/4, 1/2, 1, 2, 4, 8 false positives per case |
 | Size strata | < 20 mm (< 10 mm merged, Plan v2 rule), 20–29 mm, >= 30 mm |
 | Ignore regions | class 3 never counted as true or false positive |
