@@ -1,0 +1,1 @@
+exp_id,title,owner,status,date_started,date_finished,parent,data_release,split_evaluated,positive_class,phases,model,key_change,seeds,val_froc_mean_lt20,val_sens_lt20_at_0.5fp,val_sens_lt20_at_1fp,val_sens_lt20_at_2fp,val_froc_mean_all,val_ap_all,val_patient_auroc,test_opened,conclusion,card
