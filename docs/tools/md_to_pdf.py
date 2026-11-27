@@ -218,13 +218,19 @@ class Doc:
             draw_row(i, False)
         self.y -= 8
 
+    @staticmethod
+    def image_size(path):
+        with Image.open(path) as im:
+            w = CONTENT_W
+            h = w * im.height / im.width
+            if h > PAGE_H - MARGIN_T - MARGIN_B:
+                h = PAGE_H - MARGIN_T - MARGIN_B
+                w = h * im.width / im.height
+        return w, h
+
     def image(self, path):
         im = Image.open(path).convert("RGB")
-        w = CONTENT_W
-        h = w * im.height / im.width
-        if h > PAGE_H - MARGIN_T - MARGIN_B:
-            h = PAGE_H - MARGIN_T - MARGIN_B
-            w = h * im.width / im.height
+        w, h = self.image_size(path)
         self.need(h + 6)
         self.y -= h
         ax = self.fig.add_axes([MARGIN_L / PAGE_W, self.y / PAGE_H, w / PAGE_W, h / PAGE_H])
@@ -253,9 +259,21 @@ def main():
     doc = Doc(args.pdf + ".part.pdf", title)
     i, para = 0, []
 
+    def next_image(j):
+        """Path of an image that follows line j after blank lines only, else None."""
+        while j < len(lines) and not lines[j].strip():
+            j += 1
+        m = re.match(r"^!\[[^\]]*\]\(([^)]+)\)\s*$", lines[j].rstrip()) if j < len(lines) else None
+        return os.path.join(base, m.group(1)) if m else None
+
     def flush():
         if para:
-            doc.paragraph(" ".join(para))
+            text = " ".join(para)
+            img = next_image(i)
+            if img:  # caption + picture on the same page
+                n_lines = len(wrap(text, 10, CONTENT_W))
+                doc.need(n_lines * 13.2 + 5 + doc.image_size(img)[1] + 6)
+            doc.paragraph(text)
             para.clear()
 
     while i < len(lines):
