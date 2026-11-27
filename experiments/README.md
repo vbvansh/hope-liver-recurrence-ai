@@ -2,6 +2,8 @@
 
 Every model experiment for the MICCAI 2027 paper lives here, one folder per experiment, with one row in `tracker.csv`. A folder is self-contained, so it can be shared with a teammate as it is.
 
+> **Every result in the tracker and in the paper is scored with the HOPE shared scorer in [`../evaluation/`](../evaluation/) (team rules fixed 26 Nov 2026). Never report numbers from another scoring script.**
+
 ```text
 experiments/
 ├── README.md               this file: rules and how to start an experiment
