@@ -49,6 +49,8 @@ Thumbs.db
 *.dcm
 *.nii
 *.nii.gz
+# Pictures made from licensed datasets (e.g. CancerVerse, CC BY-NC-ND: no public sharing of derived images)
+/docs/notes/images/
 
 # Local datasets
 data/raw/
